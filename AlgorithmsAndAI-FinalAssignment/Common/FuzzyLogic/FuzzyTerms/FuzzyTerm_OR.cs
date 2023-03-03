@@ -43,7 +43,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms
             return largest;
         }
 
-        public override void OrWithDom(double val)
+        public override void SetDom(double val)
         {
 
         }

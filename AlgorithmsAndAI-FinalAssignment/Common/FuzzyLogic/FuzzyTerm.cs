@@ -12,11 +12,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
         /// </summary>
         public List<FuzzyTerm> terms;
 
-        /// <summary>
-        /// A method to clone this fuzzyterm
-        /// </summary>
-        /// <returns></returns>
-        public abstract FuzzyTerm Clone();
 
         /// <summary>
         ///  A method to receive the Degree of Membership
@@ -33,6 +28,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
         ///  A method that sets the Degree of Membership to the highest value between the value or the current Degree of Membership.
         /// </summary>
         /// <param name="val"></param>
-        public abstract void OrWithDom(double val);
+        public abstract void SetDom(double val);
     }
 }

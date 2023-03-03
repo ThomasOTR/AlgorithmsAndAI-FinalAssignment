@@ -15,19 +15,17 @@
             fs.ClearDom();
         }
 
-        public override FuzzyTerm Clone()
-        {
-            return new FuzzyTerm_SET(fs);
-        }
-
         public override double GetDom()
         {
-            return fs.Dom;
+            return fs.GetDom();
         }
 
-        public override void OrWithDom(double val)
+        public override void SetDom(double val)
         {
-            fs.OrWithDom(val);
+            if (fs.GetDom() < val)
+            {
+                fs.SetDom(val);
+            }
         }
     }
 }

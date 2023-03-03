@@ -15,7 +15,7 @@
         /// <summary>
         /// A method to calculate the crisp value
         /// </summary>
-        public void Calculate() { Consequence.OrWithDom(Antecedent.GetDom()); }
+        public void Calculate() { Consequence.SetDom(Antecedent.GetDom()); }
 
         /// <summary>
         /// A method to set the DOM of the consequence to zero;

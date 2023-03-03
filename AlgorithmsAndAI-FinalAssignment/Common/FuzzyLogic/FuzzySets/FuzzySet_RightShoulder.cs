@@ -26,6 +26,13 @@
             else if (val > peak && val <= peak + right) return 1.0;
 
             else return 0;
+
+            //if (val >= PeakPoint && val <= RightOffset)
+            //    return 1.0;
+            //if (val <= PeakPoint && val > LeftOffset)
+            //    return (1.0 / (PeakPoint - LeftOffset)) * (val - LeftOffset);
+            //else
+            //    return 0.0;
         }
     }
 }

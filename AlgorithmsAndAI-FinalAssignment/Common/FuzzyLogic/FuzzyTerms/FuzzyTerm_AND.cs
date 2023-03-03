@@ -7,10 +7,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms
     /// </summary>
     public class FuzzyTerm_AND : FuzzyTerm
     {
-        public FuzzyTerm_AND(FuzzyTerm ft1)
-        {
-            terms = new List<FuzzyTerm>() { ft1 };
-        }
         public FuzzyTerm_AND(FuzzyTerm ft1, FuzzyTerm ft2)
         {
             terms = new List<FuzzyTerm>() { ft1, ft2 };
@@ -23,11 +19,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms
             }
         }
 
-        public override FuzzyTerm Clone()
-        {
-            return new FuzzyTerm_AND(this);
-        }
-
         public override double GetDom()
         {
             double smallest = double.MaxValue;
@@ -38,12 +29,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms
             return smallest;
         }
 
-        public override void OrWithDom(double val)
+        public override void SetDom(double val)
         {
-            foreach (FuzzyTerm ft in terms)
-            {
-                ft.OrWithDom(val);
-            }
+            //foreach (FuzzyTerm ft in terms)
+            //{
+            //    ft.SetDom(val);
+            //}
         }
     }
 }

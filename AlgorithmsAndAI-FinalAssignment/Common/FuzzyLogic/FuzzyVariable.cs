@@ -65,8 +65,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
             double top = 0.0;
             foreach (KeyValuePair<string, FuzzySet> kvp in MemberSets)
             {
-                bot += kvp.Value.Dom;
-                top += kvp.Value.RepresentativeValue * kvp.Value.Dom;
+                bot += kvp.Value.GetDom();
+                top += kvp.Value.RepresentativeValue * kvp.Value.GetDom();
             }
             if (bot != 0.0) return top / bot;
             else return 0.0;
@@ -123,6 +123,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
             MemberSets.Add(name, triangle);
             AdjustRangeToFit(minbound, maxbound);
             return new FuzzyTerm_SET(triangle);
+        }
+        public void ClearAllDOMValues()
+        {
+            foreach (KeyValuePair<string, FuzzySet> entry in _memberSets)
+                entry.Value.ClearDOM();
         }
     }
 }
