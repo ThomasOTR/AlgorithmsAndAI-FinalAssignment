@@ -8,6 +8,8 @@ namespace AlgorithmsAndAI_FinalAssignment
         private Timer timer;
         private float timeDelta = 0.8f;
 
+        public static bool GraphVisible = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,11 +28,21 @@ namespace AlgorithmsAndAI_FinalAssignment
         private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
         {
             world.Update(timeDelta);
+            Invalidate();
+
         }
 
         private void Form1_Paint(object? sender, PaintEventArgs e)
         {
             world.Render(e.Graphics);
+        }
+        private void InputHandler(object? sender, KeyEventArgs e)
+        {
+            switch(e.KeyCode)
+            {
+                case Keys.G:
+                    GraphVisible = !GraphVisible; break;
+            }
         }
     }
 }

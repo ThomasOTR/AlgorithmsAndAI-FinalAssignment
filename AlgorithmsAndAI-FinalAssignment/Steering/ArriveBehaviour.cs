@@ -17,10 +17,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
 
         public override Vector2D Calculate()
         {
-            Vector2D force = new Vector2D();
+            Vector2D force = new();
             if (ME.Target != null)
             {
-                Vector2D VectorToTarget = ME.Target.Position.Clone().Subtract(ME.Position);
+                Vector2D VectorToTarget = ME.Target.Clone().Subtract(ME.Position);
 
                 if (VectorToTarget.Length() > 0)
                 {

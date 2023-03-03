@@ -28,11 +28,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms
             }
         }
 
-        public override FuzzyTerm Clone()
-        {
-            return new FuzzyTerm_OR(this);
-        }
-
         public override double GetDom()
         {
             double largest = double.MinValue;

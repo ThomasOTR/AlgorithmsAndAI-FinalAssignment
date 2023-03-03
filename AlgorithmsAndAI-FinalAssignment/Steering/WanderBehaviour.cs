@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+using AlgorithmsAndAI_FinalAssignment.Common.Steering;
+using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Steering
 {
-    internal class WanderBehaviour
+    public class WanderBehaviour : SteeringBehaviour
     {
+        public WanderBehaviour(MovingEntity ME) : base(ME) { }
+
+        public override Vector2D Calculate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

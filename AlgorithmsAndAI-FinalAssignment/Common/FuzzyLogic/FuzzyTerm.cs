@@ -12,6 +12,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
         /// </summary>
         public List<FuzzyTerm> terms;
 
+        public FuzzyTerm()
+        {
+            terms = new List<FuzzyTerm>();
+        }
 
         /// <summary>
         ///  A method to receive the Degree of Membership

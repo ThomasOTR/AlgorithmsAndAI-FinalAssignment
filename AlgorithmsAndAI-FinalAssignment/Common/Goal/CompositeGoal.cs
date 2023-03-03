@@ -14,7 +14,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
         {
             Subgoals = new Stack<Goal>();
         }
-        public void addSubgoal(Goal goal)
+        public void AddSubgoal(Goal goal)
         {
             Subgoals.Push(goal);
         }
@@ -38,6 +38,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
             }
             Status = status;
             return Status;
+        }
+
+        public override void Terminate()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -50,7 +50,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
             {
                 foreach (KeyValuePair<string, FuzzySet> kvp in MemberSets)
                 {
-                    kvp.Value.Dom = kvp.Value.CalculateDOM(val);
+                    kvp.Value.SetDom(kvp.Value.CalculateDOM(val));
                 }
             }
         }
@@ -87,7 +87,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
         /// <returns></returns>
         public FuzzyTerm_SET AddLeftShoulderSet(string name, double minbound, double peak, double maxbound)
         {
-            FuzzySet_LeftShoulder leftShoulder = new FuzzySet_LeftShoulder(peak, minbound, maxbound);
+            FuzzySet_LeftShoulder leftShoulder = new(peak, minbound, maxbound);
             MemberSets.Add(name, leftShoulder);
             AdjustRangeToFit(minbound, maxbound);
             return new FuzzyTerm_SET(leftShoulder);
@@ -103,7 +103,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
         /// <returns></returns>
         public FuzzyTerm_SET AddRightShoulderSet(string name, double minbound, double peak, double maxbound)
         {
-            FuzzySet_RightShoulder rightShoulder = new FuzzySet_RightShoulder(peak, minbound, maxbound);
+            FuzzySet_RightShoulder rightShoulder = new(peak, minbound, maxbound);
             MemberSets.Add(name, rightShoulder);
             AdjustRangeToFit(minbound, maxbound);
             return new FuzzyTerm_SET(rightShoulder);
@@ -119,15 +119,15 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
         /// <returns></returns>
         public FuzzyTerm_SET AddTriangle(string name, double minbound, double peak, double maxbound)
         {
-            FuzzySet_Triangle triangle = new FuzzySet_Triangle(peak, minbound, maxbound);
+            FuzzySet_Triangle triangle = new (peak, minbound, maxbound);
             MemberSets.Add(name, triangle);
             AdjustRangeToFit(minbound, maxbound);
             return new FuzzyTerm_SET(triangle);
         }
         public void ClearAllDOMValues()
         {
-            foreach (KeyValuePair<string, FuzzySet> entry in _memberSets)
-                entry.Value.ClearDOM();
+            foreach (KeyValuePair<string, FuzzySet> entry in MemberSets)
+                entry.Value.ClearDom();
         }
     }
 }

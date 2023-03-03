@@ -1,4 +1,5 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+using AlgorithmsAndAI_FinalAssignment.Common.Graph;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
 namespace AlgorithmsAndAI_FinalAssignment
@@ -9,11 +10,13 @@ namespace AlgorithmsAndAI_FinalAssignment
         public int Height;
 
         public List<MovingEntity> Entities;
+        public Graph graph;
         public World(int width, int height)
         {
             Width = width;
             Height = height;
             Entities= new List<MovingEntity>();
+            graph = new Graph(this);
         }
         public void Update(float delta)
         {
@@ -22,6 +25,11 @@ namespace AlgorithmsAndAI_FinalAssignment
         public void Render(Graphics g)
         {
             Entities.ForEach(x => { x.Render(g); });
+
+            if (Form1.GraphVisible)
+            {
+                graph.Render(g);
+            }
         }
 
         //<summary>

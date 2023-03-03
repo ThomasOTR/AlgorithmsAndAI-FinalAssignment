@@ -20,7 +20,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
             Vector2D force = new Vector2D();
             if (ME.Target != null)
             {
-                Vector2D VectorToTarget = ME.Target.Position.Clone().Subtract(ME.Position);
+                Vector2D VectorToTarget = ME.Target.Clone().Subtract(ME.Position);
 
                 Vector2D desiredVelocity = VectorToTarget.Normalize();
                 desiredVelocity.Multiply(ME.MaxSpeed);
