@@ -27,6 +27,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Utilities
         {
             return x * x + y * y;
         }
+        public bool WithinRange(Vector2D v, double range)
+        {
+            return Distance(v) < range;
+        }
         public Vector2D Normalize()
         {
             double length = Length();

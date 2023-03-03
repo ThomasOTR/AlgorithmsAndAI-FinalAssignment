@@ -15,11 +15,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         public Vector2D Side;
         public double Mass;
         public double MaxSpeed;
-        public BaseGameEntity Target;
-        public List<SteeringBehaviour> steeringBehaviours;
+        public Vector2D Target;
+        public List<SteeringBehaviour> SteeringBehaviours;
 
 
-        public MovingEntity(World world,Vector2D Position, BaseGameEntity Target) : base(world,Position)
+        public MovingEntity(World world,Vector2D Position, Vector2D Target) : base(world,Position)
         {
             Velocity = new Vector2D();
             Heading = new Vector2D();
@@ -28,7 +28,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             MaxSpeed = 0;
             this.Target = Target;
 
-            steeringBehaviours = new List<SteeringBehaviour>();
+            SteeringBehaviours = new List<SteeringBehaviour>();
 
         }
         public override void Render(Graphics g)
@@ -39,9 +39,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         public override void Update(float delta)
         {
             Vector2D steeringForce = new Vector2D();
-            for (int i = 0; i < steeringBehaviours.Count; i++)
+            for (int i = 0; i < SteeringBehaviours.Count; i++)
             {
-                steeringForce.Add(steeringBehaviours[i].Calculate());
+                steeringForce.Add(SteeringBehaviours[i].Calculate());
             }
 
             Vector2D acceleration = steeringForce.Divide(Mass);

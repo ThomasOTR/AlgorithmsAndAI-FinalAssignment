@@ -31,7 +31,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
         /// <summary>
         /// A method to disable the enabled behaviour;
         /// </summary>
-        public virtual void Terminate() { }
+        public abstract void Terminate();
 
         /// <summary>
         /// A simple method to check if the status of the goal is correct;
