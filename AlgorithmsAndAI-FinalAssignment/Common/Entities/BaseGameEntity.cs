@@ -16,7 +16,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             this.Position= Position;
         }
         public abstract void Update(float delta);
-        public abstract void Render(Graphics g);
 
     }
 }

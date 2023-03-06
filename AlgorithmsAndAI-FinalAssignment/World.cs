@@ -10,13 +10,14 @@ namespace AlgorithmsAndAI_FinalAssignment
         public int Height;
 
         public List<MovingEntity> Entities;
-        public Graph graph;
+        public NavigationGraph graph;
         public World(int width, int height)
         {
             Width = width;
             Height = height;
             Entities= new List<MovingEntity>();
-            graph = new Graph(this);
+            graph = new NavigationGraph(this);
+            graph.AstarPath(graph.NodeList[1, 1], graph.NodeList[40, 10]);
         }
         public void Update(float delta)
         {

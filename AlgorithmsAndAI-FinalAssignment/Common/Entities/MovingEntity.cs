@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 {
-    public class MovingEntity : BaseGameEntity
+    public abstract class MovingEntity : BaseGameEntity
     {
         public Vector2D Velocity;
         public Vector2D Heading;
@@ -19,7 +19,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         public List<SteeringBehaviour> SteeringBehaviours;
 
 
-        public MovingEntity(World world,Vector2D Position, Vector2D Target) : base(world,Position)
+        public MovingEntity(World world, Vector2D Position, Vector2D Target) : base(world, Position)
         {
             Velocity = new Vector2D();
             Heading = new Vector2D();
@@ -30,10 +30,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 
             SteeringBehaviours = new List<SteeringBehaviour>();
 
-        }
-        public override void Render(Graphics g)
-        {
-            throw new NotImplementedException();
         }
 
         public override void Update(float delta)
@@ -60,5 +56,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 
             world.WrapAround(Position);
         }
+        public abstract void Render(Graphics g);
     }
 }

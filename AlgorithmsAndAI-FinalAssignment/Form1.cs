@@ -18,6 +18,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             world = new World(width:Width, height:Height);
             Paint += Form1_Paint;
             timer = new Timer()
+
             {
                 Interval = 20,
                 Enabled = true,
@@ -29,7 +30,6 @@ namespace AlgorithmsAndAI_FinalAssignment
         {
             world.Update(timeDelta);
             Invalidate();
-
         }
 
         private void Form1_Paint(object? sender, PaintEventArgs e)
@@ -42,6 +42,9 @@ namespace AlgorithmsAndAI_FinalAssignment
             {
                 case Keys.G:
                     GraphVisible = !GraphVisible; break;
+                case Keys.Escape:
+                    System.Windows.Forms.Application.Exit(); break;
+
             }
         }
     }

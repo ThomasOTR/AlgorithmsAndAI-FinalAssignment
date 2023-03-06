@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
 {
@@ -14,9 +15,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         {
             this.Destination = Destination;
         }
-        public void Render(Graphics g, Vector2D Origin)
+        public void Render(Graphics g, Vector2D Origin,Pen p)
         {
-            g.DrawLine(new Pen(Color.Black), (int)Origin.x, (int)Origin.y, (int)Destination.Position.x, (int)Destination.Position.y);
+            g.DrawLine(p, (int)Origin.x, (int)Origin.y, (int)Destination.Position.x, (int)Destination.Position.y);
         }
+        
     }
 }

@@ -32,14 +32,15 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1378, 1144);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.ResumeLayout(false);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputHandler);
-
+            this.ResumeLayout(false);
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
         }
 

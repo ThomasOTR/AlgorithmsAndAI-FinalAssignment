@@ -16,34 +16,33 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
 
         public Vector2D Position;
 
-
         public Node? Prev;
 
-        public double Distance;
+        public double G; // Cumulative cost to reach a node
 
-        public double Heuristic;
+        public double H; // Heuristic
 
-        public double DistancePlusHeuristic;
+        public double F; // G + H
 
         private List<Edge> Adjecents;
 
+        public bool Known;
+
         public Node(Vector2D Position) 
         {
-            Name = $"{Position.x / Graph.distanceBetweenNodes},{Position.y / Graph.distanceBetweenNodes}";
+            Name = $"{Position.x / NavigationGraph.distanceBetweenNodes},{Position.y / NavigationGraph.distanceBetweenNodes}";
             this.Position= Position;
             Adjecents = new List<Edge>(4);
             Prev = null;
-
-            Distance = 0.0;
-            Heuristic = double.PositiveInfinity;
-            DistancePlusHeuristic = 0.0;
+            Known = false;
+            G = 0.0;
+            H = 0.0;
+            F = 0.0;
         }
         public void AddAdjecent(Edge e)
         {
-            if (!Adjecents.Any(a => a.Destination.Equals(e.Destination)))
-            { 
-                Adjecents.Add(e);
-            }
+            //if (e.Destination == null) return;
+            Adjecents.Add(e);
         }
         public List<Edge> GetAdjecents()
         {
@@ -54,15 +53,15 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             return (
                 Name.Equals(other.Name) &&
                 Adjecents.Count == other.Adjecents.Count &&
-                Distance.Equals(other.Distance) &&
-                Heuristic.Equals(other.Heuristic) &&
+                G.Equals(other.G) &&
+                H.Equals(other.H) &&
                 Position.Equals(other.Position)
                 );
         }
-        public void Render(Graphics g)
+        public void Render(Graphics g, Pen p)
         {
             Rectangle r = new Rectangle((int)Position.x - 2, (int)Position.y - 2, 4, 4);
-            g.DrawRectangle(new Pen(Color.Green), r);
+            g.DrawRectangle(p, r);
         }
 
 
