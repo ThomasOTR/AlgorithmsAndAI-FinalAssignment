@@ -18,10 +18,10 @@ namespace AlgorithmsAndAI_FinalAssignment
         {
             Width = width;
             Height = height;
-            Entities= new List<MovingEntity>();
+            Entities = new List<MovingEntity>();
             graph = new NavigationGraph(this);
 
-            MainAgent = new PathPlanningAgent(this,new Vector2D(50,50),null);
+            MainAgent = new PathPlanningAgent(this, new Vector2D(50, 50), null);
         }
         public void Update(float delta)
         {
@@ -38,14 +38,14 @@ namespace AlgorithmsAndAI_FinalAssignment
         }
         public void StartPathFindingProcess(int vectorX, int vectorY)
         {
-            double size = NavigationGraph.distanceBetweenNodes;
+            double size = NavigationGraph.BetweenNodes;
 
             Node end = graph.NodeList[Convert.ToInt32(vectorX / size), Convert.ToInt32(vectorY / size)];
             if (end != null)
             {
-                Node start = graph.NodeList[ Convert.ToInt32(MainAgent.Position.x / size), Convert.ToInt32((MainAgent.Position.y / size))];
+                Node start = graph.NodeList[Convert.ToInt32(MainAgent.Position.x / size), Convert.ToInt32((MainAgent.Position.y / size))];
                 graph.AstarPath(start, end);
-                
+
                 /* Add task to brain */
             }
         }

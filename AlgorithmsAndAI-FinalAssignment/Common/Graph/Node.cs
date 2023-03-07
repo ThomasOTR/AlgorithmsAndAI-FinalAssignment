@@ -1,11 +1,4 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
 {
@@ -28,10 +21,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
 
         public bool Known;
 
-        public Node(Vector2D Position) 
+        public Node(Vector2D Position)
         {
-            Name = $"{Position.x / NavigationGraph.distanceBetweenNodes},{Position.y / NavigationGraph.distanceBetweenNodes}";
-            this.Position= Position;
+            Name = $"{Position.x / NavigationGraph.BetweenNodes},{Position.y / NavigationGraph.BetweenNodes}";
+            this.Position = Position;
             Adjecents = new List<Edge>(4);
             Prev = null;
             Known = false;
@@ -71,7 +64,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         {
             F = 0.0;
             G = 0.0;
-            H = 0.0 ;
+            H = 0.0;
             Prev = null;
             Known = false;
         }

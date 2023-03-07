@@ -1,24 +1,28 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
 {
+    /// <summary>
+    /// A class which connects 2 nodes.
+    /// </summary>
     public class Edge
     {
+        /* Destination of the Edge */
         public Node Destination;
-        public Edge(Node Destination) 
+        public Edge(Node Destination)
         {
             this.Destination = Destination;
         }
-        public void Render(Graphics g, Vector2D Origin,Pen p)
+        /// <summary>
+        /// Method to render the edge
+        /// </summary>
+        /// <param name="g"> Graphics component to draw the line</param>
+        /// <param name="Origin">The origin of the Edge.</param>
+        /// <param name="p">A pen that can differ for each usecase </param>
+        public void Render(Graphics g, Vector2D Origin, Pen p)
         {
             g.DrawLine(p, (int)Origin.x, (int)Origin.y, (int)Destination.Position.x, (int)Destination.Position.y);
         }
-        
+
     }
 }

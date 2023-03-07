@@ -1,10 +1,5 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using FinalAssignmentAAI.Goals;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
 {
@@ -13,7 +8,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
         private List<Goal_Evaluator> GoalEvaluators;
         public GoalThink(MovingEntity ME) : base(ME)
         {
-            GoalEvaluators= new List<Goal_Evaluator>();
+            GoalEvaluators = new List<Goal_Evaluator>();
         }
         public void AddEvaluator(Goal_Evaluator evaluator)
         {
@@ -22,7 +17,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
         public override GoalStatus Process()
         {
             if (Subgoals.Count == 0 || Subgoals.First() is WanderGoal) Arbitrate();
-            return ProcessSubgoals
+            return ProcessSubgoals();
         }
         public override void Activate()
         {
