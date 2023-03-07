@@ -8,7 +8,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
     public class NavigationGraph
     {
         private World world;
-        public static double distanceBetweenNodes = 25;
+        public static int distanceBetweenNodes = 25;
         private double MaxX;
         private double MaxY;
         public Node[,] NodeList;

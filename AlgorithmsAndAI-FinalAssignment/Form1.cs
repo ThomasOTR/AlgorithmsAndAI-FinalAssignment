@@ -1,3 +1,4 @@
+using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using Timer = System.Timers.Timer;
 namespace AlgorithmsAndAI_FinalAssignment
 {
@@ -47,5 +48,11 @@ namespace AlgorithmsAndAI_FinalAssignment
 
             }
         }
+        private void OnClick(object sender, MouseEventArgs e)
+        {
+            world.StartPathFindingProcess(e.X, e.Y);
+
+        }
+
     }
 }

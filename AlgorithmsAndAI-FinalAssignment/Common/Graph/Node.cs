@@ -64,6 +64,17 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             g.DrawRectangle(p, r);
         }
 
+        /// <summary>
+        /// Method to reset node after Astar Process;
+        /// </summary>
+        public void Reset()
+        {
+            F = 0.0;
+            G = 0.0;
+            H = 0.0 ;
+            Prev = null;
+            Known = false;
+        }
 
     }
 }

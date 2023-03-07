@@ -1,6 +1,7 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Graph;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
+using AlgorithmsAndAI_FinalAssignment.Entities;
 
 namespace AlgorithmsAndAI_FinalAssignment
 {
@@ -8,6 +9,8 @@ namespace AlgorithmsAndAI_FinalAssignment
     {
         public int Width;
         public int Height;
+
+        public MovingEntity MainAgent;
 
         public List<MovingEntity> Entities;
         public NavigationGraph graph;
@@ -17,7 +20,9 @@ namespace AlgorithmsAndAI_FinalAssignment
             Height = height;
             Entities= new List<MovingEntity>();
             graph = new NavigationGraph(this);
-            graph.AstarPath(graph.NodeList[1, 1], graph.NodeList[40, 10]);
+
+            MainAgent = new PathPlanningAgent(this,new Vector2D(50,50),null);
+            //graph.AstarPath(graph.NodeList[1, 1], graph.NodeList[40, 10]);
         }
         public void Update(float delta)
         {
@@ -30,6 +35,17 @@ namespace AlgorithmsAndAI_FinalAssignment
             if (Form1.GraphVisible)
             {
                 graph.Render(g);
+            }
+        }
+        public void StartPathFindingProcess(int vectorX, int vectorY)
+        {
+            double size = NavigationGraph.distanceBetweenNodes;
+
+            Node end = graph.NodeList[Convert.ToInt32(vectorX / size), Convert.ToInt32(vectorY / size)];
+            if (end != null)
+            {
+                Node start = graph.NodeList[ Convert.ToInt32(MainAgent.Position.x / size), Convert.ToInt32((MainAgent.Position.y / size))];
+                graph.AstarPath(start, end);
             }
         }
 
