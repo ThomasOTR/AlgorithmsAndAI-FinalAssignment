@@ -1,4 +1,5 @@
-﻿using AlgorithmsAndAI_FinalAssignment.Common.Steering;
+﻿using AlgorithmsAndAI_FinalAssignment.Common.Goal;
+using AlgorithmsAndAI_FinalAssignment.Common.Steering;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         public Vector2D Target;
         public List<SteeringBehaviour> SteeringBehaviours;
 
+        public GoalThink Brain;
+
 
         public MovingEntity(World world, Vector2D Position, Vector2D Target) : base(world, Position)
         {
@@ -28,6 +31,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             MaxSpeed = 0;
             this.Target = Target;
 
+            Brain = new GoalThink(this);
             SteeringBehaviours = new List<SteeringBehaviour>();
 
         }

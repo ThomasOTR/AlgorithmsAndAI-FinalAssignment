@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
 {
-    public class CompositeGoal : Goal
+    public abstract class CompositeGoal : Goal
     {
         public Stack<Goal> Subgoals;
         public CompositeGoal(MovingEntity ME) : base(ME) 
@@ -18,7 +18,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
         {
             Subgoals.Push(goal);
         }
-        public override GoalStatus Process()
+        public GoalStatus ProcessSubgoals()
         {
             if (Status == GoalStatus.Inactive) Activate();
             GoalStatus status;
@@ -38,11 +38,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
             }
             Status = status;
             return Status;
-        }
-
-        public override void Terminate()
-        {
-            throw new NotImplementedException();
         }
     }
 }

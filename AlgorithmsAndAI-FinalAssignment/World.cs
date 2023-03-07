@@ -22,7 +22,6 @@ namespace AlgorithmsAndAI_FinalAssignment
             graph = new NavigationGraph(this);
 
             MainAgent = new PathPlanningAgent(this,new Vector2D(50,50),null);
-            //graph.AstarPath(graph.NodeList[1, 1], graph.NodeList[40, 10]);
         }
         public void Update(float delta)
         {
@@ -46,6 +45,8 @@ namespace AlgorithmsAndAI_FinalAssignment
             {
                 Node start = graph.NodeList[ Convert.ToInt32(MainAgent.Position.x / size), Convert.ToInt32((MainAgent.Position.y / size))];
                 graph.AstarPath(start, end);
+                
+                /* Add task to brain */
             }
         }
 

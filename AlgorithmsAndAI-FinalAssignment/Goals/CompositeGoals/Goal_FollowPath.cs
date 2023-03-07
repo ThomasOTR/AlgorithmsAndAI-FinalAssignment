@@ -27,7 +27,7 @@ namespace FinalAssignmentAAI.Goals
         }
         public override GoalStatus Process()
         {
-            return base.Process();
+            return base.ProcessSubgoals();
         }
         public override void Terminate()
         {
