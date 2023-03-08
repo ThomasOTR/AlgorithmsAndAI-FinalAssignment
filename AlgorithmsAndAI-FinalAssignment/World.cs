@@ -1,7 +1,7 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Graph;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using AlgorithmsAndAI_FinalAssignment.Entities;
+using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment
 {
@@ -21,7 +21,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             Entities = new List<MovingEntity>();
             graph = new NavigationGraph(this);
 
-            MainAgent = new PathPlanningAgent(this, new Vector2D(50, 50), null);
+            MainAgent = new NormalShuttle(this, new Vector2D(50, 50), null);
         }
         public void Update(float delta)
         {
@@ -36,6 +36,11 @@ namespace AlgorithmsAndAI_FinalAssignment
                 graph.Render(g);
             }
         }
+        /// <summary>
+        /// Method to start Path finding Process
+        /// </summary>
+        /// <param name="vectorX"></param>
+        /// <param name="vectorY"></param>
         public void StartPathFindingProcess(int vectorX, int vectorY)
         {
             double size = NavigationGraph.BetweenNodes;

@@ -4,6 +4,9 @@ using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 {
+    /// <summary>
+    /// Class of the station where a CargoShuttle can be refueled.
+    /// </summary>
     public class PetrolStation : InteractiveLocation
     {
         private double FuelingSpeed;
@@ -15,6 +18,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 
         public override void Interact(CargoShuttle CS)
         {
+            /* Increasing the Fuel of the CargoShuttle */
             CS.Fuel.Increase(FuelingSpeed);
         }
 

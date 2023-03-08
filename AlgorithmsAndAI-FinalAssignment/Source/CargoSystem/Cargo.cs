@@ -1,8 +1,14 @@
 ﻿namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 {
+    /// <summary>
+    /// Part of the Simulation. This cargo will be delivered from Warehouse to DeliveryStation.
+    /// </summary>
     public class Cargo
     {
+        /* The name of the cargo, which will be used to identify this cargo */
         public string Name;
+
+        /* The target of this cargo. Which will be used in the delivery process */
         public DeliveryStation TargetLocation;
 
         public Cargo(string Name, DeliveryStation targetLocation)

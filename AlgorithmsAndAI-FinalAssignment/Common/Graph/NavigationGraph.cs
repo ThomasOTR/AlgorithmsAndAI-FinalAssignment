@@ -38,7 +38,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             CreateEdges();
         }
 
-        /* Method to Create Nodes and add them to the List. */
+        /// <summary>
+        /// Method to Create Nodes and add them to the List.
+        /// </summary>
         public void CreateNodes()
         {
             for (int x = 0; x < MaxX; x++)
@@ -50,7 +52,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             }
         }
 
-        /* Method to create Edges and add them to their nodes */
+        /// <summary>
+        /// Method to create Edges and add them to their nodes
+        /// </summary>
         public void CreateEdges()
         {
             for (int x = 0; x < MaxX; x++)
@@ -77,7 +81,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             }
         }
 
-        /* A method to check if specific coords are out of range. */
+        /// <summary>
+        /// A method to check if specific coords are out of range.
+        /// </summary>
+        /// <param name="x">X position of Node </param>
+        /// <param name="y">Y position of Node </param>
+        /// <returns></returns>
         private bool IsOutOfRange(int x, int y)
         {
 
@@ -87,19 +96,28 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             else return false;
         }
 
-        /* Method to get Shortest path; */
+        /// <summary>
+        /// Method to get Shortest path;
+        /// </summary>
+        /// <returns></returns>
         public List<Node> GetShortestPath()
         {
             return ShortestPath;
         }
 
-        /* Method to get Visited Nodes */
+        /// <summary>
+        /// Method to get Visited Nodes
+        /// </summary>
+        /// <returns></returns>
         public List<Node> GetVisitedNodes()
         {
             return NodesVisited;
         }
 
-        /* Method to render everything related to Graph */
+        /// <summary>
+        /// Method to render everything related to Graph
+        /// </summary>
+        /// <param name="g"></param>
         public void Render(Graphics g)
         {
             RenderGraph(g);
@@ -107,7 +125,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
 
         }
 
-        /* Method to render the Graph */
+        /// <summary>
+        /// Method to render the Graph
+        /// </summary>
+        /// <param name="g"></param>
         private void RenderGraph(Graphics g)
         {
             double maxX = world.Width / BetweenNodes;
@@ -130,7 +151,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             }
         }
 
-        /* Method to render the astar path and visited nodes */
+        /// <summary>
+        /// Method to render the Astar Path and visited Nodes
+        /// </summary>
+        /// <param name="g"></param>
         private void RenderAstar(Graphics g)
         {
             for (int i = 0; i < ShortestPath.Count(); i++)
@@ -146,7 +170,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             foreach (Node visitedNode in NodesVisited) visitedNode.Render(g, new Pen(Color.Red, 3));
         }
 
-        /* Method which will calculate the Astar Path */
+        /// <summary>
+        /// Method which will calculate the Astar Path
+        /// </summary>
+        /// <param name="start">Node of the start location</param>
+        /// <param name="end">Node of the destination location</param>
         public void AstarPath(Node start, Node end)
         {
             PriorityQueue pq = new();
@@ -200,10 +228,15 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             CreatePath(start, end, pq.GetNodes());
         }
 
-        /* Method which will create a path of all the nodes */
+        /// <summary>
+        /// Method which will create a path of all the nodes
+        /// </summary>
+        /// <param name="startnode">Node of the Start location</param>
+        /// <param name="endnode">Node of the destination location </param>
+        /// <param name="PQ_List"> List of the PriorityQueue which contains all the visited nodes</param>
         private void CreatePath(Node startnode, Node endnode, List<Node> PQ_List)
         {
-            List<Node> Path = new List<Node>();
+            List<Node> Path = new();
             Node n = endnode;
             while (n != null)
             {
@@ -214,9 +247,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             Path.Reverse();
 
             NodesVisited = PQ_List;
-
-            /* Reset nodes */
-
         }
     }
 }

@@ -1,23 +1,29 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
 {
     public abstract class CompositeGoal : Goal
     {
+        /* The subgoals of this compositegoal */
         public Stack<Goal> Subgoals;
-        public CompositeGoal(MovingEntity ME) : base(ME) 
+        public CompositeGoal(MovingEntity ME) : base(ME)
         {
             Subgoals = new Stack<Goal>();
         }
+
+        /// <summary>
+        /// Method to add a subgoal. 
+        /// </summary>
+        /// <param name="goal"></param>
         public void AddSubgoal(Goal goal)
         {
             Subgoals.Push(goal);
         }
+
+        /// <summary>
+        /// Method to process the subgoals. 
+        /// </summary>
+        /// <returns>Status of CompositeGoal </returns>
         public GoalStatus ProcessSubgoals()
         {
             if (Status == GoalStatus.Inactive) Activate();

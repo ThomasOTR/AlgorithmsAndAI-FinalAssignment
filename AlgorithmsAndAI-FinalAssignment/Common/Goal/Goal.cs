@@ -1,27 +1,26 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
 {
     public enum GoalStatus { Completed, Active, Inactive, Failed }
     public abstract class Goal
     {
+        /* Status of the Goal, which will be used to process the goal correctly*/
         public GoalStatus Status;
+
+        /* Entity which is performing this goal */
         public MovingEntity Performer;
-        public Goal(MovingEntity movingEntity) 
+
+        public Goal(MovingEntity movingEntity)
         {
-            Performer= movingEntity;
+            Performer = movingEntity;
             Status = GoalStatus.Inactive;
         }
         /// <summary>
         /// A simple method to activate the Goal
         /// </summary>
         public virtual void Activate() { Status = GoalStatus.Active; }
-        
+
         /// <summary>
         /// A method that keeps the goal running and checks if its completed
         /// </summary>

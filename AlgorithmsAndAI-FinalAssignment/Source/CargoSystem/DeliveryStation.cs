@@ -4,8 +4,12 @@ using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 {
+    /// <summary>
+    /// Class that of the Delivery station. This is the end location of Cargo.
+    /// </summary>
     public class DeliveryStation : InteractiveLocation
     {
+        /* The list with the delivered cargo, to keep track how many cargo is delivered. */
         public List<Cargo> DeliveredCargo;
 
         public DeliveryStation(World world, Vector2D position) : base(world, position)
@@ -15,6 +19,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 
         public override void Interact(CargoShuttle CS)
         {
+            /* Receive the Cargo and store it. */
             if (CS.cargo != null)
             {
                 DeliveredCargo.Add(CS.cargo);

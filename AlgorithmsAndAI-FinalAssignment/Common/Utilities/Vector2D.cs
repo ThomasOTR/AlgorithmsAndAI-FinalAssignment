@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AlgorithmsAndAI_FinalAssignment.Common.Utilities
+﻿namespace AlgorithmsAndAI_FinalAssignment.Common.Utilities
 {
     public class Vector2D
     {
@@ -15,22 +9,48 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Utilities
             this.x = x;
             this.y = y;
         }
+        /// <summary>
+        /// Method to convert a vector to negative.
+        /// </summary>
+        /// <returns></returns>
         public Vector2D Negative()
         {
-            return new Vector2D(-x,-y);
+            return new Vector2D(-x, -y);
         }
+
+        /// <summary>
+        /// Method to get the Length.
+        /// </summary>
+        /// <returns></returns>
         public double Length()
         {
             return Math.Sqrt(x * x + y * y);
         }
+
+        /// <summary>
+        /// Method to get the squared version of Length()
+        /// </summary>
+        /// <returns></returns>
         public double LengthSquared()
         {
             return x * x + y * y;
         }
+
+        /// <summary>
+        /// Check if a Vector is in range of this vector.
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="range"></param>
+        /// <returns></returns>
         public bool WithinRange(Vector2D v, double range)
         {
             return Distance(v) < range;
         }
+
+        /// <summary>
+        /// Method to normalize a Vector
+        /// </summary>
+        /// <returns></returns>
         public Vector2D Normalize()
         {
             double length = Length();
@@ -41,14 +61,25 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Utilities
             }
             return this;
         }
+        /// <summary>
+        /// Method to perp a vector
+        /// </summary>
+        /// <returns></returns>
         public Vector2D Perp()
         {
             return new Vector2D(-y, x);
         }
+
+        /// <summary>
+        /// Method to get the distance to another Vector
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public double Distance(Vector2D other)
         {
             return new Vector2D(x - other.x, y - other.y).Length();
         }
+
         /// <summary>
         /// A method to reduce the speed of the force
         /// </summary>
@@ -63,16 +94,33 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Utilities
             }
             return this;
         }
+
+        /// <summary>
+        /// Method to receive a clone of this vector. This is used to hold the values of this vector while also using the values.
+        /// </summary>
+        /// <returns></returns>
         public Vector2D Clone()
         {
             return new Vector2D(x, y);
         }
+        /// <summary>
+        /// Method to add the values of a vector to this vector
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <returns></returns>
         public Vector2D Add(Vector2D v1)
         {
             x += v1.x;
             y += v1.y;
             return this;
         }
+
+        /// <summary>
+        /// Operator version of Add()
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
         public static Vector2D operator +(Vector2D v1, Vector2D v2)
         {
             Vector2D v = new Vector2D
@@ -82,12 +130,25 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Utilities
             };
             return v;
         }
+
+        /// <summary>
+        /// Method to subtract the values of a vector of this vector.
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <returns></returns>
         public Vector2D Subtract(Vector2D v1)
         {
             x -= v1.x;
             y -= v1.y;
             return this;
         }
+
+        /// <summary>
+        /// Operator version of Subtract()
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
         public static Vector2D operator -(Vector2D v1, Vector2D v2)
         {
             Vector2D v = new Vector2D
@@ -97,6 +158,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Utilities
             };
             return v;
         }
+        /// <summary>
+        /// Method to multiply the values of this vector with the multiplier parameter.
+        /// </summary>
+        /// <param name="multiplier"></param>
+        /// <returns></returns>
         public Vector2D Multiply(double multiplier)
         {
             x *= multiplier;
@@ -104,6 +170,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Utilities
             return this;
 
         }
+
+        /// <summary>
+        /// Operator version of Multiply()
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="multiplier"></param>
+        /// <returns></returns>
         public static Vector2D operator *(Vector2D v1, double multiplier)
         {
             Vector2D v = new Vector2D
@@ -113,12 +186,24 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Utilities
             };
             return v;
         }
+
+        /// <summary>
+        /// Method to divide the values of this vector with the divider parameter.
+        /// </summary>
+        /// <param name="divider"></param>
+        /// <returns></returns>
         public Vector2D Divide(double divider)
         {
             x /= divider;
             y /= divider;
             return this;
         }
+        /// <summary>
+        /// Operator version of Divide()
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="divider"></param>
+        /// <returns></returns>
         public static Vector2D operator /(Vector2D v1, double divider)
         {
             Vector2D v = new Vector2D
@@ -129,6 +214,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Utilities
             return v;
         }
 
+        /// <summary>
+        /// Method to check if a vector is equal to this vector
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(Vector2D other)
         {
             if (x.Equals(other.x) && y.Equals(other.y)) return true;

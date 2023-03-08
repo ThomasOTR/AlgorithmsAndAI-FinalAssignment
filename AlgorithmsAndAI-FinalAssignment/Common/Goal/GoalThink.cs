@@ -1,6 +1,5 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
-using AlgorithmsAndAI_FinalAssignment.Source.Goals;
-using AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals;
+using FinalAssignmentAAI.Goals;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
 {
@@ -51,7 +50,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
                         Subgoals.Pop();
                     }
                 }
-                MostDesirable.SetGoal(Performer);
+                MostDesirable.AddGoal(Performer);
             }
             else AddGoal_Wander();
 

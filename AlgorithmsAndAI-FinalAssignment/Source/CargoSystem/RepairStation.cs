@@ -4,6 +4,9 @@ using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 {
+    /// <summary>
+    /// Class of the Station where a CargoShuttle can be repaired.
+    /// </summary>
     public class RepairStation : InteractiveLocation
     {
         private double RepairSpeed;
@@ -14,6 +17,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 
         public override void Interact(CargoShuttle CS)
         {
+            /* Increase the wear by repairing the shuttle */
             CS.Wear.Increase(RepairSpeed);
         }
 
