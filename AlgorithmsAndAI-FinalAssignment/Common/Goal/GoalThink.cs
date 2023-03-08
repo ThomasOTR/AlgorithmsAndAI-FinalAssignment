@@ -1,5 +1,6 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
-using FinalAssignmentAAI.Goals;
+using AlgorithmsAndAI_FinalAssignment.Source.Goals;
+using AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
 {

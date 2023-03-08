@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlgorithmsAndAI_FinalAssignment.Entities
+namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
 {
-    public class PathPlanningAgent : MovingEntity
+    public class NormalShuttle : MovingEntity
     {
-        public PathPlanningAgent(World world, Vector2D position, Vector2D TargetPosition) : base(world, position, TargetPosition) { }
+        public NormalShuttle(World world, Vector2D position, Vector2D TargetPosition) : base(world, position, TargetPosition) { }
         public override void Render(Graphics g)
         {
             throw new NotImplementedException();
