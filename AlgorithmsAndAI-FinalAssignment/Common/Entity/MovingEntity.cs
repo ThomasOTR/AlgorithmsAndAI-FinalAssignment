@@ -1,6 +1,7 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Goal;
 using AlgorithmsAndAI_FinalAssignment.Common.Steering;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
+using System.Diagnostics;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 {
@@ -22,7 +23,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         public double MaxSpeed;
 
         /* Target Property which will be used for the Steering Behaviour */
-        public Vector2D Target;
+        public Vector2D? Target;
 
         /* All the SteeringBehaviours that are enabled and will be calculated */
         public List<SteeringBehaviour> SteeringBehaviours;
@@ -31,14 +32,14 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         public GoalThink Brain;
 
 
-        public MovingEntity(World world, Vector2D Position, Vector2D Target) : base(world, Position)
+        public MovingEntity(World world, Vector2D Position) : base(world, Position)
         {
             Velocity = new Vector2D();
             Heading = new Vector2D();
             Side = new Vector2D();
-            Mass = 0;
-            MaxSpeed = 0;
-            this.Target = Target;
+            Mass = 50;
+            MaxSpeed = 50;
+            Target = null;
 
             Brain = new GoalThink(this);
             SteeringBehaviours = new List<SteeringBehaviour>();
@@ -47,17 +48,20 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 
         public override void Update(float delta)
         {
+            Debug.WriteLine(Velocity.ToString());
+
             Vector2D steeringForce = new();
             for (int i = 0; i < SteeringBehaviours.Count; i++)
             {
-                steeringForce.Add(SteeringBehaviours[i].Calculate());
+                Vector2D tempForce = SteeringBehaviours[i].Calculate();
+                //steeringForce.Add(SteeringBehaviours[i].Calculate());
+                steeringForce.Add(tempForce);
             }
-
+            Debug.WriteLine(steeringForce.ToString());
             Vector2D acceleration = steeringForce.Divide(Mass);
 
             Velocity.Add(acceleration.Multiply(delta));
             Velocity.Truncate(MaxSpeed);
-
             Position.Add(Velocity.Multiply(delta));
 
             if (Velocity.Length() > 0.00000001)
@@ -68,7 +72,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             }
 
             world.WrapAround(Position);
+
         }
+
+
         /// <summary>
         /// Method to render the Entity
         /// </summary>

@@ -12,24 +12,30 @@ namespace AlgorithmsAndAI_FinalAssignment
 
         public MovingEntity MainAgent;
 
-        public List<MovingEntity> Entities;
+        public List<MovingEntity> MovingEntities;
+        public List<StaticEntity> StaticEntities;
         public NavigationGraph graph;
         public World(int width, int height)
         {
             Width = width;
             Height = height;
-            Entities = new List<MovingEntity>();
+            MovingEntities = new List<MovingEntity>();
+            StaticEntities = new List<StaticEntity>();
             graph = new NavigationGraph(this);
+            MainAgent = new NormalShuttle(this, new Vector2D(50, 50));
 
-            MainAgent = new NormalShuttle(this, new Vector2D(50, 50), null);
+            WorldBuilder.GenerateEntities(this);
         }
         public void Update(float delta)
         {
-            Entities.ForEach(x => { x.Update(delta); });
+            MovingEntities.ForEach(x => { x.Update(delta); });
+            StaticEntities.ForEach(x => { x.Update(delta); });
+
         }
         public void Render(Graphics g)
         {
-            Entities.ForEach(x => { x.Render(g); });
+            MovingEntities.ForEach(x => { x.Render(g); });
+            StaticEntities.ForEach(x => { x.Render(g); });
 
             if (Form1.GraphVisible)
             {

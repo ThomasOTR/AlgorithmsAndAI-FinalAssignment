@@ -8,10 +8,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
     /// </summary>
     public class NormalShuttle : MovingEntity
     {
-        public NormalShuttle(World world, Vector2D position, Vector2D TargetPosition) : base(world, position, TargetPosition) { }
+        public NormalShuttle(World world, Vector2D position) : base(world, position) { }
         public override void Render(Graphics g)
         {
-            throw new NotImplementedException();
+            Pen p = new(Color.Gray, 1);
+            Rectangle r = new Rectangle((int)(Position.x - 20), (int)(Position.y - 20), 20, 20);
+            g.DrawRectangle(p, r);
         }
     }
 }

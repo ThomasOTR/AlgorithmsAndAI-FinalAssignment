@@ -123,7 +123,7 @@
         /// <returns></returns>
         public static Vector2D operator +(Vector2D v1, Vector2D v2)
         {
-            Vector2D v = new Vector2D
+            Vector2D v = new()
             {
                 x = v1.x + v2.x,
                 y = v1.y + v2.y
@@ -151,7 +151,7 @@
         /// <returns></returns>
         public static Vector2D operator -(Vector2D v1, Vector2D v2)
         {
-            Vector2D v = new Vector2D
+            Vector2D v = new()
             {
                 x = v1.x + v2.x,
                 y = v1.y + v2.y
@@ -194,9 +194,13 @@
         /// <returns></returns>
         public Vector2D Divide(double divider)
         {
-            x /= divider;
-            y /= divider;
-            return this;
+            if (divider == 0 || x == 0 || y == 0) return this;
+            else
+            {
+                x /= divider;
+                y /= divider;
+                return this;
+            }
         }
         /// <summary>
         /// Operator version of Divide()
@@ -206,12 +210,16 @@
         /// <returns></returns>
         public static Vector2D operator /(Vector2D v1, double divider)
         {
-            Vector2D v = new Vector2D
+            if (divider == 0 || v1.x == 0 || v1.y == 0) return v1;
+            else
             {
-                x = v1.x / divider,
-                y = v1.y / divider,
-            };
-            return v;
+                Vector2D v = new Vector2D
+                {
+                    x = v1.x / divider,
+                    y = v1.y / divider,
+                };
+                return v;
+            }
         }
 
         /// <summary>
@@ -225,5 +233,9 @@
             return false;
         }
 
+        public override string ToString()
+        {
+            return $"Vector2D({x},{y})";
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
 
         /* Statistic of the SHuttle. This will be decreased over time when travelling. This can be increased at Repair Stations */
         public Statistic Wear;
-        public CargoShuttle(World world, Vector2D Position, Vector2D Target) : base(world, Position, Target)
+        public CargoShuttle(World world, Vector2D Position) : base(world, Position)
         {
             Fuel = new Statistic(100);
             Wear = new Statistic(100);
@@ -34,7 +34,18 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
 
         public override void Render(Graphics g)
         {
-            throw new NotImplementedException();
+            /* Render the Shuttle*/
+            Pen p = new(Color.Black, 1);
+            Rectangle r = new Rectangle((int)(Position.x - 20), (int)(Position.y - 20), 20, 20);
+            g.DrawRectangle(p, r);
+
+            /* Render the force */
+            p = new(Color.Red, 1);
+            g.DrawLine(p,
+                (int)Position.x, (int)Position.y,
+                (int)(Position.x + (Velocity.x * 15)),
+                (int)(Position.y + (Velocity.y * 15))
+                );
         }
     }
 }

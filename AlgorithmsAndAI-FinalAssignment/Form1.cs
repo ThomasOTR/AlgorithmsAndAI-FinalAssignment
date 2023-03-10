@@ -1,8 +1,7 @@
-using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using Timer = System.Timers.Timer;
 namespace AlgorithmsAndAI_FinalAssignment
 {
-    
+
     public partial class Form1 : Form
     {
         private World world;
@@ -14,9 +13,9 @@ namespace AlgorithmsAndAI_FinalAssignment
         public Form1()
         {
             InitializeComponent();
-            DoubleBuffered= true;
+            DoubleBuffered = true;
 
-            world = new World(width:Width, height:Height);
+            world = new World(width: Width, height: Height);
             Paint += Form1_Paint;
             timer = new Timer()
 
@@ -39,7 +38,7 @@ namespace AlgorithmsAndAI_FinalAssignment
         }
         private void InputHandler(object? sender, KeyEventArgs e)
         {
-            switch(e.KeyCode)
+            switch (e.KeyCode)
             {
                 case Keys.G:
                     GraphVisible = !GraphVisible; break;

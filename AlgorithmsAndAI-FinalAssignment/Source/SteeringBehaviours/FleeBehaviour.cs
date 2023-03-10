@@ -1,11 +1,6 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Steering;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorithmsAndAI_FinalAssignment.Steering
 {
@@ -24,9 +19,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
 
                 Vector2D desiredVelocity = VectorToTarget.Normalize();
                 desiredVelocity.Multiply(ME.MaxSpeed);
-                return desiredVelocity.Subtract(ME.Velocity);
+                force = desiredVelocity.Subtract(ME.Velocity).Negative();
+
             }
-            return force.Negative();
+            return force;
         }
     }
 }

@@ -1,37 +1,37 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Steering;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorithmsAndAI_FinalAssignment.Steering
 {
     public class ArriveBehaviour : SteeringBehaviour
     {
+        private double slowingRadius = 0;
         public ArriveBehaviour(MovingEntity ME) : base(ME)
         {
+            slowingRadius = ME.MaxSpeed * 10;
         }
 
         public override Vector2D Calculate()
         {
-            Vector2D force = new();
-            if (ME.Target != null)
+            Vector2D toTarget = ME.Target.Clone().Subtract(ME.Position);
+            if (toTarget == null) return new Vector2D();
+
+            double distance = toTarget.Length();
+            if (distance <= 0)
             {
-                Vector2D VectorToTarget = ME.Target.Clone().Subtract(ME.Position);
-
-                if (VectorToTarget.Length() > 0)
-                {
-                    double speed = VectorToTarget.Length() / 5;
-                    speed = Math.Min(speed, ME.MaxSpeed);
-                    Vector2D desiredVelocity = VectorToTarget.Multiply(speed).Divide(VectorToTarget.Length());
-
-                    force = desiredVelocity.Subtract(ME.Velocity);
-                }
+                return new Vector2D(0, 0);
             }
-            return force;
+
+            double speed = ME.MaxSpeed;
+            if (ME.Position.WithinRange(ME.Target, 100)) speed = Map(distance, 100, ME.MaxSpeed);
+            Vector2D desiredVelocity = toTarget.Multiply(speed).Divide(distance);
+
+            return desiredVelocity.Subtract(ME.Velocity);
+        }
+        private static double Map(double value, double stop1, double stop2)
+        {
+            return (value - 0) / (stop1 - 0) * (stop2 - 0);
         }
     }
 }
