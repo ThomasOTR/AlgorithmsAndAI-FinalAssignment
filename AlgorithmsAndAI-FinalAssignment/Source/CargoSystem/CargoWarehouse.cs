@@ -27,7 +27,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 
         public override void Render(Graphics g)
         {
-            throw new NotImplementedException();
+            Pen p = new(Color.Black, 1);
+            Rectangle r = new Rectangle((int)(Position.x - radius), (int)(Position.y - radius), radius * 2, radius * 2);
+            g.DrawRectangle(p, r);
         }
     }
 }

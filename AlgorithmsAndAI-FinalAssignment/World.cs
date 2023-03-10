@@ -21,10 +21,13 @@ namespace AlgorithmsAndAI_FinalAssignment
             Height = height;
             MovingEntities = new List<MovingEntity>();
             StaticEntities = new List<StaticEntity>();
-            graph = new NavigationGraph(this);
             MainAgent = new NormalShuttle(this, new Vector2D(50, 50));
 
-            WorldBuilder.GenerateEntities(this);
+            WorldBuilder.GenerateMovingEntities(this);
+            WorldBuilder.GenerateStaticEntities(this);
+
+            graph = new NavigationGraph(this);
+
         }
         public void Update(float delta)
         {

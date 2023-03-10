@@ -1,4 +1,5 @@
-﻿using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
+﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
 {
@@ -47,9 +48,21 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             {
                 for (int y = 0; y < MaxY; y++)
                 {
+                    if (InRadiusOfStaticEntity(new Vector2D(x * BetweenNodes, y * BetweenNodes))) continue;
+
                     NodeList[x, y] = new Node(new Vector2D(x * BetweenNodes, y * BetweenNodes));
                 }
             }
+        }
+        public bool InRadiusOfStaticEntity(Vector2D v)
+        {
+            bool InRadius = false;
+            foreach (StaticEntity SE in world.StaticEntities)
+            {
+                if (v.WithinRange(SE.Position, SE.radius * 1.5))
+                { InRadius = true; break; }
+            }
+            return InRadius;
         }
 
         /// <summary>
