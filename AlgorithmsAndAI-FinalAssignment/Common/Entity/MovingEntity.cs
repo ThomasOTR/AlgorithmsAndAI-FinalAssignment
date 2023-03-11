@@ -1,7 +1,6 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Goal;
 using AlgorithmsAndAI_FinalAssignment.Common.Steering;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using System.Diagnostics;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 {
@@ -34,11 +33,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 
         public MovingEntity(World world, Vector2D Position) : base(world, Position)
         {
-            Velocity = new Vector2D();
+            Velocity = new Vector2D(1, 1);
             Heading = new Vector2D();
             Side = new Vector2D();
-            Mass = 50;
-            MaxSpeed = 50;
+            Mass = 30;
+            MaxSpeed = 80;
             Target = null;
 
             Brain = new GoalThink(this);
@@ -48,7 +47,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 
         public override void Update(float delta)
         {
-            Debug.WriteLine(Velocity.ToString());
 
             Vector2D steeringForce = new();
             for (int i = 0; i < SteeringBehaviours.Count; i++)
@@ -57,7 +55,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
                 //steeringForce.Add(SteeringBehaviours[i].Calculate());
                 steeringForce.Add(tempForce);
             }
-            Debug.WriteLine(steeringForce.ToString());
             Vector2D acceleration = steeringForce.Divide(Mass);
 
             Velocity.Add(acceleration.Multiply(delta));
