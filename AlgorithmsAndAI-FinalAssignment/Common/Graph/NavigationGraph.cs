@@ -238,28 +238,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                 }
             }
             System.Diagnostics.Debug.WriteLine("done ");
-            CreatePath(start, end, pq.GetNodes());
-        }
 
-        /// <summary>
-        /// Method which will create a path of all the nodes
-        /// </summary>
-        /// <param name="startnode">Node of the Start location</param>
-        /// <param name="endnode">Node of the destination location </param>
-        /// <param name="PQ_List"> List of the PriorityQueue which contains all the visited nodes</param>
-        private void CreatePath(Node startnode, Node endnode, List<Node> PQ_List)
-        {
-            List<Node> Path = new();
-            Node n = endnode;
-            while (n != null)
-            {
-                System.Diagnostics.Debug.WriteLine(n.Name);
-                Path.Add(n);
-                n = n.Prev;
-            }
-
-
-            NodesVisited = PQ_List;
+            NodesVisited = pq.GetNodes();
         }
 
         public void Reset()

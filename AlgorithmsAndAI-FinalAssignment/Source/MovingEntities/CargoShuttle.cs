@@ -36,8 +36,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
         }
         public override void Update(float deltaTime)
         {
-            Fuel.Decrease(0.15);
-            Wear.Decrease(0.1);
+            /* This will prevent fuel and wear decrease while standing still. */
+            if (Velocity.Length() > 0)
+            {
+                Fuel.Decrease(0.15);
+                Wear.Decrease(0.1);
+            }
 
             base.Update(deltaTime);
 

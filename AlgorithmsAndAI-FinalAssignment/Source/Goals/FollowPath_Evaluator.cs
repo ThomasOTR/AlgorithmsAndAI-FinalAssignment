@@ -14,7 +14,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals
         {
             if (ME.world.graph.GetShortestPath().Count == 0 || ME.world.graph.GetVisitedNodes().Count == 0) return 0;
 
-            return 0.5;
+            return 1;
         }
     }
 }
