@@ -31,12 +31,14 @@ namespace AlgorithmsAndAI_FinalAssignment
         }
         public void Update(float delta)
         {
+            MainAgent.Update(delta);
             MovingEntities.ForEach(x => { x.Update(delta); });
             StaticEntities.ForEach(x => { x.Update(delta); });
 
         }
         public void Render(Graphics g)
         {
+            MainAgent.Render(g);
             MovingEntities.ForEach(x => { x.Render(g); });
             StaticEntities.ForEach(x => { x.Render(g); });
 
@@ -59,8 +61,6 @@ namespace AlgorithmsAndAI_FinalAssignment
             {
                 Node start = graph.NodeList[Convert.ToInt32(MainAgent.Position.x / size), Convert.ToInt32((MainAgent.Position.y / size))];
                 graph.AstarPath(start, end);
-
-                /* Add task to brain */
             }
         }
 

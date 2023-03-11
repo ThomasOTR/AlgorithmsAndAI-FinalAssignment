@@ -18,7 +18,8 @@ namespace FinalAssignmentAAI.Goals
         }
         private void CreateGoalsOfPath(List<Node> path)
         {
-            foreach (Node node in path) 
+            path.Reverse();
+            foreach (Node node in path)
             {
                 if (Performer.Position.Equals(node.Position)) continue;
 
@@ -27,14 +28,11 @@ namespace FinalAssignmentAAI.Goals
         }
         public override GoalStatus Process()
         {
-            return base.ProcessSubgoals();
+            return ProcessSubgoals();
         }
         public override void Terminate()
         {
-            NavigationGraph graph = Performer.world.graph;
-            foreach (Node n in graph.GetShortestPath()) n.Reset();
-            graph.GetVisitedNodes().Clear();
-
+            Performer.world.graph.Reset();
         }
     }
 }

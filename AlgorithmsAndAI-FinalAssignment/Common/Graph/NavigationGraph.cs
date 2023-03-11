@@ -257,9 +257,19 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                 Path.Add(n);
                 n = n.Prev;
             }
-            Path.Reverse();
+
 
             NodesVisited = PQ_List;
+        }
+
+        public void Reset()
+        {
+            ShortestPath.ForEach(n => n.Reset());
+            ShortestPath.Clear();
+
+            NodesVisited.ForEach(n => n.Reset());
+            NodesVisited.Clear();
+
         }
     }
 }

@@ -1,28 +1,30 @@
-﻿namespace AlgorithmsAndAI_FinalAssignment
+﻿using System.Diagnostics;
+
+namespace AlgorithmsAndAI_FinalAssignment
 {
     public class Statistic
     {
-        public double value;
+        public double currentValue;
         public double max;
         public Statistic(double max = 0)
         {
             this.max = max;
+            currentValue = max;
         }
         public void Increase(double value)
         {
-            this.value += value;
-            if (this.value > max)
+            currentValue += value;
+            if (currentValue > max)
             {
-                this.value = max;
+                currentValue = max;
             }
         }
         public void Decrease(double value)
         {
-            this.value -= value;
-            if (this.value < 0)
-            {
-                this.value = 0;
-            }
+            if (currentValue > 0) currentValue -= value;
+            else currentValue = 0;
+            Debug.WriteLine(currentValue);
+
         }
     }
 }

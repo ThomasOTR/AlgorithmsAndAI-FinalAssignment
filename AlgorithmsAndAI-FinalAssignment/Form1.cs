@@ -20,7 +20,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             timer = new Timer()
 
             {
-                Interval = 40,
+                Interval = 50,
                 Enabled = true,
             };
             timer.Elapsed += Timer_Elapsed;

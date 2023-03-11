@@ -47,6 +47,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 
         public override void Update(float delta)
         {
+            Brain.Process();
 
             Vector2D steeringForce = new();
             for (int i = 0; i < SteeringBehaviours.Count; i++)
