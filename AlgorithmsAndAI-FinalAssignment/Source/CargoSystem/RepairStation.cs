@@ -9,7 +9,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
     /// </summary>
     public class RepairStation : InteractiveLocation
     {
-        private double RepairSpeed;
+        public double RepairSpeed;
         public RepairStation(World world, Vector2D position, double RepairSpeed) : base(world, position)
         {
             this.RepairSpeed = RepairSpeed;

@@ -5,9 +5,9 @@ using AlgorithmsAndAI_FinalAssignment.Goals;
 
 namespace FinalAssignmentAAI.Goals
 {
-    public class Goal_FollowPath : CompositeGoal
+    public class FollowPathGoal : CompositeGoal
     {
-        public Goal_FollowPath(MovingEntity ME) : base(ME)
+        public FollowPathGoal(MovingEntity ME) : base(ME)
         {
 
         }

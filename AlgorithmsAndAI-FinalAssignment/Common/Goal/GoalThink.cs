@@ -72,9 +72,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
 
         public void AddGoal_FollowPath()
         {
-            if (!Present(typeof(Goal_FollowPath)))
+            if (!Present(typeof(FollowPathGoal)))
             {
-                AddSubgoal(new Goal_FollowPath(Performer));
+                AddSubgoal(new FollowPathGoal(Performer));
             }
         }
         public void AddGoal_Wander()

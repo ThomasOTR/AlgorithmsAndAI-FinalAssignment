@@ -9,7 +9,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
     /// </summary>
     public class PetrolStation : InteractiveLocation
     {
-        private double FuelingSpeed;
+        public double FuelingSpeed;
 
         public PetrolStation(World world, Vector2D position, double FuelingSpeed) : base(world, position)
         {

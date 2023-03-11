@@ -12,18 +12,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
         /* Cargo of this shuttle. This will be filled at a CargoWarehouse and will be emptied by a DeliveryStation. */
         public Cargo? cargo;
 
-        /* Statistic of the Shuttle. This will be decreased over time when travelling. This can be increased at Petrol Stations */
-        public Statistic Fuel;
-
-        /* Statistic of the SHuttle. This will be decreased over time when travelling. This can be increased at Repair Stations */
-        public Statistic Wear;
-
-        int bla = 0;
-
         public CargoShuttle(World world, Vector2D Position) : base(world, Position)
         {
-            Fuel = new Statistic(100.0);
-            Wear = new Statistic(100.0);
+
         }
 
         /// <summary>

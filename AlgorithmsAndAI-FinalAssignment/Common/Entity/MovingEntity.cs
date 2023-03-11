@@ -30,6 +30,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         /* Brain of the Entity. The brain will decide */
         public GoalThink Brain;
 
+        /* Statistic of the Shuttles. This will be decreased over time when travelling. This can be increased at Petrol Stations */
+        public Statistic Fuel;
+
+        /* Statistic of the Shuttles. This will be decreased over time when travelling. This can be increased at Repair Stations */
+        public Statistic Wear;
+
 
         public MovingEntity(World world, Vector2D Position) : base(world, Position)
         {
@@ -39,6 +45,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             Mass = 30;
             MaxSpeed = 80;
             Target = null;
+
+            Fuel = new Statistic(100.0);
+            Wear = new Statistic(100.0);
 
             Brain = new GoalThink(this);
             SteeringBehaviours = new List<SteeringBehaviour>();
