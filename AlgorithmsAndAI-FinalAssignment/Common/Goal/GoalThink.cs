@@ -1,18 +1,25 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
-using FinalAssignmentAAI.Goals;
+using AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
 {
+    /// <summary>
+    /// The brain of each MovingEntity. The brain will decide the best goals by evaluators.
+    /// </summary>
     public class GoalThink : CompositeGoal
     {
-        private List<Goal_Evaluator> GoalEvaluators;
+        private List<GoalEvaluator> GoalEvaluators;
         public GoalThink(MovingEntity ME) : base(ME)
         {
-            GoalEvaluators = new List<Goal_Evaluator>();
+            GoalEvaluators = new List<GoalEvaluator>();
         }
-        public void AddEvaluator(Goal_Evaluator evaluator)
+
+        public void AddEvaluators(List<GoalEvaluator> evaluators)
         {
-            GoalEvaluators.Add(evaluator);
+            foreach (GoalEvaluator evaluator in evaluators)
+            {
+                GoalEvaluators.Add(evaluator);
+            }
         }
         public override GoalStatus Process()
         {
@@ -30,8 +37,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
         public void Arbitrate()
         {
             double Highest = 0;
-            Goal_Evaluator MostDesirable = null;
-            foreach (Goal_Evaluator GE in GoalEvaluators)
+            GoalEvaluator? MostDesirable = null;
+            foreach (GoalEvaluator GE in GoalEvaluators)
             {
                 double desirableValue = GE.CalculateDesirability(Performer);
                 if (desirableValue > Highest)
@@ -40,19 +47,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
                     MostDesirable = GE;
                 }
             }
-            if (Highest != 0)
+
+            if (Highest != 0 && MostDesirable != null)
             {
-                if (Subgoals.Count > 0)
-                {
-                    if (Subgoals.Peek() is WanderGoal)
-                    {
-                        Subgoals.Peek().Terminate();
-                        Subgoals.Pop();
-                    }
-                }
+                if (Subgoals.Count > 0) Subgoals.Clear();
                 MostDesirable.AddGoal(Performer);
             }
-            else AddGoal_Wander();
 
         }
 
@@ -68,21 +68,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
                 return Subgoals.Peek().GetType() == type;
             }
             else return false;
-        }
-
-        public void AddGoal_FollowPath()
-        {
-            if (!Present(typeof(FollowPathGoal)))
-            {
-                AddSubgoal(new FollowPathGoal(Performer));
-            }
-        }
-        public void AddGoal_Wander()
-        {
-            if (!Present(typeof(WanderGoal)))
-            {
-                AddSubgoal(new WanderGoal(Performer));
-            }
         }
 
     }

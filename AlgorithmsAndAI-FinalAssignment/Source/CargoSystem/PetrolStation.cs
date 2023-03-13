@@ -1,6 +1,5 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 {
@@ -9,14 +8,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
     /// </summary>
     public class PetrolStation : InteractiveLocation
     {
-        public double FuelingSpeed;
+        public double FuelingSpeed = 2;
 
-        public PetrolStation(World world, Vector2D position, double FuelingSpeed) : base(world, position)
+        public PetrolStation(World world, Vector2D position) : base(world, position)
         {
-            this.FuelingSpeed = FuelingSpeed;
         }
 
-        public override void Interact(CargoShuttle CS)
+        public override void Interact(MovingEntity CS)
         {
             /* Increasing the Fuel of the CargoShuttle */
             CS.Fuel.Increase(FuelingSpeed);

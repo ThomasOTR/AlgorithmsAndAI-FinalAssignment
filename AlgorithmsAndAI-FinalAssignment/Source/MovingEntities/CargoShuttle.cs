@@ -1,6 +1,8 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+using AlgorithmsAndAI_FinalAssignment.Common.Goal;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Source.CargoSystem;
+using AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
 {
@@ -9,12 +11,18 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
     /// </summary>
     public class CargoShuttle : MovingEntity
     {
-        /* Cargo of this shuttle. This will be filled at a CargoWarehouse and will be emptied by a DeliveryStation. */
-        public Cargo? cargo;
 
         public CargoShuttle(World world, Vector2D Position) : base(world, Position)
         {
-
+            Brain.AddEvaluators(new List<GoalEvaluator>
+            {
+                new WanderEvaluator(),
+                new DeliverCargoEvaluator(),
+                new GoRefuelEvaluator(),
+                new GoRepairEvaluator(),
+                new ReceiveNewCargoEvaluator(),
+            }
+            );
         }
 
         /// <summary>
@@ -33,7 +41,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
                 Fuel.Decrease(0.15);
                 Wear.Decrease(0.1);
             }
-
             base.Update(deltaTime);
 
         }

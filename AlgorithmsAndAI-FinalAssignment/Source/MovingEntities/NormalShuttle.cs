@@ -1,17 +1,19 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+using AlgorithmsAndAI_FinalAssignment.Common.Goal;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using AlgorithmsAndAI_FinalAssignment.Source.Goals;
+
+using AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
 {
     /// <summary>
-    /// A normal shuttle that will follow the shortest
+    /// A normal shuttle that will follow the shortest path;
     /// </summary>
     public class NormalShuttle : MovingEntity
     {
         public NormalShuttle(World world, Vector2D position) : base(world, position)
         {
-            Brain.AddEvaluator(new FollowPathEvaluator());
+            Brain.AddEvaluators(new List<GoalEvaluator> { new FollowPathEvaluator(), new WanderEvaluator() });
         }
         public override void Render(Graphics g)
         {

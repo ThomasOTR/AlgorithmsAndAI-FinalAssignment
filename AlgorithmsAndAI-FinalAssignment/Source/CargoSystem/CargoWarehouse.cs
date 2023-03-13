@@ -1,6 +1,5 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 {
@@ -16,13 +15,17 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
             CargoForDelivery = new List<Cargo>();
         }
 
-        public override void Interact(CargoShuttle shuttle)
+        public override void Interact(MovingEntity shuttle)
         {
             /* The shuttle will get the cargo that suits the best by it's situation. */
 
             if (shuttle.cargo != null) return;
-
-            shuttle.AddCargo(CargoForDelivery.First());
+            shuttle.cargo = GetCargoSuitedBestForShuttle();
+        }
+        public Cargo GetCargoSuitedBestForShuttle()
+        {
+            // Implement Fuzzy Logic
+            return new Cargo("Name", new DeliveryStation(world, new Vector2D(300, 500)));
         }
 
         public override void Render(Graphics g)

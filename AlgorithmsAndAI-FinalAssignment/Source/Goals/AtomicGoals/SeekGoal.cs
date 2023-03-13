@@ -3,18 +3,25 @@ using AlgorithmsAndAI_FinalAssignment.Common.Goal;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Steering;
 
-namespace AlgorithmsAndAI_FinalAssignment.Goals
+namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
 {
+
+    /// <summary>
+    /// This goal will let the shuttle seek to a target 
+    /// </summary>
     public class SeekGoal : Goal
     {
+        /* The end position of this goal */
         private Vector2D Target;
-        public SeekGoal(MovingEntity movingEntity, Vector2D Target) : base(movingEntity) 
-        { 
-            this.Target= Target;
+        public SeekGoal(MovingEntity movingEntity, Vector2D Target) : base(movingEntity)
+        {
+            this.Target = Target;
         }
         public override void Activate()
         {
             Status = GoalStatus.Active;
+
+            /* The shuttle will get a target and a seek behaviour added to it's steeringbehaviour */
             Performer.Target = Target;
             Performer.SteeringBehaviours.Add(new SeekBehaviour(Performer));
         }
@@ -30,8 +37,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Goals
         }
         public override void Terminate()
         {
+            /* Reset the Velocity to a empty vector to give the next behaviour a fresh start */
             Performer.Velocity = new Vector2D();
-            Performer.SteeringBehaviours.Clear();
+
+            /* Remove the arrive steering behaviour from the steeringbehaviours list */
+            Performer.SteeringBehaviours.ForEach(sb => { if (sb is SeekBehaviour) Performer.SteeringBehaviours.Remove(sb); });
         }
     }
 }

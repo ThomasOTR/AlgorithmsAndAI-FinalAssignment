@@ -21,15 +21,14 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
             WanderPoint.Multiply(DistanceToWanderPoint);
             WanderPoint.Add(ME.Position);
 
-
             /* Create randomness to the movement. */
             double x = Math.Cos(theta) * WanderRadius;
             double y = Math.Sin(theta) * WanderRadius;
             WanderPoint.Add(new Vector2D(x, y));
-
+            //WanderPoint.Add(new Vector2D(theta * 5, theta * 10));
 
             Random r = new();
-            if (r.Next(2) == 0) theta += 0.1; else theta += -0.1;
+            if (r.Next(2) == 0) theta += 0.5; else theta += -0.5;
             return WanderPoint.Subtract(ME.Position).Normalize().Multiply(ME.MaxSpeed);
 
 

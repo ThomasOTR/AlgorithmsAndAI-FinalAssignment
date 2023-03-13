@@ -47,6 +47,17 @@ namespace AlgorithmsAndAI_FinalAssignment
                 graph.Render(g);
             }
         }
+
+        public List<T> GetMovingEntityListOf<T>() where T : MovingEntity
+        {
+            return MovingEntities.Where(e => e is T).Select(e => (T)e).ToList();
+        }
+        public List<T> GetStaticEntityListOf<T>() where T : StaticEntity
+        {
+            return StaticEntities.Where(e => e is T).Select(e => (T)e).ToList();
+        }
+
+
         /// <summary>
         /// Method to start Path finding Process
         /// </summary>

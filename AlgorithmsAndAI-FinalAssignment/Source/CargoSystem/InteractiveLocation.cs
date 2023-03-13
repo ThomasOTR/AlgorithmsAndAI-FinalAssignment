@@ -1,5 +1,4 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 {
@@ -18,7 +17,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         /// <summary>
         /// Method to interact with the location when arrived
         /// </summary>
-        public abstract void Interact(CargoShuttle CS);
+        public abstract void Interact(MovingEntity ME);
 
         /// <summary>
         /// Method to check if this location is occupied by someone.
@@ -33,7 +32,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         /// Method to occupy a location when possible
         /// </summary>
         /// <param name="ME"></param>
-        public void Occupy(CargoShuttle ME)
+        public void Occupy(MovingEntity ME)
         {
             if (OccupiedBy == null)
             {

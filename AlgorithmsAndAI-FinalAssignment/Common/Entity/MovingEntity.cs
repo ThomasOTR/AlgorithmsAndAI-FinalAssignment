@@ -1,6 +1,7 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Goal;
 using AlgorithmsAndAI_FinalAssignment.Common.Steering;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
+using AlgorithmsAndAI_FinalAssignment.Source.CargoSystem;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 {
@@ -36,6 +37,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         /* Statistic of the Shuttles. This will be decreased over time when travelling. This can be increased at Repair Stations */
         public Statistic Wear;
 
+        public Cargo? cargo;
 
         public MovingEntity(World world, Vector2D Position) : base(world, Position)
         {
@@ -48,6 +50,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 
             Fuel = new Statistic(100.0);
             Wear = new Statistic(100.0);
+            cargo = null;
 
             Brain = new GoalThink(this);
             SteeringBehaviours = new List<SteeringBehaviour>();

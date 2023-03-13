@@ -5,7 +5,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
     /// <summary>
     /// Class to evaluate if a goal is desirable to be performed. This will check specific stats to calculate the desirability
     /// </summary>
-    public abstract class Goal_Evaluator
+    public abstract class GoalEvaluator
     {
         /// <summary>
         /// Method to calculate desirability of the type of goal.

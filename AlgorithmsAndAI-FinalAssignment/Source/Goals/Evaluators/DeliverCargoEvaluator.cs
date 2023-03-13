@@ -1,0 +1,25 @@
+﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+using AlgorithmsAndAI_FinalAssignment.Common.Goal;
+using AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals;
+
+namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
+{
+    public class DeliverCargoEvaluator : GoalEvaluator
+    {
+        public override void AddGoal(MovingEntity ME)
+        {
+            if (!ME.Brain.Present(typeof(DeliverCargoGoal)) && ME.cargo != null)
+            {
+                ME.Brain.AddSubgoal(new DeliverCargoGoal(ME, ME.cargo));
+            }
+
+        }
+
+        public override double CalculateDesirability(MovingEntity ME)
+        {
+            if (ME.cargo == null) return 0;
+
+            return 0.5;
+        }
+    }
+}

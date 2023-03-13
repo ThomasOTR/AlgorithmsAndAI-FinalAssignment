@@ -1,13 +1,17 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Goal;
+using FinalAssignmentAAI.Goals;
 
-namespace AlgorithmsAndAI_FinalAssignment.Source.Goals
+namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
 {
-    public class FollowPathEvaluator : Goal_Evaluator
+    public class FollowPathEvaluator : GoalEvaluator
     {
         public override void AddGoal(MovingEntity ME)
         {
-            ME.Brain.AddGoal_FollowPath();
+            if (!ME.Brain.Present(typeof(FollowPathGoal)))
+            {
+                ME.Brain.AddSubgoal(new FollowPathGoal(ME));
+            }
         }
 
         public override double CalculateDesirability(MovingEntity ME)

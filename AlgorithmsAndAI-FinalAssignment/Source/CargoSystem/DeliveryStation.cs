@@ -1,6 +1,5 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 {
@@ -17,7 +16,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
             DeliveredCargo = new List<Cargo>();
         }
 
-        public override void Interact(CargoShuttle CS)
+        public override void Interact(MovingEntity CS)
         {
             /* Receive the Cargo and store it. */
             if (CS.cargo != null)

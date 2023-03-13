@@ -2,8 +2,11 @@
 using AlgorithmsAndAI_FinalAssignment.Common.Goal;
 using AlgorithmsAndAI_FinalAssignment.Source.CargoSystem;
 
-namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
+namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
 {
+    /// <summary>
+    /// This goal will refuel a shuttle
+    /// </summary>
     public class RefuelGoal : Goal
     {
         public PetrolStation PS;
@@ -16,7 +19,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         {
             if (Status == GoalStatus.Inactive) Activate();
 
-            Performer.Fuel.Increase(PS.FuelingSpeed);
+            /* Interaction between the PetrolStation and a shuttle. This time the shuttle will be refueled. */
+            PS.Interact(Performer);
+
+            /* This goal is complete when the fuel is at it's max */
 
             if (Performer.Fuel.currentValue == Performer.Fuel.max) Status = GoalStatus.Completed;
 

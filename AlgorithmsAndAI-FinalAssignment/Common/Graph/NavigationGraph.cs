@@ -3,9 +3,6 @@ using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
 {
-
-
-
     public class NavigationGraph
     {
         /* The world where the graph is used. Ideal to get specific properties*/

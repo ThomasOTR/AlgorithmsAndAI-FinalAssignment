@@ -15,14 +15,13 @@ namespace AlgorithmsAndAI_FinalAssignment
             CS1.SteeringBehaviours.Add(new WanderBehaviour(CS1));
 
             world.MovingEntities.AddRange(new List<MovingEntity> { CS1 });
-            NormalShuttle NS1 = new(world, new Vector2D(125, 125));
+            //NormalShuttle NS1 = new(world, new Vector2D(125, 125));
 
-            world.MainAgent = NS1;
+            //world.MainAgent = NS1;
 
         }
         public static void GenerateStaticEntities(World world)
         {
-
             CargoWarehouse CW1 = new(world, new Vector2D(700, 812.5));
 
             world.StaticEntities.AddRange(new List<StaticEntity> { CW1 });

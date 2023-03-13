@@ -1,6 +1,5 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 {
@@ -9,13 +8,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
     /// </summary>
     public class RepairStation : InteractiveLocation
     {
-        public double RepairSpeed;
-        public RepairStation(World world, Vector2D position, double RepairSpeed) : base(world, position)
+        public double RepairSpeed = 2;
+        public RepairStation(World world, Vector2D position) : base(world, position)
         {
-            this.RepairSpeed = RepairSpeed;
         }
 
-        public override void Interact(CargoShuttle CS)
+        public override void Interact(MovingEntity CS)
         {
             /* Increase the wear by repairing the shuttle */
             CS.Wear.Increase(RepairSpeed);
