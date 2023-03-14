@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms
+﻿namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms
 {
     /// <summary>
     /// A fuzzy term between 2 or 3 terms where the smallest value will be the result
@@ -10,6 +8,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms
         public FuzzyTerm_AND(FuzzyTerm ft1, FuzzyTerm ft2)
         {
             terms = new List<FuzzyTerm>() { ft1, ft2 };
+        }
+        public FuzzyTerm_AND(FuzzyTerm ft1, FuzzyTerm ft2, FuzzyTerm ft3)
+        {
+            terms = new List<FuzzyTerm>() { ft1, ft2, ft3 };
         }
         public override void ClearDom()
         {

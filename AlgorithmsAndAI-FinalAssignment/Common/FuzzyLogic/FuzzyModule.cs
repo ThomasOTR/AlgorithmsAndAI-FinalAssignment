@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
+﻿namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
 {
     /// <summary>
     /// A module for the Fuzzy Inference process
@@ -54,8 +52,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
         /// <returns></returns>
         public double Defuzzify(string FLV_name)
         {
-            if(variables.ContainsKey(FLV_name))
-            { 
+            if (variables.ContainsKey(FLV_name))
+            {
                 FuzzyVariable FV = variables[FLV_name];
 
                 FV.ClearAllDOMValues();

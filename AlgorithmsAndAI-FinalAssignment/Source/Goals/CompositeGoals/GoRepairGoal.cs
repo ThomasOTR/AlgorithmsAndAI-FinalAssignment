@@ -1,7 +1,7 @@
-﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+﻿using AlgorithmsAndAI_FinalAssignment.Common.CargoSystem;
+using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Goal;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using AlgorithmsAndAI_FinalAssignment.Source.CargoSystem;
 using AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals

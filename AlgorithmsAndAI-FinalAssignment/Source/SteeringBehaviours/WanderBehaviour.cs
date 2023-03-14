@@ -6,9 +6,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
 {
     public class WanderBehaviour : SteeringBehaviour
     {
-        const double DistanceToWanderPoint = 100;
-        const double WanderRadius = 50;
-        double theta = 30;
+        const double DistanceToWanderPoint = 80;
+        const double WanderRadius = 30;
+        double theta = 20;
         public WanderBehaviour(MovingEntity ME) : base(ME)
         {
         }
@@ -17,6 +17,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
         {
             /* Creating a point in the same direction. This is very helpfull so we can add small random additions to move the entity quite normal */
             Vector2D WanderPoint = ME.Velocity.Clone();
+            if (WanderPoint.Equals(new Vector2D())) WanderPoint = new Vector2D(0.1, 0.1);
+
             WanderPoint.Normalize();
             WanderPoint.Multiply(DistanceToWanderPoint);
             WanderPoint.Add(ME.Position);
@@ -28,7 +30,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
             //WanderPoint.Add(new Vector2D(theta * 5, theta * 10));
 
             Random r = new();
-            if (r.Next(2) == 0) theta += 0.5; else theta += -0.5;
+            if (r.Next(2) == 0) theta += 0.2; else theta += -0.2;
             return WanderPoint.Subtract(ME.Position).Normalize().Multiply(ME.MaxSpeed);
 
 

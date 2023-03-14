@@ -1,6 +1,7 @@
-﻿using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
+﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
-namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
+namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 {
     public abstract class InteractiveLocation : StaticEntity
     {

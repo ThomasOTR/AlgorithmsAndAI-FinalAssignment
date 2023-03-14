@@ -1,7 +1,7 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
-namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
+namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 {
     /// <summary>
     /// Class that of the Delivery station. This is the end location of Cargo.
@@ -28,7 +28,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 
         public override void Render(Graphics g)
         {
-            throw new NotImplementedException();
+            Rectangle r = new Rectangle((int)(Position.x - radius), (int)(Position.y - radius), radius * 2, radius * 2);
+            g.FillRectangle(Brushes.Blue, r);
+            g.DrawString("Delivery", new Font("Arial", 6), Brushes.Black, (int)Position.x - radius - 10, (int)Position.y + radius + 5);
         }
     }
 }

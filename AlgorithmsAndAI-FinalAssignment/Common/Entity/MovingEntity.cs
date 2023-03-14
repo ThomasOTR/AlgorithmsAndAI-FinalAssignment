@@ -1,7 +1,7 @@
-﻿using AlgorithmsAndAI_FinalAssignment.Common.Goal;
+﻿using AlgorithmsAndAI_FinalAssignment.Common.CargoSystem;
+using AlgorithmsAndAI_FinalAssignment.Common.Goal;
 using AlgorithmsAndAI_FinalAssignment.Common.Steering;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using AlgorithmsAndAI_FinalAssignment.Source.CargoSystem;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 {
@@ -41,7 +41,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 
         public MovingEntity(World world, Vector2D Position) : base(world, Position)
         {
-            Velocity = new Vector2D(1, 1);
+            Velocity = new Vector2D(0, 0);
             Heading = new Vector2D();
             Side = new Vector2D();
             Mass = 30;
@@ -49,7 +49,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             Target = null;
 
             Fuel = new Statistic(100.0);
+            Fuel.currentValue = 50;
             Wear = new Statistic(100.0);
+            Wear.currentValue = 50;
             cargo = null;
 
             Brain = new GoalThink(this);

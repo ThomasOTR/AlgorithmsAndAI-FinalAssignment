@@ -28,8 +28,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
         }
         public override void Activate()
         {
-            Arbitrate();
             base.Activate();
+            Arbitrate();
         }
         /// <summary>
         /// A method to decide the most desirable goal
@@ -50,8 +50,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
 
             if (Highest != 0 && MostDesirable != null)
             {
-                if (Subgoals.Count > 0) Subgoals.Clear();
                 MostDesirable.AddGoal(Performer);
+                System.Diagnostics.Debug.WriteLine(Subgoals.Peek().GetType());
             }
 
         }

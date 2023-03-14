@@ -1,4 +1,4 @@
-﻿namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
+﻿namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 {
     /// <summary>
     /// Part of the Simulation. This cargo will be delivered from Warehouse to DeliveryStation.

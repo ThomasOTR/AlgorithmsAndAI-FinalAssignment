@@ -10,10 +10,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
         {
             if (!ME.Brain.Present(typeof(WanderGoal)))
             {
-                ME.Brain.AddSubgoal(new WanderGoal(ME));
-            }
-        }
+                if (ME.Brain.Subgoals.Count > 0) ME.Brain.Subgoals.Peek().Terminate();
 
+                ME.Brain.AddSubgoal(new WanderGoal(ME));
+
+            }
+
+        }
         public override double CalculateDesirability(MovingEntity ME)
         {
             return 0.4;

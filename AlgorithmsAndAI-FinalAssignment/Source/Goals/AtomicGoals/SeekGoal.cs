@@ -37,11 +37,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
         }
         public override void Terminate()
         {
-            /* Reset the Velocity to a empty vector to give the next behaviour a fresh start */
-            Performer.Velocity = new Vector2D();
+            /* Reset the Velocity to a default vector to give the next behaviour a fresh start */
+            Performer.Velocity = new Vector2D(0, 0);
 
             /* Remove the arrive steering behaviour from the steeringbehaviours list */
-            Performer.SteeringBehaviours.ForEach(sb => { if (sb is SeekBehaviour) Performer.SteeringBehaviours.Remove(sb); });
+            Performer.SteeringBehaviours.RemoveAll(x => x is SeekBehaviour);
         }
     }
 }

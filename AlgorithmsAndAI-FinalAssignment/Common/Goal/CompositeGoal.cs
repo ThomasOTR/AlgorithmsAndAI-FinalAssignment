@@ -28,9 +28,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
         {
             if (Status == GoalStatus.Inactive) Activate();
             GoalStatus status;
+
             if (Subgoals.Count != 0)
             {
                 Subgoals.Peek().Process();
+
                 if (Subgoals.Peek().Is(GoalStatus.Completed) || Subgoals.Peek().Is(GoalStatus.Failed))
                 {
                     Subgoals.Peek().Terminate();

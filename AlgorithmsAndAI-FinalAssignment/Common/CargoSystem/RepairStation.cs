@@ -1,7 +1,7 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
-namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
+namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 {
     /// <summary>
     /// Class of the Station where a CargoShuttle can be repaired.
@@ -21,7 +21,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.CargoSystem
 
         public override void Render(Graphics g)
         {
-            throw new NotImplementedException();
+            Rectangle r = new Rectangle((int)(Position.x - radius), (int)(Position.y - radius), radius * 2, radius * 2);
+            g.FillRectangle(Brushes.Red, r);
+            g.DrawString("Repair", new Font("Arial", 6), Brushes.Black, (int)Position.x - radius - 10, (int)Position.y + radius + 5);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic;
 using AlgorithmsAndAI_FinalAssignment.Common.Graph;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment
 {
@@ -10,18 +10,20 @@ namespace AlgorithmsAndAI_FinalAssignment
         public int Width;
         public int Height;
 
-        public MovingEntity MainAgent;
+        public MovingEntity? MainAgent;
 
         public List<MovingEntity> MovingEntities;
         public List<StaticEntity> StaticEntities;
         public NavigationGraph graph;
+        public FuzzyModule BestCargoModule;
         public World(int width, int height)
         {
             Width = width;
             Height = height;
             MovingEntities = new List<MovingEntity>();
             StaticEntities = new List<StaticEntity>();
-            MainAgent = new NormalShuttle(this, new Vector2D(50, 50));
+            MainAgent = null;
+            BestCargoModule = WorldBuilder.SetupBestCargoModule();
 
             WorldBuilder.GenerateMovingEntities(this);
             WorldBuilder.GenerateStaticEntities(this);
@@ -31,14 +33,14 @@ namespace AlgorithmsAndAI_FinalAssignment
         }
         public void Update(float delta)
         {
-            MainAgent.Update(delta);
+            if (MainAgent != null) MainAgent.Update(delta);
             MovingEntities.ForEach(x => { x.Update(delta); });
             StaticEntities.ForEach(x => { x.Update(delta); });
 
         }
         public void Render(Graphics g)
         {
-            MainAgent.Render(g);
+            if (MainAgent != null) MainAgent.Render(g);
             MovingEntities.ForEach(x => { x.Render(g); });
             StaticEntities.ForEach(x => { x.Render(g); });
 
