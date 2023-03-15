@@ -49,9 +49,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             Target = null;
 
             Fuel = new Statistic(100.0);
-            Fuel.currentValue = 50;
             Wear = new Statistic(100.0);
-            Wear.currentValue = 50;
             cargo = null;
 
             Brain = new GoalThink(this);

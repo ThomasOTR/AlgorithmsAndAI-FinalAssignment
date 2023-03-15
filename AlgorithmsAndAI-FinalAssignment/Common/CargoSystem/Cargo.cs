@@ -11,6 +11,8 @@
         /* The target of this cargo. Which will be used in the delivery process */
         public DeliveryStation TargetLocation;
 
+        public static string[] CargoNames = { "Cargo1", "Cargo2", "Cargo3" };
+
         public Cargo(string Name, DeliveryStation targetLocation)
         {
             this.Name = Name;

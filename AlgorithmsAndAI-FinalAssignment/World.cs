@@ -34,15 +34,17 @@ namespace AlgorithmsAndAI_FinalAssignment
         public void Update(float delta)
         {
             if (MainAgent != null) MainAgent.Update(delta);
-            MovingEntities.ForEach(x => { x.Update(delta); });
             StaticEntities.ForEach(x => { x.Update(delta); });
+            MovingEntities.ForEach(x => { x.Update(delta); });
+
 
         }
         public void Render(Graphics g)
         {
             if (MainAgent != null) MainAgent.Render(g);
-            MovingEntities.ForEach(x => { x.Render(g); });
             StaticEntities.ForEach(x => { x.Render(g); });
+            MovingEntities.ForEach(x => { x.Render(g); });
+
 
             if (Form1.GraphVisible)
             {
@@ -70,7 +72,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             double size = NavigationGraph.BetweenNodes;
 
             Node end = graph.NodeList[Convert.ToInt32(vectorX / size), Convert.ToInt32(vectorY / size)];
-            if (end != null)
+            if (end != null && MainAgent != null)
             {
                 Node start = graph.NodeList[Convert.ToInt32(MainAgent.Position.x / size), Convert.ToInt32((MainAgent.Position.y / size))];
                 graph.AstarPath(start, end);
@@ -83,13 +85,13 @@ namespace AlgorithmsAndAI_FinalAssignment
         // <param name = "position" ></param>
         public void WrapAround(Vector2D position)
         {
-            if (position.x > Width) position.x = 0.0;
+            if (position.x > Width) position.x = 0.0 + (position.x - Width);
 
-            if (position.x < 0) position.x = Width;
+            if (position.x < 0) position.x = Width - Math.Abs(position.x);
 
-            if (position.y < 0) position.y = Height;
+            if (position.y < 0) position.y = Height - Math.Abs(position.y);
 
-            if (position.y > Height) position.y = 0.0;
+            if (position.y > Height) position.y = 0.0 + (position.y - Height);
         }
     }
 }

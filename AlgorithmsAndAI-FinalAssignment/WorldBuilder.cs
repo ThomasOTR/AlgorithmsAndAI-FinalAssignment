@@ -4,6 +4,7 @@ using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic;
 using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
+using System.Configuration;
 
 namespace AlgorithmsAndAI_FinalAssignment
 {
@@ -11,38 +12,46 @@ namespace AlgorithmsAndAI_FinalAssignment
     {
         public static void GenerateMovingEntities(World world)
         {
-            //CargoShuttle CS1 = new(world, new Vector2D(125, 125));
-            //world.MovingEntities.AddRange(new List<MovingEntity> { CS1 });
-            NormalShuttle NS1 = new(world, new Vector2D(125, 125));
+            CargoShuttle CS1 = new(world, new Vector2D(125, 125));
+            world.MovingEntities.AddRange(new List<MovingEntity> { CS1 });
+            //NormalShuttle NS1 = new(world, new Vector2D(125, 125));
 
-            world.MainAgent = NS1;
+            //world.MainAgent = NS1;
 
         }
         public static void GenerateStaticEntities(World world)
         {
-            CargoWarehouse CW1 = new(world, new Vector2D(700, 850));
-            CargoWarehouse CW2 = new(world, new Vector2D(1000, 300));
-
             DeliveryStation DS1 = new(world, new Vector2D(400, 300));
             DeliveryStation DS2 = new(world, new Vector2D(200, 400));
+
+            world.StaticEntities.Add(DS1);
+            world.StaticEntities.Add(DS2);
+
+
+            CargoWarehouse CW1 = new(world, new Vector2D(700, 850));
+            CargoWarehouse CW2 = new(world, new Vector2D(1000, 300));
 
             PetrolStation PS1 = new(world, new Vector2D(600, 600));
             PetrolStation PS2 = new(world, new Vector2D(900, 100));
 
             RepairStation RS1 = new(world, new Vector2D(500, 1000));
             RepairStation RS2 = new(world, new Vector2D(100, 400));
-            world.StaticEntities.AddRange(new List<StaticEntity> { CW1, CW2, DS1, DS2, PS1, PS2, RS1, RS2 });
+            world.StaticEntities.AddRange(new List<StaticEntity> { CW1, CW2, PS1, PS2, RS1, RS2 });
 
         }
         public static FuzzyModule SetupBestCargoModule()
         {
+            int distanceLow = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceLow"));
+            int distanceMid = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceMid"));
+            int distanceHigh = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceHigh"));
+
             FuzzyModule FM = new FuzzyModule();
 
             /* Create Variables */
             FuzzyVariable Distance = FM.CreateFLV("DISTANCE");
-            FuzzyTerm_SET ShortDistance = Distance.AddLeftShoulderSet("LOW", 0, 25, 50);
-            FuzzyTerm_SET MediumDistance = Distance.AddTriangle("MEDIUM", 25, 50, 75);
-            FuzzyTerm_SET FarDistance = Distance.AddRightShoulderSet("HIGH", 50, 75, 100);
+            FuzzyTerm_SET ShortDistance = Distance.AddLeftShoulderSet("LOW", distanceLow - 25, distanceLow, distanceLow + 25);
+            FuzzyTerm_SET MediumDistance = Distance.AddTriangle("MEDIUM", distanceMid - 25, distanceMid, distanceMid + 25);
+            FuzzyTerm_SET FarDistance = Distance.AddRightShoulderSet("HIGH", distanceHigh - 25, distanceHigh, distanceHigh + 25);
 
             FuzzyVariable Wear = FM.CreateFLV("WEAR");
             FuzzyTerm_SET LowWear = Wear.AddLeftShoulderSet("LOW", 0, 25, 50);
