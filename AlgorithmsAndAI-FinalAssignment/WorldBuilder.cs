@@ -4,7 +4,6 @@ using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic;
 using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
-using System.Configuration;
 
 namespace AlgorithmsAndAI_FinalAssignment
 {
@@ -39,19 +38,28 @@ namespace AlgorithmsAndAI_FinalAssignment
             world.StaticEntities.AddRange(new List<StaticEntity> { CW1, CW2, PS1, PS2, RS1, RS2 });
 
         }
-        public static FuzzyModule SetupBestCargoModule()
+        public static FuzzyModule SetupBestCargoModule(World world)
         {
-            int distanceLow = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceLow"));
-            int distanceMid = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceMid"));
-            int distanceHigh = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceHigh"));
+            Vector2D v1 = new Vector2D(0, 0);
+            Vector2D v2 = new Vector2D(1400, 1200);
+            double bla = v1.Distance(v2);
+            double bla2 = (v1.x - v2.x) * (v1.x - v2.x) + (v1.y - v2.y) * (v1.y - v2.y);
+            double bla4 = Math.Sqrt(bla2);
+            double bla3 = v1.DistanceSquared(v2);
+
+            double MaximalDistance = new Vector2D(0, 0).DistanceSquared(new Vector2D(world.Width, world.Height));
+
+            //int distanceLow = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceLow"));
+            //int distanceMid = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceMid"));
+            //int distanceHigh = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceHigh"));
 
             FuzzyModule FM = new FuzzyModule();
 
             /* Create Variables */
             FuzzyVariable Distance = FM.CreateFLV("DISTANCE");
-            FuzzyTerm_SET ShortDistance = Distance.AddLeftShoulderSet("LOW", distanceLow - 25, distanceLow, distanceLow + 25);
-            FuzzyTerm_SET MediumDistance = Distance.AddTriangle("MEDIUM", distanceMid - 25, distanceMid, distanceMid + 25);
-            FuzzyTerm_SET FarDistance = Distance.AddRightShoulderSet("HIGH", distanceHigh - 25, distanceHigh, distanceHigh + 25);
+            FuzzyTerm_SET ShortDistance = Distance.AddLeftShoulderSet("LOW", 0, MaximalDistance / 4, MaximalDistance / 2);
+            FuzzyTerm_SET MediumDistance = Distance.AddTriangle("MEDIUM", MaximalDistance / 4, MaximalDistance / 2, MaximalDistance / 4 * 3);
+            FuzzyTerm_SET FarDistance = Distance.AddRightShoulderSet("HIGH", MaximalDistance / 2, MaximalDistance / 4 * 3, MaximalDistance);
 
             FuzzyVariable Wear = FM.CreateFLV("WEAR");
             FuzzyTerm_SET LowWear = Wear.AddLeftShoulderSet("LOW", 0, 25, 50);

@@ -1,8 +1,10 @@
 ﻿using AlgorithmsAndAI_FinalAssignment;
 using AlgorithmsAndAI_FinalAssignment.Common.CargoSystem;
 using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
+using System.Diagnostics;
 
 namespace FinalAssignment_Tests
 {
@@ -38,5 +40,20 @@ namespace FinalAssignment_Tests
             cargoWarehouse.Interact(CS);
         }
 
+        [Test]
+        public void Test2()
+        {
+            double fuel = 50;
+            double wear = 75;
+            double distance = 2050000;
+            FuzzyModule fm = world.BestCargoModule;
+
+            fm.Fuzzify("WEAR", wear);
+            fm.Fuzzify("FUEL", fuel);
+            fm.Fuzzify("DISTANCE", distance);
+
+            double DefuzzifiedValue = fm.Defuzzify("DESIRABILITY");
+            Debug.WriteLine("bla");
+        }
     }
 }

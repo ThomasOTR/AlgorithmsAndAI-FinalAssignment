@@ -23,7 +23,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             MovingEntities = new List<MovingEntity>();
             StaticEntities = new List<StaticEntity>();
             MainAgent = null;
-            BestCargoModule = WorldBuilder.SetupBestCargoModule();
+            BestCargoModule = WorldBuilder.SetupBestCargoModule(this);
 
             WorldBuilder.GenerateMovingEntities(this);
             WorldBuilder.GenerateStaticEntities(this);

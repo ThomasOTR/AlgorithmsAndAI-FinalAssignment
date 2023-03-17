@@ -58,56 +58,29 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
                 (int)(Position.y + (Velocity.y * 20))
                 );
 
-
-            //Bitmap bmp = Resources.arrow;
-            //float angle = calculateAngle(Heading);
-
-            //g.TranslateTransform((float)b.Width / 2, (float)b.Height / 2);
-            ////rotate
-            //g.RotateTransform(angle);
-            ////move image back
-            //g.TranslateTransform(-(float)b.Width / 2, -(float)b.Height / 2);
-
-            //g.DrawImage(b, (int)(Position.x - 20), (int)(Position.y - 20));
-
-            //g.ResetTransform();
-            //float moveX = (float)(bmp.Width / 2f + Position.x);
-            //float moveY = (float)(bmp.Height / 2f + Position.y);
-            //g.TranslateTransform(moveX, moveY);
-            //g.RotateTransform(angle);
-            //g.TranslateTransform(-moveX, -moveY);
-            //g.DrawImage(bmp, (int)Position.x, (int)Position.y, 100, 100);
-            //g.ResetTransform();
-
-            //g.DrawString("Angle:" + angle, new Font("Arial", 6), Brushes.Black, (int)Position.x, (int)Position.y + 25);
+            //int RoundedAngle = (int)Math.Round(calculatedAngle(Heading) / 15);
+            //Image i;
+            //Object o = Resources.ResourceManager.GetObject("shuttle_rot" + RoundedAngle) as Image;
+            //if (o != null) g.DrawImage(o, (int)(Position.x - 20), (int)(Position.y - 20));
+            //else
+            //{
+            //    Pen p = new(Color.Black, 1);
+            //    Rectangle r = new Rectangle((int)(Position.x - 20), (int)(Position.y - 20), 20, 20);
+            //    g.DrawRectangle(p, r);
+            //}
 
 
         }
-        //private float calculateAngle(Vector2D v)
-        //{
-        //    var angle = Math.Atan2(v.y, v.x);   //radians
-        //                                        // you need to devide by PI, and MULTIPLY by 180:
-        //    var degrees = 180 * angle / Math.PI;  //degrees
-        //    return (float)((360 + Math.Round(degrees)) % 360); //round number, avoid decimal fragments
-        //}
-        //private Bitmap RotateImage(Bitmap bmp, float angle)
-        //{
-        //    Bitmap rotatedImage = new Bitmap(bmp.Width, bmp.Height);
-        //    rotatedImage.SetResolution(bmp.HorizontalResolution, bmp.VerticalResolution);
-
-        //    using (Graphics g = Graphics.FromImage(rotatedImage))
-        //    {
-        //        // Set the rotation point to the center in the matrix
-        //        g.TranslateTransform(bmp.Width / 2, bmp.Height / 2);
-        //        // Rotate
-        //        g.RotateTransform(angle);
-        //        // Restore rotation point in the matrix
-        //        g.TranslateTransform(-bmp.Width / 2, -bmp.Height / 2);
-        //        // Draw the image on the bitmap
-        //        g.DrawImage(bmp, new Point(0, 0));
-        //    }
-
-        //    return rotatedImage;
-        //}
+        /// <summary>
+        /// Calculates the angle of the Entity's heading
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        private float calculatedAngle(Vector2D v)
+        {
+            var angle = Math.Atan2(v.y, v.x);
+            var degrees = 180 * angle / Math.PI;
+            return (float)((360 + Math.Round(degrees)) % 360);
+        }
     }
 }

@@ -13,26 +13,17 @@
         }
         public override double CalculateDOM(double val)
         {
-            /* A check if offset is 0.0 to prevent dividing by zero*/
-            if (right == 0.0 && peak == val || left == 0.0 && peak == val) return 1.0;
 
-            /* Check the left side */
-            if (val <= peak && val > peak - left)
-            {
-                double grad = 1.0 / left;
-                return grad * (val - (peak - left));
-            }
-            /* Check the right side */
-            else if (val > peak && val <= peak + right) return 1.0;
+            /* The straight part of the shoulder */
+            if (val >= peak && val <= right) return 1.0;
 
-            else return 0;
+            /* The diagonal part of the shoulder */
 
-            //if (val >= PeakPoint && val <= RightOffset)
-            //    return 1.0;
-            //if (val <= PeakPoint && val > LeftOffset)
-            //    return (1.0 / (PeakPoint - LeftOffset)) * (val - LeftOffset);
-            //else
-            //    return 0.0;
+            if (val < peak && val > left) return (val - left) / (peak - left);
+
+            /* Outside the shoulder */
+            return 0.0;
+
         }
     }
 }

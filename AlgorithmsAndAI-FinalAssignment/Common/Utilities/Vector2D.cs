@@ -79,6 +79,11 @@
         {
             return new Vector2D(x - other.x, y - other.y).Length();
         }
+        public double DistanceSquared(Vector2D other)
+        {
+            return new Vector2D(x - other.x, y - other.y).LengthSquared();
+        }
+
 
         /// <summary>
         /// A method to reduce the speed of the force

@@ -1,6 +1,5 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzySets;
 using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms;
-using System.Collections.Generic;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
 {
@@ -71,11 +70,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
             if (bot != 0.0) return top / bot;
             else return 0.0;
         }
-        //public double DefuzzifyCentroid(int num)
-        //{
-        //    //TODO 
-        //    return num;
-        //}
 
         /// <summary>
         /// A method to add a LeftShoulderSet to this variable.
@@ -119,7 +113,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
         /// <returns></returns>
         public FuzzyTerm_SET AddTriangle(string name, double minbound, double peak, double maxbound)
         {
-            FuzzySet_Triangle triangle = new (peak, minbound, maxbound);
+            FuzzySet_Triangle triangle = new(peak, minbound, maxbound);
             MemberSets.Add(name, triangle);
             AdjustRangeToFit(minbound, maxbound);
             return new FuzzyTerm_SET(triangle);
