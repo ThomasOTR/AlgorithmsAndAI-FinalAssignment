@@ -158,8 +158,8 @@
         {
             Vector2D v = new()
             {
-                x = v1.x + v2.x,
-                y = v1.y + v2.y
+                x = v1.x - v2.x,
+                y = v1.y - v2.y
             };
             return v;
         }
@@ -187,7 +187,7 @@
             Vector2D v = new Vector2D
             {
                 x = v1.x * multiplier,
-                y = v1.y + multiplier,
+                y = v1.y * multiplier,
             };
             return v;
         }
@@ -226,17 +226,28 @@
                 return v;
             }
         }
-
-        /// <summary>
-        /// Method to check if a vector is equal to this vector
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public bool Equals(Vector2D other)
+        public override bool Equals(object? obj)
         {
-            if (x.Equals(other.x) && y.Equals(other.y)) return true;
-            return false;
+            if (obj == null) return false;
+            else
+            {
+                Vector2D v = (Vector2D)obj;
+
+                if (x.Equals(v.x) && y.Equals(v.y)) return true;
+                return false;
+            }
         }
+
+        ///// <summary>
+        ///// Method to check if a vector is equal to this vector
+        ///// </summary>
+        ///// <param name="other"></param>
+        ///// <returns></returns>
+        //public override bool Equals(Vector2D other)
+        //{
+        //    if (x.Equals(other.x) && y.Equals(other.y)) return true;
+        //    return false;
+        //}
 
         public override string ToString()
         {

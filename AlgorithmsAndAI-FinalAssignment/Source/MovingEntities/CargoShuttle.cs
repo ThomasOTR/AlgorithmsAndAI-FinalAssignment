@@ -2,6 +2,7 @@
 using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Goal;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
+using AlgorithmsAndAI_FinalAssignment.Properties;
 using AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
@@ -43,32 +44,26 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
             base.Update(deltaTime);
 
         }
+        private void RenderSimplified(Graphics g)
+        {
+            Rectangle r = new Rectangle((int)(Position.x - 25), (int)(Position.y - 25), 50, 50);
+            g.DrawRectangle(new Pen(Color.Black, 1), r);
+
+            g.DrawLine(new Pen(Color.Red, 1),
+                (int)Position.x, (int)Position.y,
+                (int)(Position.x + (Velocity.x * 25)),
+                (int)(Position.y + (Velocity.y * 25))
+                );
+        }
         public override void Render(Graphics g)
         {
-            /* Render the Shuttle*/
-            Pen p = new(Color.Black, 1);
-            Rectangle r = new Rectangle((int)(Position.x - 20), (int)(Position.y - 20), 20, 20);
-            g.DrawRectangle(p, r);
+            Rectangle r = new Rectangle((int)(Position.x - 25), (int)(Position.y - 25), 50, 50);
 
-            /* Render the force */
-            p = new(Color.Red, 1);
-            g.DrawLine(p,
-                (int)Position.x, (int)Position.y,
-                (int)(Position.x + (Velocity.x * 20)),
-                (int)(Position.y + (Velocity.y * 20))
-                );
+            int RoundedAngle = (int)Math.Round(calculatedAngle(Heading) / 15);
+            object o = Resources.ResourceManager.GetObject("shuttle_blue_rot" + RoundedAngle) as Image;
 
-            //int RoundedAngle = (int)Math.Round(calculatedAngle(Heading) / 15);
-            //Image i;
-            //Object o = Resources.ResourceManager.GetObject("shuttle_rot" + RoundedAngle) as Image;
-            //if (o != null) g.DrawImage(o, (int)(Position.x - 20), (int)(Position.y - 20));
-            //else
-            //{
-            //    Pen p = new(Color.Black, 1);
-            //    Rectangle r = new Rectangle((int)(Position.x - 20), (int)(Position.y - 20), 20, 20);
-            //    g.DrawRectangle(p, r);
-            //}
-
+            if (o == null || Form1.SimplifiedLook) RenderSimplified(g);
+            else g.DrawImage((Image)o, r);
 
         }
         /// <summary>
@@ -76,7 +71,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        private float calculatedAngle(Vector2D v)
+        private static float calculatedAngle(Vector2D v)
         {
             var angle = Math.Atan2(v.y, v.x);
             var degrees = 180 * angle / Math.PI;

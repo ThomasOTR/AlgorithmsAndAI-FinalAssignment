@@ -1,7 +1,6 @@
 using Timer = System.Timers.Timer;
 namespace AlgorithmsAndAI_FinalAssignment
 {
-
     public partial class Form1 : Form
     {
         private World world;
@@ -9,7 +8,9 @@ namespace AlgorithmsAndAI_FinalAssignment
         private float timeDelta = 0.8f;
 
         public static bool GraphVisible = false;
-
+        public static bool StatsVisibile = false;
+        public static bool BehaviourVisible = false;
+        public static bool SimplifiedLook = false;
         public Form1()
         {
             InitializeComponent();
@@ -42,9 +43,14 @@ namespace AlgorithmsAndAI_FinalAssignment
             {
                 case Keys.G:
                     GraphVisible = !GraphVisible; break;
+                case Keys.S:
+                    StatsVisibile = !StatsVisibile; break;
+                case Keys.B:
+                    BehaviourVisible = !BehaviourVisible; break;
+                case Keys.L:
+                    SimplifiedLook = !SimplifiedLook; break;
                 case Keys.Escape:
-                    System.Windows.Forms.Application.Exit(); break;
-
+                    Application.Exit(); break;
             }
         }
         private void OnClick(object sender, MouseEventArgs e)

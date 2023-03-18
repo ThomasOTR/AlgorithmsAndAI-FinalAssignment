@@ -17,6 +17,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
         }
         public override void Render(Graphics g)
         {
+
             Pen p = new(Color.Orange, 1);
             Rectangle r = new Rectangle((int)(Position.x - 20), (int)(Position.y - 20), 20, 20);
             g.DrawRectangle(p, r);
