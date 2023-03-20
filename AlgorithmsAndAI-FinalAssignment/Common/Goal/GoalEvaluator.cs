@@ -1,6 +1,6 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 
-namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
+namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
 {
     /// <summary>
     /// Class to evaluate if a goal is desirable to be performed. This will check specific stats to calculate the desirability

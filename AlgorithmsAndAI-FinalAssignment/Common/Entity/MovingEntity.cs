@@ -1,5 +1,5 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.CargoSystem;
-using AlgorithmsAndAI_FinalAssignment.Common.Goal;
+using AlgorithmsAndAI_FinalAssignment.Common.Goals;
 using AlgorithmsAndAI_FinalAssignment.Common.Steering;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
@@ -90,6 +90,64 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         /// Method to render the Entity
         /// </summary>
         /// <param name="g">Graphics component which can draw what we want.</param>
-        public abstract void Render(Graphics g);
+        public virtual void Render(Graphics g)
+        {
+            if (Form1.BehaviourVisible) RenderBehavior(g);
+            if (Form1.StatsVisibile) RenderStats(g);
+        }
+
+        private void RenderStats(Graphics g)
+        {
+            string drawString = $"Fuel: {Fuel.currentValue.ToString("f2")} , Wear: {Wear.currentValue.ToString("f2")}";
+
+            // Create font and brush.
+            g.DrawString(
+                s: drawString,
+                font: new Font("Arial", 6),
+                brush: Brushes.White,
+                x: (int)Position.x - 50,
+                y: (int)Position.y - 60
+                );
+        }
+
+        /// <summary>
+        /// A method to render the behavior, so every goal the Robot follows.
+        /// </summary>
+        /// <param name="g"></param>
+        private void RenderBehavior(Graphics g)
+        {
+            g.DrawString(
+                s: GetBehaviourOuput(Brain),
+                font: SystemFonts.DefaultFont,
+                brush: Brushes.White,
+                x: (int)Position.x + 30,
+                y: (int)Position.y - 50
+                );
+        }
+
+        /// <summary>
+        /// A recursive method to get a string with all the goals in perfect order below each other with spacing.
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="amountOfTabs"></param>
+        /// <returns></returns>
+        private string GetBehaviourOuput(Goal g, int amountOfTabs = 0)
+        {
+            string output = "";
+            CompositeGoal CG = g as CompositeGoal;
+            if (CG != null)
+            {
+                output += CG.GetName() + "\n";
+                foreach (Goal goal in CG.Subgoals)
+                {
+                    for (int i = 0; i < amountOfTabs; i++) output += "\t";
+                    output += GetBehaviourOuput(goal, amountOfTabs + 1);
+
+                    if (!CG.Subgoals.Last().Equals(goal)) output += "\n";
+                }
+                return output;
+            }
+            else return g.GetName();
+        }
     }
 }

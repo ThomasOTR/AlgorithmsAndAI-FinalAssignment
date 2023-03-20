@@ -1,6 +1,6 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 
-namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
+namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
 {
     public enum GoalStatus { Completed, Active, Inactive, Failed }
     public abstract class Goal
@@ -40,6 +40,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
         {
             return (Status == type);
         }
-
+        public string GetName()
+        {
+            return GetType().Name;
+        }
     }
 }

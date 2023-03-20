@@ -1,5 +1,6 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
+using AlgorithmsAndAI_FinalAssignment.Properties;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 {
@@ -22,9 +23,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 
         public override void Render(Graphics g)
         {
-            Rectangle r = new Rectangle((int)(Position.x - radius), (int)(Position.y - radius), radius * 2, radius * 2);
-            g.FillRectangle(Brushes.Purple, r);
-            g.DrawString("Fuel", new Font("Arial", 6), Brushes.Black, (int)Position.x - radius - 10, (int)Position.y + radius + 5);
+            Rectangle r = new Rectangle((int)(Position.x - radius), (int)(Position.y - (radius * 0.5)), radius * 2, radius);
+
+            g.DrawImage(Resources.PetrolStation, r);
+
+            g.DrawString("FuelStation", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
         }
     }
 }

@@ -56,7 +56,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             bool InRadius = false;
             foreach (StaticEntity SE in world.StaticEntities)
             {
-                if (v.WithinRange(SE.Position, SE.radius * 1.5))
+                if (v.WithinRange(SE.Position, SE.radius))
                 { InRadius = true; break; }
             }
             return InRadius;
@@ -150,10 +150,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                 {
                     if (NodeList[x, y] != null)
                     {
-                        NodeList[x, y].Render(g, new Pen(Color.Black));
+                        NodeList[x, y].Render(g, new Pen(Color.White));
                         foreach (Edge e in NodeList[x, y].GetAdjecents())
                         {
-                            e.Render(g, NodeList[x, y].Position, new Pen(Color.Black));
+                            e.Render(g, NodeList[x, y].Position, new Pen(Color.White));
                         }
                     }
 

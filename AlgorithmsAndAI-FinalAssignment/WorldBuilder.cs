@@ -3,7 +3,9 @@ using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic;
 using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
+using AlgorithmsAndAI_FinalAssignment.Properties;
 using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
+using AlgorithmsAndAI_FinalAssignment.Source.StaticEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment
 {
@@ -28,7 +30,9 @@ namespace AlgorithmsAndAI_FinalAssignment
 
 
             CargoWarehouse CW1 = new(world, new Vector2D(700, 850));
+
             CargoWarehouse CW2 = new(world, new Vector2D(1000, 300));
+
 
             PetrolStation PS1 = new(world, new Vector2D(600, 600));
             PetrolStation PS2 = new(world, new Vector2D(900, 100));
@@ -37,15 +41,28 @@ namespace AlgorithmsAndAI_FinalAssignment
             RepairStation RS2 = new(world, new Vector2D(100, 400));
             world.StaticEntities.AddRange(new List<StaticEntity> { CW1, CW2, PS1, PS2, RS1, RS2 });
 
+            List<Bitmap> Asteroids = new() { Resources.asteroid, Resources.asteroid2, Resources.asteroid3, Resources.asteroid4, Resources.asteroid5, Resources.asteroid6 };
+            List<Bitmap> Planets = new() { Resources.crystal, Resources.icy, Resources.terrestrial, Resources.hot, Resources.radiated, Resources.earth, Resources.neptune };
+            world.StaticEntities.AddRange(new List<StaticEntity>
+            {
+                    new SpaceObstacle(world, new Vector2D(400, 950), Asteroids[new Random().Next(Asteroids.Count)], 30),
+                    new SpaceObstacle(world, new Vector2D(700, 300), Asteroids[new Random().Next(Asteroids.Count)], 20),
+                    new SpaceObstacle(world, new Vector2D(500, 45), Asteroids[new Random().Next(Asteroids.Count)], 40),
+                    new SpaceObstacle(world, new Vector2D(200, 1100), Asteroids[new Random().Next(Asteroids.Count)], 30),
+            });
+
+            world.StaticEntities.AddRange(new List<StaticEntity>
+            {
+                    new SpaceObstacle(world, new Vector2D(900, 100), Planets[new Random().Next(Planets.Count)], 30),
+                    new SpaceObstacle(world, new Vector2D(100, 300), Planets[new Random().Next(Planets.Count)], 20),
+                    new SpaceObstacle(world, new Vector2D(1000, 500), Planets[new Random().Next(Planets.Count)], 40),
+                    new SpaceObstacle(world, new Vector2D(400, 200), Planets[new Random().Next(Planets.Count)], 30),
+            });
+
+
         }
         public static FuzzyModule SetupBestCargoModule(World world)
         {
-            Vector2D v1 = new Vector2D(0, 0);
-            Vector2D v2 = new Vector2D(1400, 1200);
-            double bla = v1.Distance(v2);
-            double bla2 = (v1.x - v2.x) * (v1.x - v2.x) + (v1.y - v2.y) * (v1.y - v2.y);
-            double bla4 = Math.Sqrt(bla2);
-            double bla3 = v1.DistanceSquared(v2);
 
             double MaximalDistance = new Vector2D(0, 0).DistanceSquared(new Vector2D(world.Width, world.Height));
 
@@ -53,7 +70,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             //int distanceMid = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceMid"));
             //int distanceHigh = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceHigh"));
 
-            FuzzyModule FM = new FuzzyModule();
+            FuzzyModule FM = new();
 
             /* Create Variables */
             FuzzyVariable Distance = FM.CreateFLV("DISTANCE");

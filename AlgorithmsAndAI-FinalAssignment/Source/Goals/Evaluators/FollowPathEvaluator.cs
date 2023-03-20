@@ -1,5 +1,5 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
-using AlgorithmsAndAI_FinalAssignment.Common.Goal;
+using AlgorithmsAndAI_FinalAssignment.Common.Goals;
 using FinalAssignmentAAI.Goals;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators

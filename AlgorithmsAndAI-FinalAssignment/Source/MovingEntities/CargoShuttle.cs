@@ -1,6 +1,6 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.CargoSystem;
 using AlgorithmsAndAI_FinalAssignment.Common.Entities;
-using AlgorithmsAndAI_FinalAssignment.Common.Goal;
+using AlgorithmsAndAI_FinalAssignment.Common.Goals;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Properties;
 using AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators;
@@ -64,6 +64,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
 
             if (o == null || Form1.SimplifiedLook) RenderSimplified(g);
             else g.DrawImage((Image)o, r);
+
+            base.Render(g);
 
         }
         /// <summary>

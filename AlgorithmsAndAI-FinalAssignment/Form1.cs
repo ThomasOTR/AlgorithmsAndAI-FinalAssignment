@@ -1,3 +1,4 @@
+using AlgorithmsAndAI_FinalAssignment.Properties;
 using Timer = System.Timers.Timer;
 namespace AlgorithmsAndAI_FinalAssignment
 {
@@ -25,6 +26,7 @@ namespace AlgorithmsAndAI_FinalAssignment
                 Enabled = true,
             };
             timer.Elapsed += Timer_Elapsed;
+            BackgroundImage = Resources.bg1;
         }
 
         private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)

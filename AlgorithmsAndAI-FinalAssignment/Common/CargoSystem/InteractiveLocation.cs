@@ -13,6 +13,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         public InteractiveLocation(World world, Vector2D position) : base(world, position)
         {
             OccupiedBy = null;
+            radius = 45;
         }
 
         /// <summary>

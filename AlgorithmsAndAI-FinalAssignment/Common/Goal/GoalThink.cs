@@ -1,7 +1,7 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals;
 
-namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
+namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
 {
     /// <summary>
     /// The brain of each MovingEntity. The brain will decide the best goals by evaluators.

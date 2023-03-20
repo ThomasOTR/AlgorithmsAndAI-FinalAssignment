@@ -1,6 +1,6 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 
-namespace AlgorithmsAndAI_FinalAssignment.Common.Goal
+namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
 {
     public abstract class CompositeGoal : Goal
     {
