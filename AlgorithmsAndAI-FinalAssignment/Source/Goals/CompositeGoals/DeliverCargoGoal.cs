@@ -14,7 +14,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         /// The cargo that will be delivered.
         /// </summary>
         private Cargo cargo;
-        public DeliverCargoGoal(MovingEntity movingEntity, Cargo cargo) : base(movingEntity)
+        public DeliverCargoGoal(MovingEntity ME, Cargo cargo) : base(ME)
         {
             this.cargo = cargo;
         }
@@ -22,6 +22,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         public override void Activate()
         {
             DeliveryStation DS = cargo.TargetLocation;
+            DS.Claim(Performer);
 
             Subgoals.Push(new DropOffCargoGoal(Performer, DS));
             Subgoals.Push(new ArriveGoal(Performer, DS.Position));
@@ -29,6 +30,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         public override GoalStatus Process()
         {
             return ProcessSubgoals();
+        }
+        public override void Terminate()
+        {
+            cargo.TargetLocation.Leave();
         }
 
     }

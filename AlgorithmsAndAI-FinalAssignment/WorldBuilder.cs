@@ -15,9 +15,9 @@ namespace AlgorithmsAndAI_FinalAssignment
         {
             CargoShuttle CS1 = new(world, new Vector2D(125, 125));
             world.MovingEntities.AddRange(new List<MovingEntity> { CS1 });
-            //NormalShuttle NS1 = new(world, new Vector2D(125, 125));
+            NormalShuttle NS1 = new(world, new Vector2D(125, 125));
 
-            //world.MainAgent = NS1;
+            world.MainAgent = NS1;
 
         }
         public static void GenerateStaticEntities(World world)
@@ -30,7 +30,6 @@ namespace AlgorithmsAndAI_FinalAssignment
 
 
             CargoWarehouse CW1 = new(world, new Vector2D(700, 850));
-
             CargoWarehouse CW2 = new(world, new Vector2D(1000, 300));
 
 
@@ -45,18 +44,18 @@ namespace AlgorithmsAndAI_FinalAssignment
             List<Bitmap> Planets = new() { Resources.crystal, Resources.icy, Resources.terrestrial, Resources.hot, Resources.radiated, Resources.earth, Resources.neptune };
             world.StaticEntities.AddRange(new List<StaticEntity>
             {
-                    new SpaceObstacle(world, new Vector2D(400, 950), Asteroids[new Random().Next(Asteroids.Count)], 30),
-                    new SpaceObstacle(world, new Vector2D(700, 300), Asteroids[new Random().Next(Asteroids.Count)], 20),
-                    new SpaceObstacle(world, new Vector2D(500, 45), Asteroids[new Random().Next(Asteroids.Count)], 40),
-                    new SpaceObstacle(world, new Vector2D(200, 1100), Asteroids[new Random().Next(Asteroids.Count)], 30),
+                    new SpaceObstacle(world, new Vector2D(400, 950), Asteroids[new Random().Next(Asteroids.Count)]),
+                    new SpaceObstacle(world, new Vector2D(700, 300), Asteroids[new Random().Next(Asteroids.Count)]),
+                    new SpaceObstacle(world, new Vector2D(500, 45), Asteroids[new Random().Next(Asteroids.Count)]),
+                    new SpaceObstacle(world, new Vector2D(200, 1100), Asteroids[new Random().Next(Asteroids.Count)]),
             });
 
             world.StaticEntities.AddRange(new List<StaticEntity>
             {
-                    new SpaceObstacle(world, new Vector2D(900, 100), Planets[new Random().Next(Planets.Count)], 30),
-                    new SpaceObstacle(world, new Vector2D(100, 300), Planets[new Random().Next(Planets.Count)], 20),
-                    new SpaceObstacle(world, new Vector2D(1000, 500), Planets[new Random().Next(Planets.Count)], 40),
-                    new SpaceObstacle(world, new Vector2D(400, 200), Planets[new Random().Next(Planets.Count)], 30),
+            //        new SpaceObstacle(world, new Vector2D(900, 300), Planets[new Random().Next(Planets.Count)], 30),
+                    new SpaceObstacle(world, new Vector2D(100, 300), Planets[new Random().Next(Planets.Count)]),
+                    new SpaceObstacle(world, new Vector2D(420, 640), Planets[new Random().Next(Planets.Count)]),
+                    new SpaceObstacle(world, new Vector2D(400, 200), Planets[new Random().Next(Planets.Count)]),
             });
 
 

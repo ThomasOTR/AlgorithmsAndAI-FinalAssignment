@@ -443,6 +443,16 @@ namespace AlgorithmsAndAI_FinalAssignment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap shuttle_blue_rot24 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_blue_rot24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap shuttle_blue_rot3 {
             get {
                 object obj = ResourceManager.GetObject("shuttle_blue_rot3", resourceCulture);
@@ -506,6 +516,256 @@ namespace AlgorithmsAndAI_FinalAssignment.Properties {
         internal static System.Drawing.Bitmap shuttle_blue_rot9 {
             get {
                 object obj = ResourceManager.GetObject("shuttle_blue_rot9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot0 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot1 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot10 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot11 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot12 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot13 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot13", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot14 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot14", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot15 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot15", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot16 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot17 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot17", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot18 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot19 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot19", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot2 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot20 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot21 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot22 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot22", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot23 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot23", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot24 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot3 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot4 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot5 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot6 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot7 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot8 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuttle_purple_rot9 {
+            get {
+                object obj = ResourceManager.GetObject("shuttle_purple_rot9", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

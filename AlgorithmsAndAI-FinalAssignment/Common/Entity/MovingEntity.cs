@@ -64,9 +64,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             Vector2D steeringForce = new();
             for (int i = 0; i < SteeringBehaviours.Count; i++)
             {
-                Vector2D tempForce = SteeringBehaviours[i].Calculate();
-                //steeringForce.Add(SteeringBehaviours[i].Calculate());
-                steeringForce.Add(tempForce);
+                steeringForce.Add(SteeringBehaviours[i].Calculate());
             }
             Vector2D acceleration = steeringForce.Divide(Mass);
 
@@ -94,6 +92,19 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         {
             if (Form1.BehaviourVisible) RenderBehavior(g);
             if (Form1.StatsVisibile) RenderStats(g);
+        }
+
+        public void RenderSimplified(Graphics g, Color c)
+        {
+            Rectangle r = new Rectangle((int)(Position.x - 25), (int)(Position.y - 25), 50, 50);
+            g.DrawRectangle(new Pen(c, 1), r);
+
+            g.DrawLine(new Pen(Color.Red, 1),
+                (int)Position.x, (int)Position.y,
+                (int)(Position.x + (Velocity.x * 25)),
+                (int)(Position.y + (Velocity.y * 25))
+                );
+
         }
 
         private void RenderStats(Graphics g)
@@ -148,6 +159,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
                 return output;
             }
             else return g.GetName();
+        }
+        public static float calculatedAngle(Vector2D v)
+        {
+            var angle = Math.Atan2(v.y, v.x);
+            var degrees = 180 * angle / Math.PI;
+            return (float)((360 + Math.Round(degrees)) % 360);
         }
     }
 }

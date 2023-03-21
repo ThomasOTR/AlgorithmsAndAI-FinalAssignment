@@ -4,6 +4,7 @@ using AlgorithmsAndAI_FinalAssignment.Common.Goals;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Properties;
 using AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators;
+using AlgorithmsAndAI_FinalAssignment.Steering;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
 {
@@ -14,6 +15,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
     {
         public CargoShuttle(World world, Vector2D Position) : base(world, Position)
         {
+            SteeringBehaviours.Add(new ObstacleAvoidanceBehaviour(this));
             Brain.AddEvaluators(new List<GoalEvaluator>
             {
                 new WanderEvaluator(),
@@ -44,17 +46,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
             base.Update(deltaTime);
 
         }
-        private void RenderSimplified(Graphics g)
-        {
-            Rectangle r = new Rectangle((int)(Position.x - 25), (int)(Position.y - 25), 50, 50);
-            g.DrawRectangle(new Pen(Color.Black, 1), r);
-
-            g.DrawLine(new Pen(Color.Red, 1),
-                (int)Position.x, (int)Position.y,
-                (int)(Position.x + (Velocity.x * 25)),
-                (int)(Position.y + (Velocity.y * 25))
-                );
-        }
         public override void Render(Graphics g)
         {
             Rectangle r = new Rectangle((int)(Position.x - 25), (int)(Position.y - 25), 50, 50);
@@ -62,22 +53,26 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
             int RoundedAngle = (int)Math.Round(calculatedAngle(Heading) / 15);
             object o = Resources.ResourceManager.GetObject("shuttle_blue_rot" + RoundedAngle) as Image;
 
-            if (o == null || Form1.SimplifiedLook) RenderSimplified(g);
+            if (o == null || Form1.SimplifiedLook) RenderSimplified(g, Color.White);
             else g.DrawImage((Image)o, r);
 
             base.Render(g);
 
-        }
-        /// <summary>
-        /// Calculates the angle of the Entity's heading
-        /// </summary>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        private static float calculatedAngle(Vector2D v)
-        {
-            var angle = Math.Atan2(v.y, v.x);
-            var degrees = 180 * angle / Math.PI;
-            return (float)((360 + Math.Round(degrees)) % 360);
+            //Vector2D bla = Velocity.Clone();
+            //if (bla.Equals(new Vector2D())) bla = new Vector2D(0.1, 0.1);
+
+            //Vector2D FrontFeelerPosition = bla.Clone().Normalize();
+            //FrontFeelerPosition.Multiply(80);
+            //FrontFeelerPosition.Add(Position);
+
+
+            //g.DrawLine(new Pen(Color.Yellow, 1), (int)Position.x, (int)Position.y, (int)FrontFeelerPosition.x, (int)FrontFeelerPosition.y);
+
+            ///* Create a feeler between FrontFeeler and MovingEntity */
+            //Vector2D MidFeelerPosition = bla.Clone().Normalize();
+            //MidFeelerPosition.Multiply(40);
+            //MidFeelerPosition.Add(Position);
+            //g.DrawLine(new Pen(Color.Yellow, 1), (int)Position.x, (int)Position.y, (int)MidFeelerPosition.x, (int)MidFeelerPosition.y);
         }
     }
 }

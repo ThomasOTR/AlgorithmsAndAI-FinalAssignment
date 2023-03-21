@@ -21,8 +21,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 
         public override void Interact(MovingEntity shuttle)
         {
-            /* The shuttle will get the cargo that suits the best by it's situation. */
+            base.Interact(shuttle);
 
+            /* The shuttle will get the cargo that suits the best by it's situation. */
             if (shuttle.cargo != null) return;
             Cargo cargo = GetCargoSuitedBestForShuttle(shuttle);
             if (cargo != null) shuttle.cargo = cargo;
@@ -80,6 +81,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 
             g.DrawImage(Resources.CargoWarehouse, r);
             g.DrawString("Warehouse", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
+            g.DrawString("Occupied:" + GetOccupationState(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 30);
 
         }
     }

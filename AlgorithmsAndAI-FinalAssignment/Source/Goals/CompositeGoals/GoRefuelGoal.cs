@@ -11,14 +11,17 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
     /// </summary>
     public class GoRefuelGoal : CompositeGoal
     {
+        private PetrolStation? PS;
         public GoRefuelGoal(MovingEntity ME) : base(ME)
         {
+            PS = null;
         }
         public override void Activate()
         {
             base.Activate();
 
-            PetrolStation PS = GetNearestRefuelStation();
+            PS = GetNearestRefuelStation();
+            PS.Claim(Performer);
 
             Subgoals.Push(new RefuelGoal(Performer, PS));
             Subgoals.Push(new ArriveGoal(Performer, PS.Position));
@@ -27,6 +30,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         {
             return ProcessSubgoals();
         }
+
+        public override void Terminate()
+        {
+            PS?.Leave();
+
+        }
+
         /// <summary>
         /// This method will find the NearestRefuelStation
         /// </summary>

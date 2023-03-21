@@ -11,14 +11,17 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
     /// </summary>
     public class GoRepairGoal : CompositeGoal
     {
+        private RepairStation? RS;
         public GoRepairGoal(MovingEntity ME) : base(ME)
         {
+            RS = null;
         }
         public override void Activate()
         {
             base.Activate();
 
-            RepairStation RS = GetNearestRepairStation();
+            RS = GetNearestRepairStation();
+            RS.Claim(Performer);
 
             Subgoals.Push(new RepairGoal(Performer, RS));
             Subgoals.Push(new ArriveGoal(Performer, RS.Position));
@@ -57,6 +60,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
                 }
                 return NearestRS;
             }
+        }
+
+        public override void Terminate()
+        {
+            RS?.Leave();
         }
     }
 }

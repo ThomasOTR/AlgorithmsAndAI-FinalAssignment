@@ -19,7 +19,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
         public override double CalculateDesirability(MovingEntity ME)
         {
             if (ME.cargo == null) return 0;
-
+            else if (ME.cargo.TargetLocation == null) return 0;
+            else if (ME.cargo.TargetLocation.IsOccupied()) return 0;
             return 0.5;
         }
     }

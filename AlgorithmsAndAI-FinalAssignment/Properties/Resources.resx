@@ -137,19 +137,19 @@
     <value>..\Assets\Asteroids, Meteors\filled\Stones2Filled_28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\stars_texture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\background\stars_texture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bg46" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\50+ Repeat Space Backgrounds 200x200 PNG\bg46.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\background\bg46.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bg48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\50+ Repeat Space Backgrounds 200x200 PNG\bg48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\background\bg48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bg50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\50+ Repeat Space Backgrounds 200x200 PNG\bg50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\background\bg50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bg59" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\50+ Repeat Space Backgrounds 200x200 PNG\bg59.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\background\bg59.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CargoWarehouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Ships\CargoWarehouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -182,76 +182,154 @@
     <value>..\Assets\Ships\RepairStation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot10" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot12" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot13" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot14" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot15" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot17" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot17.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot17.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot18" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot19" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot20" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot21" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot22" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot23" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot23.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot23.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_blue_rot24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuttle_blue_rot9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\shuttle_blue_rot9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\CargoShuttle\shuttle_blue_rot9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot17.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot23" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot23.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuttle_purple_rot9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\NormalShuttle\shuttle_purple_rot9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="terrestrial" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\planets\terrestrial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

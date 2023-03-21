@@ -8,11 +8,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
 {
     public class ReceiveNewCargoGoal : CompositeGoal
     {
-        private CargoWarehouse CW;
-        public ReceiveNewCargoGoal(MovingEntity movingEntity) : base(movingEntity)
+        private CargoWarehouse? CW;
+        public ReceiveNewCargoGoal(MovingEntity ME) : base(ME)
         {
             CW = GetNearestWarehouse();
-
+            CW.Claim(Performer);
             Subgoals.Push(new GetCargoGoal(Performer, CW));
             Subgoals.Push(new ArriveGoal(Performer, CW.Position));
         }
@@ -20,6 +20,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         public override GoalStatus Process()
         {
             return ProcessSubgoals();
+        }
+
+        public override void Terminate()
+        {
+            CW?.Leave();
         }
 
         /// <summary>

@@ -17,13 +17,15 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             DeliveredCargo = new List<Cargo>();
         }
 
-        public override void Interact(MovingEntity CS)
+        public override void Interact(MovingEntity shuttle)
         {
+            base.Interact(shuttle);
+
             /* Receive the Cargo and store it. */
-            if (CS.cargo != null)
+            if (shuttle.cargo != null)
             {
-                DeliveredCargo.Add(CS.cargo);
-                CS.cargo = null;
+                DeliveredCargo.Add(shuttle.cargo);
+                shuttle.cargo = null;
             }
         }
 
@@ -34,6 +36,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             g.DrawImage(Resources.DeliveryStation, r);
 
             g.DrawString("DeliveryStation", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
+            g.DrawString("Occupied:" + GetOccupationState(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 30);
+
         }
     }
 }

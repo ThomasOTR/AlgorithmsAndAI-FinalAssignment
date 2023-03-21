@@ -15,10 +15,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         {
         }
 
-        public override void Interact(MovingEntity CS)
+        public override void Interact(MovingEntity shuttle)
         {
+            base.Interact(shuttle);
             /* Increasing the Fuel of the CargoShuttle */
-            CS.Fuel.Increase(FuelingSpeed);
+            shuttle.Fuel.Increase(FuelingSpeed);
         }
 
         public override void Render(Graphics g)
@@ -28,6 +29,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             g.DrawImage(Resources.PetrolStation, r);
 
             g.DrawString("FuelStation", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
+            g.DrawString("Occupied:" + GetOccupationState(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 30);
+
         }
     }
 }

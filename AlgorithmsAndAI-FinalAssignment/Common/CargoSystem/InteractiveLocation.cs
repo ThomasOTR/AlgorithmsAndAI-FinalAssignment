@@ -3,23 +3,46 @@ using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 {
+    public enum OccupationState
+    {
+        Open,
+        Claimed,
+        Occupied
+    }
+
     public abstract class InteractiveLocation : StaticEntity
     {
         /* The Entity that has occupied this location */
         private MovingEntity? OccupiedBy;
 
-        /* This property is needed so shuttles will claim a location to let not others go to that location too. */
-        public bool Claimed;
+        private OccupationState occupationState;
         public InteractiveLocation(World world, Vector2D position) : base(world, position)
         {
             OccupiedBy = null;
+            occupationState = OccupationState.Open;
             radius = 45;
         }
 
+        public OccupationState GetOccupationState() { return occupationState; }
         /// <summary>
         /// Method to interact with the location when arrived
         /// </summary>
-        public abstract void Interact(MovingEntity ME);
+
+        public void Claim(MovingEntity ME)
+        {
+            OccupiedBy = ME;
+            occupationState = OccupationState.Claimed;
+        }
+        public virtual void Interact(MovingEntity ME)
+        {
+            occupationState = OccupationState.Occupied;
+        }
+
+        public void Leave()
+        {
+            OccupiedBy = null;
+            occupationState = OccupationState.Open;
+        }
 
         /// <summary>
         /// Method to check if this location is occupied by someone.
@@ -41,5 +64,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
                 OccupiedBy = ME;
             }
         }
+
+
     }
 }

@@ -6,10 +6,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.StaticEntities
     public class SpaceObstacle : StaticEntity
     {
         private Image ImageToRender;
-        public SpaceObstacle(World world, Vector2D position, Bitmap image, int radius) : base(world, position)
+        public SpaceObstacle(World world, Vector2D position, Bitmap image) : base(world, position)
         {
             ImageToRender = image;
-            this.radius = radius;
         }
 
         public override void Render(Graphics g)

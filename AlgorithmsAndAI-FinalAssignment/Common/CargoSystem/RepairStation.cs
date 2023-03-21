@@ -14,10 +14,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         {
         }
 
-        public override void Interact(MovingEntity CS)
+        public override void Interact(MovingEntity shuttle)
         {
+            base.Interact(shuttle);
+
             /* Increase the wear by repairing the shuttle */
-            CS.Wear.Increase(RepairSpeed);
+            shuttle.Wear.Increase(RepairSpeed);
         }
 
         public override void Render(Graphics g)
@@ -26,6 +28,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 
             g.DrawImage(Resources.RepairStation, r);
             g.DrawString("RepairStation", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
+            g.DrawString("Occupied:" + GetOccupationState(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 30);
+
         }
     }
 }
