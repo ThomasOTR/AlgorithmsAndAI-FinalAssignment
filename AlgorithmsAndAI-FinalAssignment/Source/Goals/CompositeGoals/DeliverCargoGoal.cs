@@ -34,6 +34,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         public override void Terminate()
         {
             cargo.TargetLocation.Leave();
+
+            base.Terminate();
+
         }
 
     }

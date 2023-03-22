@@ -1,5 +1,6 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
+using System.Diagnostics;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 {
@@ -30,8 +31,19 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 
         public void Claim(MovingEntity ME)
         {
-            OccupiedBy = ME;
-            occupationState = OccupationState.Claimed;
+            if (occupationState == OccupationState.Open)
+            {
+                OccupiedBy = ME;
+                occupationState = OccupationState.Claimed;
+            }
+            else
+            {
+                Debug.WriteLine("");
+            }
+        }
+        public MovingEntity? GetOccupiedBy()
+        {
+            return OccupiedBy;
         }
         public virtual void Interact(MovingEntity ME)
         {
@@ -50,7 +62,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         /// <returns></returns>
         public bool IsOccupied()
         {
-            return OccupiedBy != null;
+            return OccupiedBy != null && occupationState != OccupationState.Open;
         }
 
         /// <summary>

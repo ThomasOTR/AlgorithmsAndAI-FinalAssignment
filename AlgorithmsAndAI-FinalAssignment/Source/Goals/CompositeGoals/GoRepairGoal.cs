@@ -21,10 +21,14 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
             base.Activate();
 
             RS = GetNearestRepairStation();
-            RS.Claim(Performer);
+            if (RS != null)
+            {
+                RS.Claim(Performer);
 
-            Subgoals.Push(new RepairGoal(Performer, RS));
-            Subgoals.Push(new ArriveGoal(Performer, RS.Position));
+                Subgoals.Push(new RepairGoal(Performer, RS));
+                Subgoals.Push(new ArriveGoal(Performer, RS.Position));
+            }
+            else Status = GoalStatus.Failed;
         }
         public override GoalStatus Process()
         {
@@ -35,22 +39,17 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         /// This method will find the nearest RepairStation
         /// </summary>
         /// <returns></returns>
-        private RepairStation GetNearestRepairStation()
+        private RepairStation? GetNearestRepairStation()
         {
             List<RepairStation> stations = Performer.world.GetStaticEntityListOf<RepairStation>();
 
-            if (stations.Count == 0)
-            {
-                RepairStation RS = new(Performer.world, new Vector2D(500, 100));
-                Performer.world.StaticEntities.Add(RS);
-                return RS;
-            }
-            else
+            if (stations.Count != 0)
             {
                 RepairStation NearestRS = new(Performer.world, new Vector2D());
                 double distanceToNearest = float.PositiveInfinity;
                 foreach (RepairStation station in stations)
                 {
+                    if (station.IsOccupied()) continue;
                     double nearest = Performer.Position.Distance(station.Position);
                     if (nearest < distanceToNearest)
                     {
@@ -60,11 +59,15 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
                 }
                 return NearestRS;
             }
+            return null;
         }
 
         public override void Terminate()
         {
             RS?.Leave();
+
+            base.Terminate();
+
         }
     }
 }

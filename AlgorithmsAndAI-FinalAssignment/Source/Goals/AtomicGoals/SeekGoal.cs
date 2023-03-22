@@ -42,6 +42,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
 
             /* Remove the arrive steering behaviour from the steeringbehaviours list */
             Performer.SteeringBehaviours.RemoveAll(x => x is SeekBehaviour);
+
+            base.Terminate();
+
         }
     }
 }

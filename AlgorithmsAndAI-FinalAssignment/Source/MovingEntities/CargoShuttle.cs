@@ -56,6 +56,14 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
             if (o == null || Form1.SimplifiedLook) RenderSimplified(g, Color.White);
             else g.DrawImage((Image)o, r);
 
+            g.DrawString(
+                s: "Bla" + SteeringBehaviours.Count(),
+                font: new Font("Arial", 6),
+                brush: Brushes.White,
+                x: (int)Position.x - 50,
+                y: (int)Position.y - 60
+                );
+
             base.Render(g);
 
             //Vector2D bla = Velocity.Clone();

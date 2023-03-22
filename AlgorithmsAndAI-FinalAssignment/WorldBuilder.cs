@@ -6,6 +6,7 @@ using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Properties;
 using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 using AlgorithmsAndAI_FinalAssignment.Source.StaticEntities;
+using System.Configuration;
 
 namespace AlgorithmsAndAI_FinalAssignment
 {
@@ -13,8 +14,11 @@ namespace AlgorithmsAndAI_FinalAssignment
     {
         public static void GenerateMovingEntities(World world)
         {
-            CargoShuttle CS1 = new(world, new Vector2D(125, 125));
-            world.MovingEntities.AddRange(new List<MovingEntity> { CS1 });
+            CargoShuttle CS1 = new(world, new Vector2D(500, 100));
+            CargoShuttle CS2 = new(world, new Vector2D(1000, 1000));
+            CargoShuttle CS3 = new(world, new Vector2D(1000, 500));
+
+            world.MovingEntities.AddRange(new List<MovingEntity> { CS1, CS2, CS3 });
             NormalShuttle NS1 = new(world, new Vector2D(125, 125));
 
             world.MainAgent = NS1;
@@ -62,35 +66,40 @@ namespace AlgorithmsAndAI_FinalAssignment
         }
         public static FuzzyModule SetupBestCargoModule(World world)
         {
-
-            double MaximalDistance = new Vector2D(0, 0).DistanceSquared(new Vector2D(world.Width, world.Height));
-
-            //int distanceLow = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceLow"));
-            //int distanceMid = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceMid"));
-            //int distanceHigh = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DistanceHigh"));
-
             FuzzyModule FM = new();
 
             /* Create Variables */
             FuzzyVariable Distance = FM.CreateFLV("DISTANCE");
-            FuzzyTerm_SET ShortDistance = Distance.AddLeftShoulderSet("LOW", 0, MaximalDistance / 4, MaximalDistance / 2);
-            FuzzyTerm_SET MediumDistance = Distance.AddTriangle("MEDIUM", MaximalDistance / 4, MaximalDistance / 2, MaximalDistance / 4 * 3);
-            FuzzyTerm_SET FarDistance = Distance.AddRightShoulderSet("HIGH", MaximalDistance / 2, MaximalDistance / 4 * 3, MaximalDistance);
+            int DistanceMin = GetVariableValue("DistanceMin");
+            int DistanceMid = GetVariableValue("DistanceMid");
+            int DistanceMax = GetVariableValue("DistanceMax");
+            FuzzyTerm_SET ShortDistance = Distance.AddLeftShoulderSet("SHORT", DistanceMin, DistanceMid / 2, DistanceMid);
+            FuzzyTerm_SET MediumDistance = Distance.AddTriangle("MEDIUM", DistanceMid / 2, DistanceMid, DistanceMid / 2 * 3);
+            FuzzyTerm_SET FarDistance = Distance.AddRightShoulderSet("FAR", DistanceMid, DistanceMid / 2 * 3, DistanceMax);
 
             FuzzyVariable Wear = FM.CreateFLV("WEAR");
-            FuzzyTerm_SET LowWear = Wear.AddLeftShoulderSet("LOW", 0, 25, 50);
-            FuzzyTerm_SET MediumWear = Wear.AddTriangle("MEDIUM", 25, 50, 75);
-            FuzzyTerm_SET HighWear = Wear.AddRightShoulderSet("HIGH", 50, 75, 100);
+            int WearMin = GetVariableValue("WearMin");
+            int WearMid = GetVariableValue("WearMid");
+            int WearMax = GetVariableValue("WearMax");
+            FuzzyTerm_SET LowWear = Wear.AddLeftShoulderSet("LOW", WearMin, WearMid / 2, WearMid);
+            FuzzyTerm_SET MediumWear = Wear.AddTriangle("MEDIUM", WearMid / 2, WearMid, WearMid / 2 * 3);
+            FuzzyTerm_SET HighWear = Wear.AddRightShoulderSet("HIGH", WearMid, WearMid / 2 * 3, WearMax);
 
             FuzzyVariable Fuel = FM.CreateFLV("FUEL");
-            FuzzyTerm_SET LowFuel = Fuel.AddLeftShoulderSet("LOW", 0, 25, 50);
-            FuzzyTerm_SET MediumFuel = Fuel.AddTriangle("MEDIUM", 25, 50, 75);
-            FuzzyTerm_SET HighFuel = Fuel.AddRightShoulderSet("HIGH", 50, 75, 100);
+            int FuelMin = GetVariableValue("FuelMin");
+            int FuelMid = GetVariableValue("FuelMid");
+            int FuelMax = GetVariableValue("FuelMax");
+            FuzzyTerm_SET LowFuel = Fuel.AddLeftShoulderSet("LOW", FuelMin, FuelMid / 2, FuelMid);
+            FuzzyTerm_SET MediumFuel = Fuel.AddTriangle("MEDIUM", FuelMid / 2, FuelMid, FuelMid / 2 * 3);
+            FuzzyTerm_SET HighFuel = Fuel.AddRightShoulderSet("HIGH", FuelMid, FuelMid / 2 * 3, FuelMax);
 
             FuzzyVariable Desirability = FM.CreateFLV("DESIRABILITY");
-            FuzzyTerm_SET Undesirable = Desirability.AddLeftShoulderSet("Undesirable", 0, 25, 50);
-            FuzzyTerm_SET Desirable = Desirability.AddTriangle("Desirable", 25, 50, 75);
-            FuzzyTerm_SET VeryDesirable = Desirability.AddRightShoulderSet("VeryDesirable", 50, 75, 100);
+            int DesirabilityMin = GetVariableValue("DesirabilityMin");
+            int DesirabilityMid = GetVariableValue("DesirabilityMid");
+            int DesirabilityMax = GetVariableValue("DesirabilityMax");
+            FuzzyTerm_SET Undesirable = Desirability.AddLeftShoulderSet("LOW", DesirabilityMin, DesirabilityMid / 2, DesirabilityMid);
+            FuzzyTerm_SET Desirable = Desirability.AddTriangle("MEDIUM", DesirabilityMid / 2, DesirabilityMid, DesirabilityMid / 2 * 3);
+            FuzzyTerm_SET VeryDesirable = Desirability.AddRightShoulderSet("HIGH", DesirabilityMid, DesirabilityMid / 2 * 3, DesirabilityMax);
 
             /* Undesirable Rules*/
             FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, LowFuel), Undesirable);
@@ -125,6 +134,11 @@ namespace AlgorithmsAndAI_FinalAssignment
             FM.AddRule(new FuzzyTerm_AND(ShortDistance, LowWear, LowFuel), VeryDesirable);
 
             return FM;
+
+        }
+        private static int GetVariableValue(string variable)
+        {
+            return Convert.ToInt32(ConfigurationManager.AppSettings.Get(variable));
 
         }
 

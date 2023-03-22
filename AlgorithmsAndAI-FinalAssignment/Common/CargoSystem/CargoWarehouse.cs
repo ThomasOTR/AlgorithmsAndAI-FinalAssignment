@@ -46,13 +46,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         }
         public Cargo GetCargoSuitedBestForShuttle(MovingEntity ME)
         {
-            // Implement Fuzzy Logic
             Cargo MostDesirableCargo = null;
             double HighestDesirabililtyValue = 0.0;
 
             foreach (Cargo cargo in CargoForDelivery)
             {
                 if (cargo.TargetLocation == null) continue;
+                else if (cargo.TargetLocation.GetOccupationState() == OccupationState.Claimed || cargo.TargetLocation.GetOccupationState() == OccupationState.Occupied) continue;
 
                 double fuel = ME.Fuel.currentValue;
                 double wear = ME.Wear.currentValue;
@@ -82,6 +82,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             g.DrawImage(Resources.CargoWarehouse, r);
             g.DrawString("Warehouse", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
             g.DrawString("Occupied:" + GetOccupationState(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 30);
+            if (IsOccupied()) g.DrawString("by" + GetOccupiedBy().Position.ToString(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 40);
+
 
         }
     }

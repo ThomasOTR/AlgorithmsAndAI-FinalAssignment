@@ -30,7 +30,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
         /// <summary>
         /// A method to disable the enabled behaviour;
         /// </summary>
-        public virtual void Terminate() { }
+        public virtual void Terminate()
+        {
+            if (Status == GoalStatus.Active || Status == GoalStatus.Inactive) Status = GoalStatus.Completed;
+        }
 
         /// <summary>
         /// A simple method to check if the status of the goal is correct;

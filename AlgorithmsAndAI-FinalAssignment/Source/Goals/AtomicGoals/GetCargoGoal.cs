@@ -1,6 +1,7 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.CargoSystem;
 using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Goals;
+using Timer = System.Timers.Timer;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
 {
@@ -10,9 +11,25 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
     public class GetCargoGoal : Goal
     {
         private CargoWarehouse CW;
+        private Timer timer;
+
         public GetCargoGoal(MovingEntity movingEntity, CargoWarehouse CW) : base(movingEntity)
         {
             this.CW = CW;
+            timer = new Timer() { Interval = 3000 };
+            timer.Elapsed += Timer_Elapsed;
+            timer.AutoReset = false;
+        }
+
+        private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+        {
+            Status = GoalStatus.Completed;
+        }
+
+        public override void Activate()
+        {
+            base.Activate();
+            timer.Start();
         }
 
 
@@ -22,10 +39,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
 
             /* The interaction between the Warehouse and the shuttle. This time the interaction is loading a cargo into the shuttle */
             CW.Interact(Performer);
-
-            // TODO: Add 5 second wait 
-
-            if (Performer.cargo != null) Status = GoalStatus.Completed;
 
             return Status;
 

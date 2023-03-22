@@ -32,7 +32,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
             if (Status == GoalStatus.Inactive) Activate();
 
             /* This goal will be completed if the shuttle is within a few pixels of its precise location*/
-            if (Performer.Position.WithinRange(Performer.Target, 5)) Status = GoalStatus.Completed;
+            if (Performer.Position.WithinRange(Performer.Target, 10)) Status = GoalStatus.Completed;
 
             return Status;
         }
@@ -43,6 +43,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
 
             /* Remove the arrive steering behaviour from the steeringbehaviours list */
             Performer.SteeringBehaviours.RemoveAll(x => x is ArriveBehaviour);
+
+            base.Terminate();
 
         }
     }

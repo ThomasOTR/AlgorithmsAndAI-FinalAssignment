@@ -43,6 +43,9 @@ namespace FinalAssignmentAAI.Goals
             /* This is needed to reuse the graph */
 
             Performer.world.graph.Reset();
+
+            base.Terminate();
+
         }
     }
 }

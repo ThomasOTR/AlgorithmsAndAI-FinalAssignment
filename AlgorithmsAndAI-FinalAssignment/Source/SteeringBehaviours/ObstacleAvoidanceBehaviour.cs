@@ -8,7 +8,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
     public class ObstacleAvoidanceBehaviour : SteeringBehaviour
     {
         private double AheadValue = 60;
-        private double AvoidingMultiplier = 25;
+        private double AvoidingMultiplier = 40;
         public ObstacleAvoidanceBehaviour(MovingEntity ME) : base(ME)
         {
         }
@@ -25,7 +25,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
             /* Loop through all space obstacles */
             foreach (SpaceObstacle SO in ME.world.GetStaticEntityListOf<SpaceObstacle>())
             {
-                /* Calculate the distance from the detection points to an obstacle */
+                /* Calculate the distance from the detection point to an obstacle */
                 double distance = SO.Position.Distance(v1);
 
                 /* 
