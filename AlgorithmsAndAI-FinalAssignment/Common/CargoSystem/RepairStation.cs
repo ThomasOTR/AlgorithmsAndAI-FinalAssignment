@@ -16,6 +16,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 
         public override void Interact(MovingEntity shuttle)
         {
+            /* Triggers the default method which will update the Occuptation state */
             base.Interact(shuttle);
 
             /* Increase the wear by repairing the shuttle */
@@ -24,11 +25,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 
         public override void Render(Graphics g)
         {
-            Rectangle r = new Rectangle((int)(Position.x - radius), (int)(Position.y - (radius * 0.5)), radius * 2, radius);
+            Rectangle r = new((int)(Position.x - radius), (int)(Position.y - (radius * 0.5)), radius * 2, radius);
 
             g.DrawImage(Resources.RepairStation, r);
             g.DrawString("RepairStation", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
-            g.DrawString("Occupied:" + GetOccupationState(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 30);
+
+            base.Render(g);
+
 
         }
     }

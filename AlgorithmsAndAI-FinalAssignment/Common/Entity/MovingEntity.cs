@@ -94,9 +94,14 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             if (Form1.StatsVisibile) RenderStats(g);
         }
 
+        /// <summary>
+        /// A method to render a simplified version of the Entity and the force of the entity
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="c"></param>
         public void RenderSimplified(Graphics g, Color c)
         {
-            Rectangle r = new Rectangle((int)(Position.x - 25), (int)(Position.y - 25), 50, 50);
+            Rectangle r = new((int)(Position.x - 15), (int)(Position.y - 15), 30, 30);
             g.DrawRectangle(new Pen(c, 1), r);
 
             g.DrawLine(new Pen(Color.Red, 1),
@@ -107,9 +112,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 
         }
 
+        /// <summary>
+        /// A method to render the stats of the Entity
+        /// </summary>
+        /// <param name="g"></param>
         private void RenderStats(Graphics g)
         {
-            string drawString = $"Fuel: {Fuel.currentValue.ToString("f2")} , Wear: {Wear.currentValue.ToString("f2")}";
+            string drawString = $"Fuel: {Fuel.currentValue:f2} , Wear: {Wear.currentValue:f2}";
 
             // Create font and brush.
             g.DrawString(
@@ -145,7 +154,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         private string GetBehaviourOuput(Goal g, int amountOfTabs = 0)
         {
             string output = "";
-            CompositeGoal CG = g as CompositeGoal;
+            CompositeGoal? CG = g as CompositeGoal;
             if (CG != null)
             {
                 output += CG.GetName() + "\n";
@@ -160,7 +169,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             }
             else return g.GetName();
         }
-        public static float calculatedAngle(Vector2D v)
+
+        /// <summary>
+        /// A method to convert the heading of the entity to an angle */
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static float ConvertHeadingIntoAngle(Vector2D v)
         {
             var angle = Math.Atan2(v.y, v.x);
             var degrees = 180 * angle / Math.PI;

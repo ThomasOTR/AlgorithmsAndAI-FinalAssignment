@@ -79,6 +79,12 @@
         {
             return new Vector2D(x - other.x, y - other.y).Length();
         }
+
+        /// <summary>
+        /// Squared version of Distance()
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public double DistanceSquared(Vector2D other)
         {
             return new Vector2D(x - other.x, y - other.y).LengthSquared();
@@ -108,6 +114,7 @@
         {
             return new Vector2D(x, y);
         }
+
         /// <summary>
         /// Method to add the values of a vector to this vector
         /// </summary>
@@ -226,6 +233,12 @@
                 return v;
             }
         }
+
+        /// <summary>
+        /// A method to check if 2 Vector2D's are the same.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object? obj)
         {
             if (obj == null) return false;
@@ -238,20 +251,14 @@
             }
         }
 
-        ///// <summary>
-        ///// Method to check if a vector is equal to this vector
-        ///// </summary>
-        ///// <param name="other"></param>
-        ///// <returns></returns>
-        //public override bool Equals(Vector2D other)
-        //{
-        //    if (x.Equals(other.x) && y.Equals(other.y)) return true;
-        //    return false;
-        //}
-
         public override string ToString()
         {
             return $"Vector2D({x},{y})";
+        }
+
+        public override int GetHashCode()
+        {
+            return x.GetHashCode() ^ y.GetHashCode();
         }
     }
 }

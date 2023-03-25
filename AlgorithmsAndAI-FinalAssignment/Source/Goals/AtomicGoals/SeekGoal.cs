@@ -30,8 +30,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
         {
             if (Status == GoalStatus.Inactive) Activate();
 
-            /* if the Peformer is near the target the goal is completed */
-            if (Performer.Position.WithinRange(Performer.Target, 10)) Status = GoalStatus.Completed;
+            if (Performer.Target != null)
+            {
+                /* if the Peformer is near the target the goal is completed */
+                if (Performer.Position.WithinRange(Performer.Target, 10)) Status = GoalStatus.Completed;
+            }
+            else Status = GoalStatus.Failed;
 
             return Status;
         }

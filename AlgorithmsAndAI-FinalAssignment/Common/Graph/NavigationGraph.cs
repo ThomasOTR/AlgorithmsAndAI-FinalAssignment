@@ -239,6 +239,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             NodesVisited = pq.GetNodes();
         }
 
+        /// <summary>
+        /// A method to reset the ShortestPath and VisitedNodes.
+        /// </summary>
         public void Reset()
         {
             ShortestPath.ForEach(n => n.Reset());

@@ -33,7 +33,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
             /* if the Peformer is a high distance away from the target 
              * the goal is completed
              */
-            if (Performer.Position.Distance(Performer.Target) > 500) Status = GoalStatus.Completed;
+            if (Performer.Target != null)
+            {
+                if (Performer.Position.Distance(Performer.Target) > 500) Status = GoalStatus.Completed;
+            }
+            else Status = GoalStatus.Failed;
 
             return Status;
         }

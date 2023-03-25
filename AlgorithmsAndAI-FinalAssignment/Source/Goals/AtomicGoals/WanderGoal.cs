@@ -26,7 +26,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
         }
         public override void Terminate()
         {
-            Status = GoalStatus.Completed;
             /* Reset the Velocity to a default vector to give the next behaviour a fresh start */
             Performer.Velocity = new Vector2D(0, 0);
 

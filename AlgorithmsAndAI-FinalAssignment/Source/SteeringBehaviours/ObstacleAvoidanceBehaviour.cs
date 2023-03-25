@@ -18,9 +18,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
         /// <param name="v1"></param>
         /// <param name="v2"></param>
         /// <returns></returns>
-        private SpaceObstacle GetMostThreateningObstacle(Vector2D v1)
+        private SpaceObstacle? GetMostThreateningObstacle(Vector2D v1)
         {
-            SpaceObstacle threat = null;
+            SpaceObstacle? threat = null;
 
             /* Loop through all space obstacles */
             foreach (SpaceObstacle SO in ME.world.GetStaticEntityListOf<SpaceObstacle>())
@@ -60,7 +60,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
             FrontFeelerPosition.Add(ME.Position);
 
             /* Get a threat*/
-            SpaceObstacle Threat = GetMostThreateningObstacle(FrontFeelerPosition);
+            SpaceObstacle? Threat = GetMostThreateningObstacle(FrontFeelerPosition);
 
             /* if there is no threat, move to the Feeler position which is straight ahead */
             if (Threat == null) return ME.Velocity;

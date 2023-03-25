@@ -14,9 +14,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
         /* The destination of the Cargo */
         private DeliveryStation station;
 
-        /* The value that will be increased each Process() call*/
-        private float WaitAmount = 0;
-
         private Timer timer;
 
 
@@ -28,11 +25,19 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
             timer.AutoReset = false;
         }
 
+        /// <summary>
+        /// A method to set the Status to Complete. Because of the settings of the Timer, it will only trigger once.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
         {
             Status = GoalStatus.Completed;
         }
 
+        /// <summary>
+        /// Trigger the Activate of the base class and starts the timer.
+        /// </summary>
         public override void Activate()
         {
             base.Activate();
@@ -45,13 +50,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
 
             /* With this line the Performer will interact with the station. In this case interact is moving the cargo from shuttle to station */
             station.Interact(Performer);
-
-            /* The interaction needs only 1 call. That is why i have added a check to let the shuttle at least be busy for at least 5 seconds */
-            //if (WaitAmount == 5000)
-            //{
-            //    Status = GoalStatus.Completed;
-            //}
-            //WaitAmount += 50;
 
             return Status;
         }

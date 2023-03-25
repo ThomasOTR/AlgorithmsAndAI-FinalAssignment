@@ -17,7 +17,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 
         public override void Interact(MovingEntity shuttle)
         {
+            /* Triggers the default method which will update the Occuptation state */
             base.Interact(shuttle);
+
             /* Increasing the Fuel of the CargoShuttle */
             shuttle.Fuel.Increase(FuelingSpeed);
         }
@@ -29,7 +31,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             g.DrawImage(Resources.PetrolStation, r);
 
             g.DrawString("FuelStation", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
-            g.DrawString("Occupied:" + GetOccupationState(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 30);
+
+            base.Render(g);
 
         }
     }

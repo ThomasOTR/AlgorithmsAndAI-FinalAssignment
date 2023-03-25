@@ -17,7 +17,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
         /// <param name="goal"></param>
         public void AddSubgoal(Goal goal)
         {
-            Subgoals.Push(goal);
+            if (goal != null) Subgoals.Push(goal);
         }
 
         /// <summary>
@@ -31,12 +31,15 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
 
             if (Subgoals.Count != 0)
             {
-                Subgoals.Peek().Process();
-
-                if (Subgoals.Peek().Is(GoalStatus.Completed) || Subgoals.Peek().Is(GoalStatus.Failed))
+                if (Subgoals.First() != null)
                 {
-                    Subgoals.Peek().Terminate();
-                    Subgoals.Pop();
+                    Subgoals.Peek().Process();
+
+                    if (Subgoals.Peek().Is(GoalStatus.Completed) || Subgoals.Peek().Is(GoalStatus.Failed))
+                    {
+                        Subgoals.Peek().Terminate();
+                        Subgoals.Pop();
+                    }
                 }
                 status = GoalStatus.Active;
             }

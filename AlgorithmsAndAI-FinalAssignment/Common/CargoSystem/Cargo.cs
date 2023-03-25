@@ -11,6 +11,7 @@
         /* The target of this cargo. Which will be used in the delivery process */
         public DeliveryStation TargetLocation;
 
+        /* Pre-defined names for creating new cargo*/
         public static string[] CargoNames = { "Weapons", "Droids", "Technological Innovations", "Food" };
 
         public Cargo(string Name, DeliveryStation targetLocation)

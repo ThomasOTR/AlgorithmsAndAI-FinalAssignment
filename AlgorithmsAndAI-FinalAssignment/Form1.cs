@@ -11,7 +11,9 @@ namespace AlgorithmsAndAI_FinalAssignment
         public static bool GraphVisible = false;
         public static bool StatsVisibile = false;
         public static bool BehaviourVisible = false;
-        public static bool SimplifiedLook = false;
+        public static bool SimplifiedMovingEntityLook = false;
+        public static bool StaticEntityDetails = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -50,7 +52,9 @@ namespace AlgorithmsAndAI_FinalAssignment
                 case Keys.B:
                     BehaviourVisible = !BehaviourVisible; break;
                 case Keys.L:
-                    SimplifiedLook = !SimplifiedLook; break;
+                    SimplifiedMovingEntityLook = !SimplifiedMovingEntityLook; break;
+                case Keys.D:
+                    StaticEntityDetails = !StaticEntityDetails; break;
                 case Keys.Escape:
                     Application.Exit(); break;
             }

@@ -10,7 +10,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
         {
             if (!ME.Brain.Present(typeof(DeliverCargoGoal)) && ME.cargo != null)
             {
-                if (ME.Brain.Subgoals.Count > 0) { ME.Brain.Subgoals.Peek().Terminate(); ME.Brain.Subgoals.Clear(); }
+                if (ME.Brain.Subgoals.Count > 0)
+                {
+                    ME.Brain.Subgoals.Peek().Terminate();
+                    ME.Brain.Subgoals.Clear();
+                }
+
                 ME.Brain.AddSubgoal(new DeliverCargoGoal(ME, ME.cargo));
             }
 

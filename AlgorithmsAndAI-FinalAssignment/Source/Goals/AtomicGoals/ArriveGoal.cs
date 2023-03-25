@@ -24,15 +24,18 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
             /* Add the arrive behaviour and the target to our shuttle */
             Performer.Target = Target;
             Performer.SteeringBehaviours.Add(new ArriveBehaviour(Performer));
-
         }
 
         public override GoalStatus Process()
         {
             if (Status == GoalStatus.Inactive) Activate();
 
-            /* This goal will be completed if the shuttle is within a few pixels of its precise location*/
-            if (Performer.Position.WithinRange(Performer.Target, 10)) Status = GoalStatus.Completed;
+            if (Performer.Target != null)
+            {
+                /* This goal will be completed if the shuttle is within a few pixels of its precise location*/
+                if (Performer.Position.WithinRange(Performer.Target, 10)) Status = GoalStatus.Completed;
+            }
+            else Status = GoalStatus.Failed;
 
             return Status;
         }

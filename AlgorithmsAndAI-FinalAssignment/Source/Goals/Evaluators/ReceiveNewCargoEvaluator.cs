@@ -11,14 +11,19 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
         {
             if (!ME.Brain.Present(typeof(ReceiveNewCargoGoal)))
             {
-                if (ME.Brain.Subgoals.Count > 0) { ME.Brain.Subgoals.Peek().Terminate(); ME.Brain.Subgoals.Clear(); }
+                if (ME.Brain.Subgoals.Count > 0)
+                {
+                    ME.Brain.Subgoals.Peek().Terminate();
+                    ME.Brain.Subgoals.Clear();
+                }
                 ME.Brain.AddSubgoal(new ReceiveNewCargoGoal(ME));
             }
         }
 
         public override double CalculateDesirability(MovingEntity ME)
         {
-            if (ME.cargo != null || ME.world.GetStaticEntityListOf<CargoWarehouse>().All(s => s.IsOccupied() == true)) return 0.0;
+            if (ME.cargo != null) return 0.0;
+            if (ME.world.GetStaticEntityListOf<CargoWarehouse>().All(s => s.IsOccupied() == true)) return 0.0;
 
             return 0.5;
         }

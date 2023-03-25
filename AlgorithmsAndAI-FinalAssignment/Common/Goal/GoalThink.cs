@@ -23,10 +23,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
         }
         public override GoalStatus Process()
         {
-            //if (Subgoals.Any(p => p == null))
-            //{
-            //    Debug.WriteLine("bla");
-            //}
             if (Subgoals.Count == 0 || Subgoals.First() is WanderGoal) Arbitrate();
             return ProcessSubgoals();
         }

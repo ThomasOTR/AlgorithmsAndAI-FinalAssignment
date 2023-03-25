@@ -17,12 +17,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
         }
         public override void Render(Graphics g)
         {
-            Rectangle r = new Rectangle((int)(Position.x - 25), (int)(Position.y - 25), 50, 50);
+            Rectangle r = new((int)(Position.x - 25), (int)(Position.y - 25), 50, 50);
 
-            int RoundedAngle = (int)Math.Round(calculatedAngle(Heading) / 15);
-            object o = Resources.ResourceManager.GetObject("shuttle_purple_rot" + RoundedAngle) as Image;
+            int RoundedAngle = (int)Math.Round(ConvertHeadingIntoAngle(Heading) / 15);
+            object? o = Resources.ResourceManager.GetObject("shuttle_purple_rot" + RoundedAngle) as Image;
 
-            if (o == null || Form1.SimplifiedLook) RenderSimplified(g, Color.White);
+            if (o == null || Form1.SimplifiedMovingEntityLook) RenderSimplified(g, Color.LightBlue);
             else g.DrawImage((Image)o, r);
 
             base.Render(g);

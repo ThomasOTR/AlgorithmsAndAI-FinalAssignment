@@ -25,10 +25,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         }
 
         public OccupationState GetOccupationState() { return occupationState; }
+
         /// <summary>
         /// Method to interact with the location when arrived
-        /// </summary>
-
+        /// </summary
         public void Claim(MovingEntity ME)
         {
             if (occupationState == OccupationState.Open)
@@ -41,6 +41,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
                 Debug.WriteLine("");
             }
         }
+        public override void Render(Graphics g)
+        {
+            if (Form1.StaticEntityDetails) { g.DrawString("Occupied:" + GetOccupationState(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 30); }
+        }
         public MovingEntity? GetOccupiedBy()
         {
             return OccupiedBy;
@@ -50,12 +54,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             occupationState = OccupationState.Occupied;
         }
 
+        /* Method to reset the location when a Moving Entity leaves the location  */
         public void Leave()
         {
             OccupiedBy = null;
             occupationState = OccupationState.Open;
         }
-
         /// <summary>
         /// Method to check if this location is occupied by someone.
         /// </summary>
@@ -71,10 +75,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         /// <param name="ME"></param>
         public void Occupy(MovingEntity ME)
         {
-            if (OccupiedBy == null)
-            {
-                OccupiedBy = ME;
-            }
+            OccupiedBy ??= ME;
         }
 
 

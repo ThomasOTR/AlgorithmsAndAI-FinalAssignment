@@ -8,7 +8,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         public int radius = 30;
         public StaticEntity(World world, Vector2D position) : base(world, position) { }
 
-
         public override void Update(float delta)
         {
 

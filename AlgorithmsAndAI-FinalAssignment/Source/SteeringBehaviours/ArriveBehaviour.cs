@@ -14,20 +14,24 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
 
         public override Vector2D Calculate()
         {
-            Vector2D toTarget = ME.Target.Clone().Subtract(ME.Position);
-            if (toTarget == null) return new Vector2D();
-
-            double distance = toTarget.Length();
-            if (distance <= 0)
+            if (ME.Target != null)
             {
-                return new Vector2D(0, 0);
+                Vector2D toTarget = ME.Target.Clone().Subtract(ME.Position);
+                if (toTarget == null) return new Vector2D();
+
+                double distance = toTarget.Length();
+                if (distance <= 0)
+                {
+                    return new Vector2D(0, 0);
+                }
+
+                double speed = ME.MaxSpeed;
+                if (ME.Position.WithinRange(ME.Target, 100)) speed = Map(distance, 100, ME.MaxSpeed);
+                Vector2D desiredVelocity = toTarget.Multiply(speed).Divide(distance);
+
+                return desiredVelocity.Subtract(ME.Velocity);
             }
-
-            double speed = ME.MaxSpeed;
-            if (ME.Position.WithinRange(ME.Target, 100)) speed = Map(distance, 100, ME.MaxSpeed);
-            Vector2D desiredVelocity = toTarget.Multiply(speed).Divide(distance);
-
-            return desiredVelocity.Subtract(ME.Velocity);
+            else return new Vector2D();
         }
         private static double Map(double value, double stop1, double stop2)
         {
