@@ -7,14 +7,25 @@ namespace AlgorithmsAndAI_FinalAssignment
 {
     public class World
     {
+        /* Width of the Canvas */
         public int Width;
+
+        /* Height of the Canvas*/
         public int Height;
 
+        /* The agent that will perform Path Following */
         public MovingEntity? MainAgent;
 
+        /* All the entities that will move around the canvas */
         public List<MovingEntity> MovingEntities;
+
+        /* All the entities that will not move */
         public List<StaticEntity> StaticEntities;
+
+        /* The graph on the canvas. This will be used for PathPlanning */
         public NavigationGraph graph;
+
+        /* The fuzzy module that will be used for getting the best cargo for each shuttle */
         public FuzzyModule BestCargoModule;
         public World(int width, int height)
         {
@@ -23,8 +34,11 @@ namespace AlgorithmsAndAI_FinalAssignment
             MovingEntities = new List<MovingEntity>();
             StaticEntities = new List<StaticEntity>();
             MainAgent = null;
+
+            /* Set the FuzzyModule */
             BestCargoModule = WorldBuilder.SetupBestCargoModule(this);
 
+            /* Generate all the Moving Entities and Static Entities */
             WorldBuilder.GenerateMovingEntities(this);
             WorldBuilder.GenerateStaticEntities(this);
 
@@ -36,8 +50,6 @@ namespace AlgorithmsAndAI_FinalAssignment
             if (MainAgent != null) MainAgent.Update(delta);
             StaticEntities.ForEach(x => { x.Update(delta); });
             MovingEntities.ForEach(x => { x.Update(delta); });
-
-
         }
         public void Render(Graphics g)
         {
@@ -45,17 +57,26 @@ namespace AlgorithmsAndAI_FinalAssignment
             StaticEntities.ForEach(x => { x.Render(g); });
             MovingEntities.ForEach(x => { x.Render(g); });
 
-
             if (Form1.GraphVisible)
             {
                 graph.Render(g);
             }
         }
 
+        /// <summary>
+        /// A method to get specific MovingEntities
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public List<T> GetMovingEntityListOf<T>() where T : MovingEntity
         {
             return MovingEntities.Where(e => e is T).Select(e => (T)e).ToList();
         }
+        /// <summary>
+        /// A method to get specific StaticEntities */
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public List<T> GetStaticEntityListOf<T>() where T : StaticEntity
         {
             return StaticEntities.Where(e => e is T).Select(e => (T)e).ToList();
@@ -67,11 +88,15 @@ namespace AlgorithmsAndAI_FinalAssignment
         /// </summary>
         /// <param name="vectorX"></param>
         /// <param name="vectorY"></param>
-        public void StartPathFindingProcess(int vectorX, int vectorY)
+        public void StartPathPlanning(int vectorX, int vectorY)
         {
+            /* Get the size between the nodes. This is needed to calculate the Node index */
             double size = NavigationGraph.BetweenNodes;
 
+            /* The end node, the node of the clicked position */
             Node end = graph.NodeList[Convert.ToInt32(vectorX / size), Convert.ToInt32(vectorY / size)];
+
+            /* If the end node does not exist or the MainAgent is not set. Do not start the AstarProcess */
             if (end != null && MainAgent != null)
             {
                 Node start = graph.NodeList[Convert.ToInt32(MainAgent.Position.x / size), Convert.ToInt32((MainAgent.Position.y / size))];
@@ -80,7 +105,8 @@ namespace AlgorithmsAndAI_FinalAssignment
         }
 
         //<summary>
-        // A method that will be used to reposition a entity if it is out of the boundaries of the world
+        // A method that will be used to reposition a entity if it is out of the boundaries of the world.
+        // The use of Math.Abs and the current position is to make the wrap around more fluently. 
         // </summary>
         // <param name = "position" ></param>
         public void WrapAround(Vector2D position)

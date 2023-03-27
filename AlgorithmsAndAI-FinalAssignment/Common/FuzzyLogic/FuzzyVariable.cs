@@ -118,6 +118,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic
             AdjustRangeToFit(minbound, maxbound);
             return new FuzzyTerm_SET(triangle);
         }
+
+        /// <summary>
+        /// A method to clear all the Degree of Memberships on each FuzzySet
+        /// </summary>
         public void ClearAllDOMValues()
         {
             foreach (KeyValuePair<string, FuzzySet> entry in MemberSets)

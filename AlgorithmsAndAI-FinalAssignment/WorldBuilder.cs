@@ -14,17 +14,20 @@ namespace AlgorithmsAndAI_FinalAssignment
     {
         public static void GenerateMovingEntities(World world)
         {
+            /* Adding shuttles which will bring cargo to locations */
             CargoShuttle CS1 = new(world, new Vector2D(1300, 600));
             CargoShuttle CS2 = new(world, new Vector2D(600, 1100));
             CargoShuttle CS3 = new(world, new Vector2D(100, 600));
-            world.MovingEntities.AddRange(new List<MovingEntity> { CS1, CS2, CS3 });
+            world.MovingEntities.AddRange(new List<MovingEntity> { CS1/*, CS2, CS3 */});
 
+            /* Adding a Normal shuttle which will wander around or will follow path */
             NormalShuttle NS1 = new(world, new Vector2D(125, 125));
             world.MainAgent = NS1;
 
         }
         public static void GenerateStaticEntities(World world)
         {
+            /* Adding Locations */
             DeliveryStation DS1 = new(world, new Vector2D(450, 150));
             DeliveryStation DS2 = new(world, new Vector2D(1100, 1000));
 
@@ -47,8 +50,11 @@ namespace AlgorithmsAndAI_FinalAssignment
 
             world.StaticEntities.AddRange(new List<StaticEntity> { CW1, CW2, CW3, PS1, PS2, RS1, RS2 });
 
+
             List<Bitmap> Asteroids = new() { Resources.asteroid, Resources.asteroid2, Resources.asteroid3, Resources.asteroid4, Resources.asteroid5, Resources.asteroid6 };
             List<Bitmap> Planets = new() { Resources.crystal, Resources.icy, Resources.terrestrial, Resources.hot, Resources.radiated, Resources.earth, Resources.neptune };
+
+            /* Adding some Astroids */
             world.StaticEntities.AddRange(new List<StaticEntity>
             {
                     new SpaceObstacle(world, new Vector2D(800, 950), Asteroids[new Random().Next(Asteroids.Count)]),
@@ -57,6 +63,7 @@ namespace AlgorithmsAndAI_FinalAssignment
                     new SpaceObstacle(world, new Vector2D(200, 700), Asteroids[new Random().Next(Asteroids.Count)]),
             });
 
+            /* Adding some Planets */
             world.StaticEntities.AddRange(new List<StaticEntity>
             {
                     new SpaceObstacle(world, new Vector2D(1000, 150), Planets[new Random().Next(Planets.Count)]),
@@ -70,11 +77,16 @@ namespace AlgorithmsAndAI_FinalAssignment
 
 
         }
+        /// <summary>
+        /// Method to create the FuzzyModule with all the needed components.
+        /// </summary>
+        /// <param name="world"></param>
+        /// <returns></returns>
         public static FuzzyModule SetupBestCargoModule(World world)
         {
             FuzzyModule FM = new();
 
-            /* Create Variables */
+            /* Create Variables with their FuzzyTerm_SET's which are based on App.config data */
             FuzzyVariable Distance = FM.CreateFLV("DISTANCE");
             int DistanceMin = GetVariableValue("DistanceMin");
             int DistanceMid = GetVariableValue("DistanceMid");

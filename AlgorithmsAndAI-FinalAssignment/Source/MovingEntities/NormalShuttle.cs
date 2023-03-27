@@ -3,6 +3,7 @@ using AlgorithmsAndAI_FinalAssignment.Common.Goals;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Properties;
 using AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators;
+using AlgorithmsAndAI_FinalAssignment.Steering;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
 {
@@ -13,6 +14,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
     {
         public NormalShuttle(World world, Vector2D position) : base(world, position)
         {
+            SteeringBehaviours.Add(new ObstacleAvoidanceBehaviour(this));
             Brain.AddEvaluators(new List<GoalEvaluator> { new FollowPathEvaluator(), new WanderEvaluator() });
         }
         public override void Render(Graphics g)

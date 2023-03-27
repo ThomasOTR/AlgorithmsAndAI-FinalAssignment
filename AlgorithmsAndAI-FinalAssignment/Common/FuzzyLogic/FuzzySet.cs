@@ -34,13 +34,17 @@
         /// It sets the Degree of Membership to the highest value between the value or the current Degree of Membership.
         /// </summary>
         /// <param name="val"></param>
-        public void SetDom(double val) => Dom= val;
+        public void SetDom(double val) => Dom = val;
 
         /// <summary>
         /// A method to easily set the dom to zero;
         /// </summary>
         public void ClearDom() { Dom = 0.0; }
 
+        /// <summary>
+        /// A method to get the Degree of Membership
+        /// </summary>
+        /// <returns></returns>
         public double GetDom() => Dom;
     }
 }

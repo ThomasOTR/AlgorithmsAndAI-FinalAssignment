@@ -25,9 +25,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
 
         public override double CalculateDesirability(MovingEntity ME)
         {
-            if (ME.world.GetStaticEntityListOf<RepairStation>().All(s => s.IsOccupied() == true)) return 0.0;
-            if (ME.Wear.currentValue >= 75 && ME.cargo != null) return 0.1;
-            return 1 - (ME.Wear.currentValue / ME.Wear.max);
+            double desirability = 0.0;
+            if (ME.Wear.currentValue <= 20 && !ME.world.GetStaticEntityListOf<RepairStation>().All(s => s.IsOccupied() == true))
+            {
+                desirability = 1 - ME.Wear.currentValue / 40;
+            }
+            return desirability;
         }
     }
 }

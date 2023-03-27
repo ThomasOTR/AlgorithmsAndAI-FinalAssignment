@@ -43,6 +43,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
         {
             return (Status == type);
         }
+        /// <summary>
+        /// A method to receive the Name of a goal. This is needed for Behaviour Rendering
+        /// </summary>
+        /// <returns></returns>
         public string GetName()
         {
             return GetType().Name;

@@ -14,6 +14,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
             GoalEvaluators = new List<GoalEvaluator>();
         }
 
+        /// <summary>
+        /// A method to add multiple evaluators in 1 method call
+        /// </summary>
+        /// <param name="evaluators"></param>
         public void AddEvaluators(List<GoalEvaluator> evaluators)
         {
             foreach (GoalEvaluator evaluator in evaluators)

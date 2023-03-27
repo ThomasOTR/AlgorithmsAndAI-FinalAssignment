@@ -43,7 +43,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         }
         public override void Render(Graphics g)
         {
-            if (Form1.StaticEntityDetails) { g.DrawString("Occupied:" + GetOccupationState(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 30); }
+            if (Form1.LocationDetails) { g.DrawString("Occupied:" + GetOccupationState(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 30); }
         }
         public MovingEntity? GetOccupiedBy()
         {

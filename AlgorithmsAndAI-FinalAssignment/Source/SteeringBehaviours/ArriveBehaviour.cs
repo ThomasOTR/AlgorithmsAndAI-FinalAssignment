@@ -26,7 +26,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
                 }
 
                 double speed = ME.MaxSpeed;
-                if (ME.Position.WithinRange(ME.Target, 100)) speed = Map(distance, 100, ME.MaxSpeed);
+                if (ME.Position.WithinRange(ME.Target, 100)) speed = (distance / 100) * ME.MaxSpeed;
                 Vector2D desiredVelocity = toTarget.Multiply(speed).Divide(distance);
 
                 return desiredVelocity.Subtract(ME.Velocity);
@@ -35,7 +35,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
         }
         private static double Map(double value, double stop1, double stop2)
         {
-            return (value - 0) / (stop1 - 0) * (stop2 - 0);
+            return (value / stop1) * stop2;
         }
     }
 }

@@ -69,17 +69,17 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
                 /* Get the current state of the Fuzzy Logic variables. */
                 double fuel = ME.Fuel.currentValue;
                 double wear = ME.Wear.currentValue;
-                double distance = ME.Position.Distance(cargo.TargetLocation.Position);
+                double distance = ME.Position.DistanceSquared(cargo.TargetLocation.Position);
 
                 FuzzyModule fm = ME.world.BestCargoModule;
 
                 /* Fuzzyify all the variables with the current values */
                 fm.Fuzzify("WEAR", wear);
                 fm.Fuzzify("FUEL", fuel);
-                fm.Fuzzify("DISTANCE", distance / 18);
-
-                /* Defuzzify and check if it has a higher Desirability.*/
+                fm.Fuzzify("DISTANCE", distance);
+                /* Defuzzify and check if it is a higher Desirability.*/
                 double DefuzzifiedValue = fm.Defuzzify("DESIRABILITY");
+
                 if (DefuzzifiedValue > HighestDesirabililtyValue)
                 {
                     MostDesirableCargo = cargo;

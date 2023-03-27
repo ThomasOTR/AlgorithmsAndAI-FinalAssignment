@@ -83,7 +83,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 
         }
 
-
         /// <summary>
         /// Method to render the Entity
         /// </summary>
@@ -92,8 +91,17 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         {
             if (Form1.BehaviourVisible) RenderBehavior(g);
             if (Form1.StatsVisibile) RenderStats(g);
+            if (Form1.ForceVisible) RenderForce(g);
         }
 
+        private void RenderForce(Graphics g)
+        {
+            g.DrawLine(new Pen(Color.Red, 1),
+                           (int)Position.x, (int)Position.y,
+                           (int)(Position.x + (Velocity.x * 25)),
+                           (int)(Position.y + (Velocity.y * 25))
+                           );
+        }
         /// <summary>
         /// A method to render a simplified version of the Entity and the force of the entity
         /// </summary>
@@ -103,12 +111,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         {
             Rectangle r = new((int)(Position.x - 15), (int)(Position.y - 15), 30, 30);
             g.DrawRectangle(new Pen(c, 1), r);
-
-            g.DrawLine(new Pen(Color.Red, 1),
-                (int)Position.x, (int)Position.y,
-                (int)(Position.x + (Velocity.x * 25)),
-                (int)(Position.y + (Velocity.y * 25))
-                );
 
         }
 

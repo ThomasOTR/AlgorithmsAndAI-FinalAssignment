@@ -43,13 +43,15 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
                 Fuel.Decrease(0.05);
                 Wear.Decrease(0.1);
             }
+
+            /* Run the base Update method which will calculate steering and updates the brain */
             base.Update(deltaTime);
 
         }
         public override void Render(Graphics g)
         {
             /* A rectangle with the position in the middle*/
-            Rectangle r = new Rectangle((int)(Position.x - 25), (int)(Position.y - 25), 50, 50);
+            Rectangle r = new((int)(Position.x - 25), (int)(Position.y - 25), 50, 50);
 
             /* Calculate the angle of the heading and divide it by 15 to get the best image based on the angle  */
             int RoundedAngle = (int)Math.Round(ConvertHeadingIntoAngle(Heading) / 15);
@@ -59,7 +61,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
             if (o == null || Form1.SimplifiedMovingEntityLook) RenderSimplified(g, Color.White);
             else g.DrawImage((Image)o, r);
 
-            /* Trigger the method in the base class. The base class method handles the rendering of the stats and the behaviour */
+            /* Trigger the method in the base class. The base class method handles the rendering of the boolean-depending stuff like behaviour */
             base.Render(g);
 
         }
