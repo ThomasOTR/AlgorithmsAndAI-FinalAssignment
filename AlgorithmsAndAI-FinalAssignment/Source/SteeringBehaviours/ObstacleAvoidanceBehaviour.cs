@@ -66,7 +66,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
             SpaceObstacle? Threat = GetMostThreateningObstacle(FrontFeelerPosition);
 
             /* if there is no threat, move to the Feeler position which is straight ahead */
-            if (Threat == null) return ME.Velocity;
+            if (Threat == null) return new Vector2D(0, 0);
 
             /* If there is a threat, calculate the avoiding force so the moving entity will not bump into an obstacle */
             else

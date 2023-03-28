@@ -8,7 +8,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
     /// </summary>
     public class GoalThink : CompositeGoal
     {
-        private List<GoalEvaluator> GoalEvaluators;
+        public List<GoalEvaluator> GoalEvaluators;
         public GoalThink(MovingEntity ME) : base(ME)
         {
             GoalEvaluators = new List<GoalEvaluator>();

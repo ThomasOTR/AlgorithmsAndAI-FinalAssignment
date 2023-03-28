@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AlgorithmsAndAI_FinalAssignment.Common.Graph.Edge">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <Members>
+      <Method Name="Edge" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Destination" Type="AlgorithmsAndAI_FinalAssignment.Common.Graph.Node">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.05" Y="0.396" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEABAAAAAAAAA=</HashCode>
+      <FileName>Common\Graph\Edge.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Destination" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AlgorithmsAndAI_FinalAssignment.Common.Graph.Graph">
+    <Position X="4.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>MAAQEAAAAAIABAAQGAIAAAEAIAAAAACABBgIAAAAAAI=</HashCode>
+      <FileName>Common\Graph\Graph.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="NodeList" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="ShortestPath" />
+      <Field Name="NodesVisited" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AlgorithmsAndAI_FinalAssignment.Common.Graph.Node">
+    <Position X="8.25" Y="4" Width="1.5" />
+    <AssociationLine Name="Adjecents" Type="AlgorithmsAndAI_FinalAssignment.Common.Graph.Edge">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.905" Y="0.214" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAEIAAAAAMABAAggAAAAAQAAAAAAEAAABAAGEAAAAA=</HashCode>
+      <FileName>Common\Graph\Node.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Adjecents" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AlgorithmsAndAI_FinalAssignment.Common.Graph.PriorityQueue">
+    <Position X="10.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAGAAAAAAAAAAAAIAAAAAAACAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Common\Graph\PriorityQueue.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="nodes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AlgorithmsAndAI_FinalAssignment.World">
+    <Position X="1.75" Y="4" Width="2" />
+    <Members>
+      <Field Name="BestCargoModule" Hidden="true" />
+      <Method Name="GetMovingEntityListOf" Hidden="true" />
+      <Method Name="GetStaticEntityListOf" Hidden="true" />
+      <Field Name="MovingEntities" Hidden="true" />
+      <Field Name="StaticEntities" Hidden="true" />
+      <Method Name="World" Hidden="true" />
+      <Method Name="WrapAround" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gQQAAAgBRAAAAAAAAAAAAEAACAAAAAAAQBAAABACAAA=</HashCode>
+      <FileName>World.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="graph" />
+      <Field Name="MainAgent" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AlgorithmsAndAI_FinalAssignment.Common.Entities.MovingEntity" Collapsed="true">
+    <Position X="2" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASSAgABAAAAAiAAAAAAEgCAAAEAAAAIAAhAAASCEAAA=</HashCode>
+      <FileName>Common\Entity\MovingEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
