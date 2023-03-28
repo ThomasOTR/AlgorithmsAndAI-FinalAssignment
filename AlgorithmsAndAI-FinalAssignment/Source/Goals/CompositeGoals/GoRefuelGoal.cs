@@ -1,7 +1,6 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.CargoSystem;
 using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Goals;
-using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals;
 
 namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
@@ -18,10 +17,16 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         }
         public override void Activate()
         {
+            /* Activate the goal */
             base.Activate();
 
+            /* Get the nearest available refuel station */
             PS = GetNearestRefuelStation();
+
+            /* If there is no petrol station to go, this goal is failed*/
             if (PS == null) Status = GoalStatus.Failed;
+
+            /* if there is one available, claim it and add the goals in opposite order*/
             else
             {
                 PS.Claim(Performer);
@@ -37,10 +42,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
 
         public override void Terminate()
         {
+            /* Leave the Petrolstation so other can go to it */
             PS?.Leave();
 
+            /* Terminate the goal as usual */
             base.Terminate();
-
 
         }
 
@@ -50,15 +56,21 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         /// <returns></returns>
         private PetrolStation? GetNearestRefuelStation()
         {
+            /* Get all the stations that are rendered */
             List<PetrolStation> stations = Performer.world.GetStaticEntityListOf<PetrolStation>();
 
             if (stations.Count != 0)
             {
-                PetrolStation NearestPS = new PetrolStation(Performer.world, new Vector2D());
+                PetrolStation? NearestPS = null;
                 double distanceToNearest = float.PositiveInfinity;
+
+                /* Loop through all the stations */
                 foreach (PetrolStation station in stations)
                 {
+                    /* if a station is occupied, skip it. */
                     if (station.IsOccupied()) continue;
+
+                    /* if the distance to the station is closer than the closest one before. Add it to the variables */
                     double nearest = Performer.Position.Distance(station.Position);
                     if (nearest < distanceToNearest)
                     {

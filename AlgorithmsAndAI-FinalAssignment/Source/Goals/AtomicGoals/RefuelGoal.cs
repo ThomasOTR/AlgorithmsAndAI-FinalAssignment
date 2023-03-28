@@ -23,7 +23,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
             PS.Interact(Performer);
 
             /* This goal is complete when the fuel is at it's max */
-
             if (Performer.Fuel.currentValue == Performer.Fuel.max) Status = GoalStatus.Completed;
 
             return Status;

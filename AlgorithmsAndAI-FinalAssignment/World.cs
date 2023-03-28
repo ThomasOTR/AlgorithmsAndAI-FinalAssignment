@@ -23,7 +23,7 @@ namespace AlgorithmsAndAI_FinalAssignment
         public List<StaticEntity> StaticEntities;
 
         /* The graph on the canvas. This will be used for PathPlanning */
-        public NavigationGraph graph;
+        public Graph graph;
 
         /* The fuzzy module that will be used for getting the best cargo for each shuttle */
         public FuzzyModule BestCargoModule;
@@ -42,7 +42,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             WorldBuilder.GenerateMovingEntities(this);
             WorldBuilder.GenerateStaticEntities(this);
 
-            graph = new NavigationGraph(this);
+            graph = new Graph(this);
 
         }
         public void Update(float delta)
@@ -91,7 +91,7 @@ namespace AlgorithmsAndAI_FinalAssignment
         public void StartPathPlanning(int vectorX, int vectorY)
         {
             /* Get the size between the nodes. This is needed to calculate the Node index */
-            double size = NavigationGraph.BetweenNodes;
+            double size = Graph.BetweenNodes;
 
             /* The end node, the node of the clicked position */
             Node end = graph.NodeList[Convert.ToInt32(vectorX / size), Convert.ToInt32(vectorY / size)];

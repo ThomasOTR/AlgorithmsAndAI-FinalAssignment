@@ -14,19 +14,27 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
     {
         public NormalShuttle(World world, Vector2D position) : base(world, position)
         {
+            /* Add default Steering that needs to run all the time */
             SteeringBehaviours.Add(new ObstacleAvoidanceBehaviour(this));
+
+            /* Add evaluators to the brain. Otherwise the NormalShuttle will do nothing */
             Brain.AddEvaluators(new List<GoalEvaluator> { new FollowPathEvaluator(), new WanderEvaluator() });
         }
         public override void Render(Graphics g)
         {
             Rectangle r = new((int)(Position.x - 25), (int)(Position.y - 25), 50, 50);
 
+            /* Calculate the Angle of the Heading of the Entity so i get the nearest 15 degrees. This will choose the specific rendering */
             int RoundedAngle = (int)Math.Round(ConvertHeadingIntoAngle(Heading) / 15);
             object? o = Resources.ResourceManager.GetObject("shuttle_purple_rot" + RoundedAngle) as Image;
 
+            /* If this image is not there or simplified look is enabled, render it simple*/
             if (o == null || Form1.SimplifiedMovingEntityLook) RenderSimplified(g, Color.LightBlue);
+
+            /* Render the Image*/
             else g.DrawImage((Image)o, r);
 
+            /* Trigger the method in the base class. The base class method handles the rendering of the boolean-depending stuff like behaviour */
             base.Render(g);
         }
     }

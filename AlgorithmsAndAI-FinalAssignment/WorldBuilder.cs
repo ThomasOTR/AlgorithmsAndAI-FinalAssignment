@@ -154,6 +154,11 @@ namespace AlgorithmsAndAI_FinalAssignment
             return FM;
 
         }
+        /// <summary>
+        /// A method to get easily a value of a variable in the App.Config
+        /// </summary>
+        /// <param name="variable"></param>
+        /// <returns></returns>
         private static int GetVariableValue(string variable)
         {
             return Convert.ToInt32(ConfigurationManager.AppSettings.Get(variable));

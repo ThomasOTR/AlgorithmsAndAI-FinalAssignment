@@ -16,7 +16,10 @@ namespace FinalAssignmentAAI.Goals
         }
         public override void Activate()
         {
+            /* Activate the goal */
             base.Activate();
+
+            /* Create goals based on the planned path */
             CreateGoalsOfPath(Performer.world.graph.GetShortestPath());
         }
 
@@ -26,9 +29,13 @@ namespace FinalAssignmentAAI.Goals
         /// <param name="path"></param>
         private void CreateGoalsOfPath(List<Node> path)
         {
+            if (path.Count == 0) Status = GoalStatus.Failed;
+
+            /* Reverse the path so i can add it in the right order for the stack */
             path.Reverse();
             foreach (Node node in path)
             {
+                /* If the current node position is the same as the Performer. Skip adding a goal, so it will not do goals for nothing */
                 if (Performer.Position.Equals(node.Position)) continue;
 
                 Subgoals.Push(new SeekGoal(Performer, node.Position));
@@ -41,9 +48,9 @@ namespace FinalAssignmentAAI.Goals
         public override void Terminate()
         {
             /* This is needed to reuse the graph */
-
             Performer.world.graph.Reset();
 
+            /* Terminate a goal as usual */
             base.Terminate();
 
         }

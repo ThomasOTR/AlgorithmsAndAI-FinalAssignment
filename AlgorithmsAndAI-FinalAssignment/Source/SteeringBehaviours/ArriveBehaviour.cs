@@ -20,6 +20,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
                 if (toTarget == null) return new Vector2D();
 
                 double distance = toTarget.Length();
+
                 if (distance <= 0)
                 {
                     return new Vector2D(0, 0);

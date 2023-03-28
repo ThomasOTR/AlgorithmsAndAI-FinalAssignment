@@ -21,11 +21,19 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
 
         public override void Activate()
         {
-            DeliveryStation DS = cargo.TargetLocation;
-            DS.Claim(Performer);
+            /* Check to make this goal go fluently*/
+            if (cargo == null) Status = GoalStatus.Failed;
+            else if (cargo.TargetLocation == null) Status = GoalStatus.Failed;
+            else
+            {
+                /* Claim the DeliveryStation so nobody else will go there. */
+                DeliveryStation DS = cargo.TargetLocation;
+                DS.Claim(Performer);
 
-            Subgoals.Push(new DropOffCargoGoal(Performer, DS));
-            Subgoals.Push(new ArriveGoal(Performer, DS.Position));
+                /* Add the goals in the opposite order that it needs to happen. Because of the stack implementation */
+                Subgoals.Push(new DropOffCargoGoal(Performer, DS));
+                Subgoals.Push(new ArriveGoal(Performer, DS.Position));
+            }
         }
         public override GoalStatus Process()
         {
@@ -33,8 +41,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         }
         public override void Terminate()
         {
+            /* Leave the location so others can go to it */
             cargo.TargetLocation.Leave();
 
+            /* Terminate it as all the goals will do on default */
             base.Terminate();
 
         }

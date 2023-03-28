@@ -18,9 +18,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         }
         public override void Activate()
         {
+            /* Activate the goal*/
             base.Activate();
 
+            /* Get the nearest available refuel station */
             RS = GetNearestRepairStation();
+
+            /* if there is one RepairStation available, claim it and add the goals in opposite order*/
             if (RS != null)
             {
                 RS.Claim(Performer);
@@ -28,6 +32,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
                 Subgoals.Push(new RepairGoal(Performer, RS));
                 Subgoals.Push(new ArriveGoal(Performer, RS.Position));
             }
+
+            /* If there is no petrol station to go, this goal is failed*/
             else Status = GoalStatus.Failed;
         }
         public override GoalStatus Process()
@@ -41,15 +47,21 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         /// <returns></returns>
         private RepairStation? GetNearestRepairStation()
         {
+            /* Get all the stations that are rendered */
             List<RepairStation> stations = Performer.world.GetStaticEntityListOf<RepairStation>();
 
             if (stations.Count != 0)
             {
                 RepairStation NearestRS = new(Performer.world, new Vector2D());
                 double distanceToNearest = float.PositiveInfinity;
+
+                /* Loop through all the stations */
                 foreach (RepairStation station in stations)
                 {
+                    /* if a station is occupied, skip it. */
                     if (station.IsOccupied()) continue;
+
+                    /* if the distance to the station is closer than the closest one before. Add it to the variables */
                     double nearest = Performer.Position.Distance(station.Position);
                     if (nearest < distanceToNearest)
                     {
@@ -64,8 +76,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
 
         public override void Terminate()
         {
+            /* Leave the RepairStation so other can go to it */
             RS?.Leave();
 
+            /* Terminate the goal as usual */
             base.Terminate();
 
         }

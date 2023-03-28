@@ -8,6 +8,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
     {
         public override void AddGoal(MovingEntity ME)
         {
+            /* Check if this type of goal is already present, if it is, do not add it to the brain */
             if (!ME.Brain.Present(typeof(DeliverCargoGoal)) && ME.cargo != null)
             {
                 if (ME.Brain.Subgoals.Count > 0)
@@ -23,9 +24,16 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
 
         public override double CalculateDesirability(MovingEntity ME)
         {
+            /* If there is no cargo, nothing can be delivered */
             if (ME.cargo == null) return 0;
+
+            /* If there is no location where the cargo needs to go to */
             else if (ME.cargo.TargetLocation == null) return 0;
+
+            /* If the location is occopied, it is not desirable to deliver the cargo */
             else if (ME.cargo.TargetLocation.IsOccupied()) return 0;
+
+            /* Otherwise it's fine and it is desirable */
             return 0.5;
         }
     }

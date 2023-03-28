@@ -4,11 +4,14 @@ using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Steering
 {
+    /// <summary>
+    /// This behaviour lets the Entity walk around the canvas
+    /// </summary>
     public class WanderBehaviour : SteeringBehaviour
     {
         const double DistanceToWanderPoint = 80;
         const double WanderRadius = 30;
-        double theta = 20;
+        double randomValue = 20;
         public WanderBehaviour(MovingEntity ME) : base(ME)
         {
         }
@@ -24,13 +27,18 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
             WanderPoint.Add(ME.Position);
 
             /* Create randomness to the movement. */
-            double x = Math.Cos(theta) * WanderRadius;
-            double y = Math.Sin(theta) * WanderRadius;
+            double x = Math.Cos(randomValue) * WanderRadius;
+            double y = Math.Sin(randomValue) * WanderRadius;
             WanderPoint.Add(new Vector2D(x, y));
-            //WanderPoint.Add(new Vector2D(theta * 5, theta * 10));
 
+            /* Determine the next value that determines the direction */
             Random r = new();
-            if (r.Next(2) == 0) theta += 0.2; else theta += -0.2;
+            if (r.Next(2) == 0) randomValue += 0.2; else randomValue += -0.2;
+
+            /* Calculate Velocity. 
+             * By subtracting the position of the WanderPoint by the position of the Entity 
+             * And speed up the velocity to the maximum speed by Entity
+             */
             return WanderPoint.Subtract(ME.Position).Normalize().Multiply(ME.MaxSpeed);
 
 

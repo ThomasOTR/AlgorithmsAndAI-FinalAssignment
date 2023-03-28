@@ -30,7 +30,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
 
         public Node(Vector2D Position)
         {
-            Name = $"{Position.x / NavigationGraph.BetweenNodes},{Position.y / NavigationGraph.BetweenNodes}";
+            Name = $"{Position.x / Graph.BetweenNodes},{Position.y / Graph.BetweenNodes}";
             this.Position = Position;
             Adjecents = new List<Edge>(4);
             Prev = null;

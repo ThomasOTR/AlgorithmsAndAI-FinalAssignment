@@ -5,6 +5,9 @@ using AlgorithmsAndAI_FinalAssignment.Source.StaticEntities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Steering
 {
+    /// <summary>
+    /// This behaviour lets the Entity avoid several obstacles 
+    /// </summary>
     public class ObstacleAvoidanceBehaviour : SteeringBehaviour
     {
         private double AheadValue = 60;

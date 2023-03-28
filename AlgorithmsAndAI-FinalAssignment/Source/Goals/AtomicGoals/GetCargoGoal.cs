@@ -21,6 +21,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
             timer.AutoReset = false;
         }
 
+        /// <summary>
+        /// A method to set the Status to Complete. Because of the settings of the Timer, it will only trigger once.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
         {
             Status = GoalStatus.Completed;

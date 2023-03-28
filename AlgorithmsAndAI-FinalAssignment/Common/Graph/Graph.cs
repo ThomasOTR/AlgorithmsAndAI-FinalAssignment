@@ -3,7 +3,7 @@ using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
 {
-    public class NavigationGraph
+    public class Graph
     {
         /* The world where the graph is used. Ideal to get specific properties*/
         private World world;
@@ -26,7 +26,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         /* Nodes visited during Astar PathPlanning */
         private List<Node> NodesVisited = new List<Node>();
 
-        public NavigationGraph(World world)
+        public Graph(World world)
         {
             this.world = world;
             MaxX = world.Width / BetweenNodes;
