@@ -18,7 +18,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             CargoShuttle CS1 = new(world, new Vector2D(1300, 600));
             CargoShuttle CS2 = new(world, new Vector2D(600, 1100));
             CargoShuttle CS3 = new(world, new Vector2D(100, 600));
-            world.MovingEntities.AddRange(new List<MovingEntity> { CS1/*, CS2, CS3 */});
+            world.MovingEntities.AddRange(new List<MovingEntity> { CS1, CS2, CS3 });
 
             /* Adding a Normal shuttle which will wander around or will follow path */
             NormalShuttle NS1 = new(world, new Vector2D(125, 125));

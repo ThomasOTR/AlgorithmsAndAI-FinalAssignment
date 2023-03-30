@@ -31,7 +31,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             InitializeComponent();
             DoubleBuffered = true;
 
-            world = new World(width: Width, height: Height);
+            world = new World(width: WorldCanvas.Width, height: WorldCanvas.Height);
             Paint += Form1_Paint;
             timer = new Timer()
 
@@ -52,32 +52,31 @@ namespace AlgorithmsAndAI_FinalAssignment
         private void Form1_Paint(object? sender, PaintEventArgs e)
         {
             world.Render(e.Graphics);
-        }
-        private void InputHandler(object? sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.B:
-                    BehaviourVisible = !BehaviourVisible; break;
-                case Keys.D:
-                    LocationDetails = !LocationDetails; break;
-                case Keys.F:
-                    ForceVisible = !ForceVisible; break;
-                case Keys.G:
-                    GraphVisible = !GraphVisible; break;
-                case Keys.L:
-                    SimplifiedMovingEntityLook = !SimplifiedMovingEntityLook; break;
-                case Keys.S:
-                    StatsVisibile = !StatsVisibile; break;
 
-                case Keys.Escape:
-                    Application.Exit(); break;
-            }
+            titleLabel.Text = " bla";
+        }
+        private void UpdateCheckBoxes()
+        {
+            checkBoxBehaviour.Checked = BehaviourVisible;
+            checkBoxLocationDetails.Checked = LocationDetails;
+            checkBoxForce.Checked = ForceVisible;
+            checkBoxGraph.Checked = GraphVisible;
+            checkBoxEntitySimplified.Checked = SimplifiedMovingEntityLook;
+            checkBoxStats.Checked = StatsVisibile;
         }
         private void OnClick(object sender, MouseEventArgs e)
         {
             world.StartPathPlanning(e.X, e.Y);
+        }
 
+        private void Outputs_CheckedChanged(object sender, EventArgs e)
+        {
+            BehaviourVisible = checkBoxBehaviour.Checked;
+            LocationDetails = checkBoxLocationDetails.Checked;
+            ForceVisible = checkBoxForce.Checked;
+            GraphVisible = checkBoxGraph.Checked;
+            SimplifiedMovingEntityLook = checkBoxEntitySimplified.Checked;
+            StatsVisibile = checkBoxStats.Checked;
         }
 
     }

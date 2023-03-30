@@ -64,7 +64,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             {
                 /* Checks to improve the cargo delivery cyclus */
                 if (cargo.TargetLocation == null) continue;
-                else if (cargo.TargetLocation.GetOccupationState() == OccupationState.Claimed || cargo.TargetLocation.GetOccupationState() == OccupationState.Occupied) continue;
+                else if (cargo.TargetLocation.GetOccupationState() == OccupationState.Claimed
+                || cargo.TargetLocation.GetOccupationState() == OccupationState.Occupied) continue;
 
                 /* Get the current state of the Fuzzy Logic variables. */
                 double fuel = ME.Fuel.currentValue;
