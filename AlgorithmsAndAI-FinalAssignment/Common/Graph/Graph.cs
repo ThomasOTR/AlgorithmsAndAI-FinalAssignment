@@ -6,28 +6,30 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
     public class Graph
     {
         /* The world where the graph is used. Ideal to get specific properties*/
-        private World world;
+        private readonly World world;
 
         /* The pixel size between each node */
-        public static int BetweenNodes = 25;
+        public static readonly int BetweenNodes = 25;
 
         /* comtains the amount of Nodes on the X axis */
-        private double MaxX;
+        private readonly double MaxX;
 
         /* contains the amount of nodes on the Y axis */
-        private double MaxY;
+        private readonly double MaxY;
 
         /* The Nodes on their positions */
         public Node[,] NodeList;
 
         /* Path that is planned. Result of Astar PathPlanning */
-        private List<Node> ShortestPath = new List<Node>();
+        private readonly List<Node> ShortestPath;
 
         /* Nodes visited during Astar PathPlanning */
-        private List<Node> NodesVisited = new List<Node>();
+        private List<Node> NodesVisited;
 
         public Graph(World world)
         {
+            ShortestPath = new List<Node>();
+            NodesVisited = new List<Node>();
             this.world = world;
             MaxX = world.Width / BetweenNodes;
             MaxY = world.Height / BetweenNodes;
@@ -41,9 +43,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         /// </summary>
         public void CreateNodes()
         {
-            for (int x = 0; x < MaxX; x++)
+            for (int x = 0; x <= MaxX; x++)
             {
-                for (int y = 0; y < MaxY; y++)
+                for (int y = 0; y <= MaxY; y++)
                 {
                     if (InRadiusOfStaticEntity(new Vector2D(x * BetweenNodes, y * BetweenNodes))) continue;
 
@@ -67,9 +69,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         /// </summary>
         public void CreateEdges()
         {
-            for (int x = 0; x < MaxX; x++)
+            for (int x = 0; x <= MaxX; x++)
             {
-                for (int y = 0; y < MaxY; y++)
+                for (int y = 0; y <= MaxY; y++)
                 {
                     if (NodeList[x, y] != null)
                     {
@@ -99,7 +101,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         /// <returns></returns>
         private bool IsOutOfRange(int x, int y)
         {
-
             if (x < 0 || y < 0) return true;
             else if (x > MaxX || y > MaxY) return true;
             else if (NodeList[x, y] == null) return true;
@@ -167,13 +168,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         /// <param name="g"></param>
         private void RenderAstar(Graphics g)
         {
-            for (int i = 0; i < ShortestPath.Count(); i++)
+            for (int i = 0; i < ShortestPath.Count; i++)
             {
                 Node n = ShortestPath[i];
                 n.Render(g, new Pen(Color.Orange, 3));
-                if (i + 1 < ShortestPath.Count())
+                if (i + 1 < ShortestPath.Count)
                 {
-                    Edge Temp = new Edge(ShortestPath[i + 1]);
+                    Edge Temp = new(ShortestPath[i + 1]);
                     Temp.Render(g, n.Position, new Pen(Color.Green, 3));
                 }
             }

@@ -36,7 +36,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             MainAgent = null;
 
             /* Set the FuzzyModule */
-            BestCargoModule = WorldBuilder.SetupBestCargoModule(this);
+            BestCargoModule = WorldBuilder.SetupBestCargoModule();
 
             /* Generate all the Moving Entities and Static Entities */
             WorldBuilder.GenerateMovingEntities(this);
@@ -47,13 +47,13 @@ namespace AlgorithmsAndAI_FinalAssignment
         }
         public void Update(float delta)
         {
-            if (MainAgent != null) MainAgent.Update(delta);
+            MainAgent?.Update(delta);
             StaticEntities.ForEach(x => { x.Update(delta); });
             MovingEntities.ForEach(x => { x.Update(delta); });
         }
         public void Render(Graphics g)
         {
-            if (MainAgent != null) MainAgent.Render(g);
+            MainAgent?.Render(g);
             StaticEntities.ForEach(x => { x.Render(g); });
             MovingEntities.ForEach(x => { x.Render(g); });
 

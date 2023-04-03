@@ -1,14 +1,4 @@
-﻿using AlgorithmsAndAI_FinalAssignment.Common.CargoSystem;
-using AlgorithmsAndAI_FinalAssignment.Common.Entities;
-using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic;
-using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms;
-using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using AlgorithmsAndAI_FinalAssignment.Properties;
-using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
-using AlgorithmsAndAI_FinalAssignment.Source.StaticEntities;
-using System.Configuration;
-
-namespace AlgorithmsAndAI_FinalAssignment
+﻿namespace AlgorithmsAndAI_FinalAssignment
 {
     public class WorldBuilder
     {
@@ -18,7 +8,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             CargoShuttle CS1 = new(world, new Vector2D(1300, 600));
             CargoShuttle CS2 = new(world, new Vector2D(600, 1100));
             CargoShuttle CS3 = new(world, new Vector2D(100, 600));
-            world.MovingEntities.AddRange(new List<MovingEntity> { CS1/*, CS2, CS3 */});
+            world.MovingEntities.AddRange(new List<MovingEntity> { CS1, CS2, CS3 });
 
             /* Adding a Normal shuttle which will wander around or will follow path */
             NormalShuttle NS1 = new(world, new Vector2D(125, 125));
@@ -82,7 +72,7 @@ namespace AlgorithmsAndAI_FinalAssignment
         /// </summary>
         /// <param name="world"></param>
         /// <returns></returns>
-        public static FuzzyModule SetupBestCargoModule(World world)
+        public static FuzzyModule SetupBestCargoModule()
         {
             FuzzyModule FM = new();
 
@@ -119,7 +109,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             FuzzyTerm_SET Desirable = Desirability.AddTriangle("MEDIUM", DesirabilityMid / 2, DesirabilityMid, DesirabilityMid / 2 * 3);
             FuzzyTerm_SET VeryDesirable = Desirability.AddRightShoulderSet("HIGH", DesirabilityMid, DesirabilityMid / 2 * 3, DesirabilityMax);
 
-
+            /* Undesirable Rules*/
             FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, LowFuel), Undesirable);
             FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, MediumFuel), Undesirable);
             FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, HighFuel), Undesirable);
@@ -149,12 +139,6 @@ namespace AlgorithmsAndAI_FinalAssignment
             FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, LowFuel), Desirable);
             FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, MediumFuel), Undesirable);
             FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, HighFuel), Undesirable);
-
-            FM.Fuzzify("WEAR", 90);
-            FM.Fuzzify("FUEL", 50);
-            FM.Fuzzify("DISTANCE", 600_000);
-            double value = FM.Defuzzify("DESIRABILITY");
-
             return FM;
 
         }
