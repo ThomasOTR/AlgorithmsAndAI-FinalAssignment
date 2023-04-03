@@ -119,37 +119,41 @@ namespace AlgorithmsAndAI_FinalAssignment
             FuzzyTerm_SET Desirable = Desirability.AddTriangle("MEDIUM", DesirabilityMid / 2, DesirabilityMid, DesirabilityMid / 2 * 3);
             FuzzyTerm_SET VeryDesirable = Desirability.AddRightShoulderSet("HIGH", DesirabilityMid, DesirabilityMid / 2 * 3, DesirabilityMax);
 
-            /* Undesirable Rules*/
+
             FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, LowFuel), Undesirable);
             FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, MediumFuel), Undesirable);
+            FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, HighFuel), Undesirable);
             FM.AddRule(new FuzzyTerm_AND(FarDistance, MediumWear, LowFuel), Undesirable);
-
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, HighWear, HighFuel), Undesirable);
-
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, HighFuel), Undesirable);
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, MediumFuel), Undesirable);
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, HighWear), Undesirable);
-
-            /* Desirable Rules*/
             FM.AddRule(new FuzzyTerm_AND(FarDistance, MediumWear, MediumFuel), Desirable);
-
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, LowWear, MediumFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, MediumWear, LowFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, MediumWear, HighFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, HighWear, MediumFuel), Desirable);
-
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, MediumFuel), Desirable);
-
-            /* Very Desirable Rules*/
             FM.AddRule(new FuzzyTerm_AND(FarDistance, MediumWear, HighFuel), VeryDesirable);
+            FM.AddRule(new FuzzyTerm_AND(FarDistance, HighWear, LowFuel), Undesirable);
             FM.AddRule(new FuzzyTerm_AND(FarDistance, HighWear, MediumFuel), VeryDesirable);
             FM.AddRule(new FuzzyTerm_AND(FarDistance, HighWear, HighFuel), VeryDesirable);
 
+            FM.AddRule(new FuzzyTerm_AND(MediumDistance, LowWear, LowFuel), Undesirable);
+            FM.AddRule(new FuzzyTerm_AND(MediumDistance, LowWear, MediumFuel), Desirable);
+            FM.AddRule(new FuzzyTerm_AND(MediumDistance, LowWear, HighFuel), Desirable);
+            FM.AddRule(new FuzzyTerm_AND(MediumDistance, MediumWear, LowFuel), Desirable);
             FM.AddRule(new FuzzyTerm_AND(MediumDistance, MediumWear, MediumFuel), VeryDesirable);
+            FM.AddRule(new FuzzyTerm_AND(MediumDistance, MediumWear, HighFuel), Desirable);
+            FM.AddRule(new FuzzyTerm_AND(MediumDistance, HighWear, LowFuel), Desirable);
+            FM.AddRule(new FuzzyTerm_AND(MediumDistance, HighWear, MediumFuel), Desirable);
+            FM.AddRule(new FuzzyTerm_AND(MediumDistance, HighWear, HighFuel), Undesirable);
 
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, LowFuel), VeryDesirable);
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, LowWear, MediumFuel), VeryDesirable);
             FM.AddRule(new FuzzyTerm_AND(ShortDistance, LowWear, LowFuel), VeryDesirable);
+            FM.AddRule(new FuzzyTerm_AND(ShortDistance, LowWear, MediumFuel), VeryDesirable);
+            FM.AddRule(new FuzzyTerm_AND(ShortDistance, LowWear, HighFuel), Desirable);
+            FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, LowFuel), VeryDesirable);
+            FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, MediumFuel), Desirable);
+            FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, HighFuel), Undesirable);
+            FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, LowFuel), Desirable);
+            FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, MediumFuel), Undesirable);
+            FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, HighFuel), Undesirable);
+
+            FM.Fuzzify("WEAR", 90);
+            FM.Fuzzify("FUEL", 50);
+            FM.Fuzzify("DISTANCE", 600_000);
+            double value = FM.Defuzzify("DESIRABILITY");
 
             return FM;
 
