@@ -1,4 +1,14 @@
-﻿namespace AlgorithmsAndAI_FinalAssignment
+﻿using AlgorithmsAndAI_FinalAssignment.Common.CargoSystem;
+using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic;
+using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms;
+using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
+using AlgorithmsAndAI_FinalAssignment.Properties;
+using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
+using AlgorithmsAndAI_FinalAssignment.Source.StaticEntities;
+using System.Configuration;
+
+namespace AlgorithmsAndAI_FinalAssignment
 {
     public class WorldBuilder
     {

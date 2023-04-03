@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms.VisualStyles;
-
-namespace AlgorithmsAndAI_FinalAssignment
+﻿namespace AlgorithmsAndAI_FinalAssignment
 {
     partial class Form1
     {
