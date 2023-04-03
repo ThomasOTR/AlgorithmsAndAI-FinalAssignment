@@ -1,24 +1,32 @@
-﻿using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic;
+﻿using AlgorithmsAndAI_FinalAssignment;
+using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic;
 using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms;
 
 namespace FinalAssignment_Tests
 {
     public class FuzzyLogicTests
     {
-        private FuzzyModule fm;
+        private World world;
+
         [SetUp]
         public void Setup()
         {
-            FuzzyModule FM = new FuzzyModule();
-            /* Create Variables */
-            FuzzyVariable energy = FM.CreateFLV("energy");
-            FuzzyTerm_SET lowenergy = energy.AddLeftShoulderSet("LOW", 0, 0, 5);
-            FuzzyTerm_SET averageenergy = energy.AddTriangle("AVERAGE", 0, 5, 10);
-            FuzzyTerm_SET highenergy = energy.AddRightShoulderSet("HIGH", 5, 10, 10);
+            world = new World(1400, 1200);
+        }
 
-            FuzzyVariable strength = FM.CreateFLV("strength");
-            FuzzyTerm_SET weak = strength.AddLeftShoulderSet("weak", 0, 5, 15);
-            FuzzyTerm_SET strong = strength.AddRightShoulderSet("strong", 5, 15, 20);
+        [TestCase(2, 10, 19.46)]
+        public void FuzzyLogicPracticeExamTest(double energy, double strength, double result)
+        {
+            FuzzyModule FM = new();
+            /* Create Variables */
+            FuzzyVariable energyvariable = FM.CreateFLV("energy");
+            FuzzyTerm_SET lowenergy = energyvariable.AddLeftShoulderSet("LOW", 0, 0, 5);
+            FuzzyTerm_SET averageenergy = energyvariable.AddTriangle("AVERAGE", 0, 5, 10);
+            FuzzyTerm_SET highenergy = energyvariable.AddRightShoulderSet("HIGH", 5, 10, 10);
+
+            FuzzyVariable strengthvariable = FM.CreateFLV("strength");
+            FuzzyTerm_SET weak = strengthvariable.AddLeftShoulderSet("weak", 0, 5, 15);
+            FuzzyTerm_SET strong = strengthvariable.AddRightShoulderSet("strong", 5, 15, 20);
 
             FuzzyVariable runningspeed = FM.CreateFLV("runningspeed");
             FuzzyTerm_SET slow = runningspeed.AddLeftShoulderSet("slow", 10, 15, 20);
@@ -32,17 +40,13 @@ namespace FinalAssignment_Tests
             FM.AddRule(new FuzzyTerm_AND(averageenergy, weak), average);
             FM.AddRule(new FuzzyTerm_AND(highenergy, strong), fast);
             FM.AddRule(new FuzzyTerm_AND(highenergy, weak), average);
-            fm = FM;
+
+            FM.Fuzzify("energy", energy);
+            FM.Fuzzify("strength", strength);
+
+            double DefuzzifiedValue = FM.Defuzzify("runningspeed");
+            Assert.That(Math.Round(DefuzzifiedValue, 2), Is.EqualTo(result));
         }
 
-        [TestCase(2, 10)]
-        public void CompareCodeVersusCalculated(double energy, double strength)
-        {
-            fm.Fuzzify("energy", energy);
-            fm.Fuzzify("strength", strength);
-
-            double DefuzzifiedValue = fm.Defuzzify("runningspeed");
-            Assert.That(Math.Round(DefuzzifiedValue, 2), Is.EqualTo(19.46));
-        }
     }
 }

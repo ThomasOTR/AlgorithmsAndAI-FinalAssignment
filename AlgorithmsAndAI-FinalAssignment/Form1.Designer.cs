@@ -30,7 +30,7 @@ namespace AlgorithmsAndAI_FinalAssignment
         /// </summary>
         private void InitializeComponent()
         {
-            WorldCanvas = new Panel();
+            WorldCanvas = new ImprovedPanel();
             checkBoxStats = new CheckBox();
             checkBoxEntitySimplified = new CheckBox();
             checkBoxGraph = new CheckBox();
@@ -39,18 +39,17 @@ namespace AlgorithmsAndAI_FinalAssignment
             checkBoxBehaviour = new CheckBox();
             output_titleLabel = new Label();
             titleLabel = new Label();
-            panel1 = new Panel();
-            panel1.SuspendLayout();
+            SettingsPanel = new Panel();
+            SettingsPanel.SuspendLayout();
             SuspendLayout();
             // 
             // WorldCanvas
             // 
             WorldCanvas.BackColor = SystemColors.Control;
-            WorldCanvas.Location = new Point(6, 3);
+            WorldCanvas.Location = new Point(1, 3);
             WorldCanvas.Name = "WorldCanvas";
             WorldCanvas.Size = new Size(1400, 1200);
             WorldCanvas.TabIndex = 0;
-            WorldCanvas.Visible = false;
             WorldCanvas.MouseClick += OnClick;
             // 
             // checkBoxStats
@@ -148,39 +147,39 @@ namespace AlgorithmsAndAI_FinalAssignment
             titleLabel.TabIndex = 0;
             titleLabel.Text = "Simulation Options";
             // 
-            // panel1
+            // SettingsPanel
             // 
-            panel1.Controls.Add(checkBoxStats);
-            panel1.Controls.Add(titleLabel);
-            panel1.Controls.Add(output_titleLabel);
-            panel1.Controls.Add(checkBoxEntitySimplified);
-            panel1.Controls.Add(checkBoxBehaviour);
-            panel1.Controls.Add(checkBoxGraph);
-            panel1.Controls.Add(checkBoxLocationDetails);
-            panel1.Controls.Add(checkBoxForce);
-            panel1.Location = new Point(1412, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(276, 1200);
-            panel1.TabIndex = 8;
+            SettingsPanel.Controls.Add(checkBoxStats);
+            SettingsPanel.Controls.Add(titleLabel);
+            SettingsPanel.Controls.Add(output_titleLabel);
+            SettingsPanel.Controls.Add(checkBoxEntitySimplified);
+            SettingsPanel.Controls.Add(checkBoxBehaviour);
+            SettingsPanel.Controls.Add(checkBoxGraph);
+            SettingsPanel.Controls.Add(checkBoxLocationDetails);
+            SettingsPanel.Controls.Add(checkBoxForce);
+            SettingsPanel.Location = new Point(1407, 3);
+            SettingsPanel.Name = "SettingsPanel";
+            SettingsPanel.Size = new Size(276, 1200);
+            SettingsPanel.TabIndex = 8;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1695, 1209);
-            Controls.Add(panel1);
+            ClientSize = new Size(1695, 1204);
+            Controls.Add(SettingsPanel);
             Controls.Add(WorldCanvas);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "Form1";
-            Text = "Form1";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            Text = "SpaceSimulation";
+            SettingsPanel.ResumeLayout(false);
+            SettingsPanel.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel WorldCanvas;
+        private ImprovedPanel WorldCanvas;
         private CheckBox checkBoxForce;
         private CheckBox checkBoxLocationDetails;
         private CheckBox checkBoxBehaviour;
@@ -189,6 +188,6 @@ namespace AlgorithmsAndAI_FinalAssignment
         private CheckBox checkBoxGraph;
         private CheckBox checkBoxEntitySimplified;
         private CheckBox checkBoxStats;
-        private Panel panel1;
+        private Panel SettingsPanel;
     }
 }

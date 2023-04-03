@@ -4,9 +4,9 @@ namespace AlgorithmsAndAI_FinalAssignment
 {
     public partial class Form1 : Form
     {
-        private World world;
-        private Timer timer;
-        private float timeDelta = 0.8f;
+        private readonly World world;
+        private readonly Timer timer;
+        private readonly float timeDelta = 0.8f;
 
         /* A bool to show the Graph */
         public static bool GraphVisible = false;
@@ -29,10 +29,10 @@ namespace AlgorithmsAndAI_FinalAssignment
         public Form1()
         {
             InitializeComponent();
-            DoubleBuffered = true;
 
             world = new World(width: WorldCanvas.Width, height: WorldCanvas.Height);
-            Paint += Form1_Paint;
+            WorldCanvas.Paint += PaintEvent;
+
             timer = new Timer()
 
             {
@@ -40,35 +40,45 @@ namespace AlgorithmsAndAI_FinalAssignment
                 Enabled = true,
             };
             timer.Elapsed += Timer_Elapsed;
-            BackgroundImage = Resources.bg1;
+
+            WorldCanvas.BackgroundImage = Resources.bg1;
         }
 
+        /// <summary>
+        /// This updates the world class and helps the redraw of the canvas.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
         {
             world.Update(timeDelta);
-            Invalidate();
+            WorldCanvas.Invalidate();
         }
 
-        private void Form1_Paint(object? sender, PaintEventArgs e)
+        /// <summary>
+        /// This 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PaintEvent(object? sender, PaintEventArgs e)
         {
             world.Render(e.Graphics);
-
-            titleLabel.Text = " bla";
         }
-        private void UpdateCheckBoxes()
-        {
-            checkBoxBehaviour.Checked = BehaviourVisible;
-            checkBoxLocationDetails.Checked = LocationDetails;
-            checkBoxForce.Checked = ForceVisible;
-            checkBoxGraph.Checked = GraphVisible;
-            checkBoxEntitySimplified.Checked = SimplifiedMovingEntityLook;
-            checkBoxStats.Checked = StatsVisibile;
-        }
+        /// <summary>
+        /// The onclick event when 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnClick(object sender, MouseEventArgs e)
         {
             world.StartPathPlanning(e.X, e.Y);
         }
 
+        /// <summary>
+        /// This method updates the boolean to the corresponding checkbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Outputs_CheckedChanged(object sender, EventArgs e)
         {
             BehaviourVisible = checkBoxBehaviour.Checked;
