@@ -54,11 +54,11 @@
             // 
             checkBoxStats.AutoSize = true;
             checkBoxStats.BackColor = Color.Transparent;
-            checkBoxStats.Location = new Point(10, 288);
+            checkBoxStats.Location = new Point(10, 294);
             checkBoxStats.Name = "checkBoxStats";
-            checkBoxStats.Size = new Size(132, 29);
+            checkBoxStats.Size = new Size(76, 29);
             checkBoxStats.TabIndex = 7;
-            checkBoxStats.Text = "Stats Visible";
+            checkBoxStats.Text = "Stats";
             checkBoxStats.UseVisualStyleBackColor = false;
             checkBoxStats.CheckedChanged += Outputs_CheckedChanged;
             // 
@@ -66,11 +66,11 @@
             // 
             checkBoxEntitySimplified.AutoSize = true;
             checkBoxEntitySimplified.BackColor = Color.Transparent;
-            checkBoxEntitySimplified.Location = new Point(10, 253);
+            checkBoxEntitySimplified.Location = new Point(10, 259);
             checkBoxEntitySimplified.Name = "checkBoxEntitySimplified";
-            checkBoxEntitySimplified.Size = new Size(210, 29);
+            checkBoxEntitySimplified.Size = new Size(166, 29);
             checkBoxEntitySimplified.TabIndex = 6;
-            checkBoxEntitySimplified.Text = "Entity Look Simplified";
+            checkBoxEntitySimplified.Text = "Entity Simplified";
             checkBoxEntitySimplified.UseVisualStyleBackColor = false;
             checkBoxEntitySimplified.CheckedChanged += Outputs_CheckedChanged;
             // 
@@ -78,11 +78,11 @@
             // 
             checkBoxGraph.AutoSize = true;
             checkBoxGraph.BackColor = Color.Transparent;
-            checkBoxGraph.Location = new Point(10, 218);
+            checkBoxGraph.Location = new Point(10, 224);
             checkBoxGraph.Name = "checkBoxGraph";
-            checkBoxGraph.Size = new Size(142, 29);
+            checkBoxGraph.Size = new Size(86, 29);
             checkBoxGraph.TabIndex = 5;
-            checkBoxGraph.Text = "Graph Visible";
+            checkBoxGraph.Text = "Graph";
             checkBoxGraph.UseVisualStyleBackColor = false;
             checkBoxGraph.CheckedChanged += Outputs_CheckedChanged;
             // 
@@ -90,11 +90,11 @@
             // 
             checkBoxForce.AutoSize = true;
             checkBoxForce.BackColor = Color.Transparent;
-            checkBoxForce.Location = new Point(10, 183);
+            checkBoxForce.Location = new Point(10, 189);
             checkBoxForce.Name = "checkBoxForce";
-            checkBoxForce.Size = new Size(141, 29);
+            checkBoxForce.Size = new Size(81, 29);
             checkBoxForce.TabIndex = 4;
-            checkBoxForce.Text = "Force Visibile";
+            checkBoxForce.Text = "Force";
             checkBoxForce.UseVisualStyleBackColor = false;
             checkBoxForce.CheckedChanged += Outputs_CheckedChanged;
             // 
@@ -104,9 +104,9 @@
             checkBoxLocationDetails.BackColor = Color.Transparent;
             checkBoxLocationDetails.Location = new Point(10, 154);
             checkBoxLocationDetails.Name = "checkBoxLocationDetails";
-            checkBoxLocationDetails.Size = new Size(219, 29);
+            checkBoxLocationDetails.Size = new Size(163, 29);
             checkBoxLocationDetails.TabIndex = 3;
-            checkBoxLocationDetails.Text = "Location Details Visible";
+            checkBoxLocationDetails.Text = "Location Details";
             checkBoxLocationDetails.UseVisualStyleBackColor = false;
             checkBoxLocationDetails.CheckedChanged += Outputs_CheckedChanged;
             // 
@@ -117,9 +117,9 @@
             checkBoxBehaviour.ForeColor = SystemColors.ControlText;
             checkBoxBehaviour.Location = new Point(10, 119);
             checkBoxBehaviour.Name = "checkBoxBehaviour";
-            checkBoxBehaviour.Size = new Size(172, 29);
+            checkBoxBehaviour.Size = new Size(116, 29);
             checkBoxBehaviour.TabIndex = 2;
-            checkBoxBehaviour.Text = "Behaviour Visible";
+            checkBoxBehaviour.Text = "Behaviour";
             checkBoxBehaviour.UseVisualStyleBackColor = false;
             checkBoxBehaviour.CheckedChanged += Outputs_CheckedChanged;
             // 
@@ -130,9 +130,9 @@
             output_titleLabel.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             output_titleLabel.Location = new Point(89, 71);
             output_titleLabel.Name = "output_titleLabel";
-            output_titleLabel.Size = new Size(93, 29);
+            output_titleLabel.Size = new Size(85, 29);
             output_titleLabel.TabIndex = 1;
-            output_titleLabel.Text = "Outputs";
+            output_titleLabel.Text = "Toggles";
             // 
             // titleLabel
             // 
