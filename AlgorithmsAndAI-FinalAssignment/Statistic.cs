@@ -34,8 +34,8 @@
         /// <param name="value"></param>
         public void Decrease(double value)
         {
-            if (currentValue > 0) currentValue -= value;
-            else currentValue = 0;
+            if (currentValue > 1) currentValue -= value;
+            else currentValue = 1;
 
         }
     }

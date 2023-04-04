@@ -30,7 +30,6 @@
         {
             WorldCanvas = new ImprovedPanel();
             checkBoxStats = new CheckBox();
-            checkBoxEntitySimplified = new CheckBox();
             checkBoxGraph = new CheckBox();
             checkBoxForce = new CheckBox();
             checkBoxLocationDetails = new CheckBox();
@@ -54,25 +53,13 @@
             // 
             checkBoxStats.AutoSize = true;
             checkBoxStats.BackColor = Color.Transparent;
-            checkBoxStats.Location = new Point(10, 294);
+            checkBoxStats.Location = new Point(10, 259);
             checkBoxStats.Name = "checkBoxStats";
             checkBoxStats.Size = new Size(76, 29);
             checkBoxStats.TabIndex = 7;
             checkBoxStats.Text = "Stats";
             checkBoxStats.UseVisualStyleBackColor = false;
             checkBoxStats.CheckedChanged += Outputs_CheckedChanged;
-            // 
-            // checkBoxEntitySimplified
-            // 
-            checkBoxEntitySimplified.AutoSize = true;
-            checkBoxEntitySimplified.BackColor = Color.Transparent;
-            checkBoxEntitySimplified.Location = new Point(10, 259);
-            checkBoxEntitySimplified.Name = "checkBoxEntitySimplified";
-            checkBoxEntitySimplified.Size = new Size(166, 29);
-            checkBoxEntitySimplified.TabIndex = 6;
-            checkBoxEntitySimplified.Text = "Entity Simplified";
-            checkBoxEntitySimplified.UseVisualStyleBackColor = false;
-            checkBoxEntitySimplified.CheckedChanged += Outputs_CheckedChanged;
             // 
             // checkBoxGraph
             // 
@@ -150,7 +137,6 @@
             SettingsPanel.Controls.Add(checkBoxStats);
             SettingsPanel.Controls.Add(titleLabel);
             SettingsPanel.Controls.Add(output_titleLabel);
-            SettingsPanel.Controls.Add(checkBoxEntitySimplified);
             SettingsPanel.Controls.Add(checkBoxBehaviour);
             SettingsPanel.Controls.Add(checkBoxGraph);
             SettingsPanel.Controls.Add(checkBoxLocationDetails);
@@ -184,7 +170,6 @@
         private Label output_titleLabel;
         private Label titleLabel;
         private CheckBox checkBoxGraph;
-        private CheckBox checkBoxEntitySimplified;
         private CheckBox checkBoxStats;
         private Panel SettingsPanel;
     }

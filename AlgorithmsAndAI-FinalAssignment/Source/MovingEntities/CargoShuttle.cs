@@ -57,9 +57,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
             int RoundedAngle = (int)Math.Round(ConvertHeadingIntoAngle(Heading) / 15);
             object? o = Resources.ResourceManager.GetObject("shuttle_blue_rot" + RoundedAngle) as Image;
 
-            /* If somehow the image is not there or Simplified look is enabled : it will draw a simple rectangle. */
-            if (o == null || Form1.SimplifiedMovingEntityLook) RenderSimplified(g, Color.White);
-            else g.DrawImage((Image)o, r);
+            if (!Form1.ForceVisible && o != null) g.DrawImage((Image)o, r);
+
 
             /* Trigger the method in the base class. The base class method handles the rendering of the boolean-depending stuff like behaviour */
             base.Render(g);

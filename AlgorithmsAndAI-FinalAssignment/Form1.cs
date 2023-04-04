@@ -11,7 +11,7 @@ namespace AlgorithmsAndAI_FinalAssignment
         /* A bool to show the Graph */
         public static bool GraphVisible = false;
 
-        /* A bool to show the Force of each Shuttle */
+        /* A bool to show the Force of each Shuttle with a simplified look to see it better. */
         public static bool ForceVisible = false;
 
         /* A bool to show the stats of each shuttle */
@@ -19,9 +19,6 @@ namespace AlgorithmsAndAI_FinalAssignment
 
         /* A bool to show the current behaviour of each shuttle */
         public static bool BehaviourVisible = false;
-
-        /* A bool to enable a simplified look.*/
-        public static bool SimplifiedMovingEntityLook = false;
 
         /* A bool to show details of each Location */
         public static bool LocationDetails = false;
@@ -85,7 +82,6 @@ namespace AlgorithmsAndAI_FinalAssignment
             LocationDetails = checkBoxLocationDetails.Checked;
             ForceVisible = checkBoxForce.Checked;
             GraphVisible = checkBoxGraph.Checked;
-            SimplifiedMovingEntityLook = checkBoxEntitySimplified.Checked;
             StatsVisibile = checkBoxStats.Checked;
         }
 

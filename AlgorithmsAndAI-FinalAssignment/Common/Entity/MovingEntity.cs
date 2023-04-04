@@ -96,22 +96,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
 
         private void RenderForce(Graphics g)
         {
+            Rectangle r = new((int)(Position.x - 15), (int)(Position.y - 15), 30, 30);
+            g.DrawRectangle(new Pen(Color.White, 1), r);
             g.DrawLine(new Pen(Color.Red, 1),
                            (int)Position.x, (int)Position.y,
                            (int)(Position.x + (Velocity.x * 25)),
                            (int)(Position.y + (Velocity.y * 25))
                            );
-        }
-        /// <summary>
-        /// A method to render a simplified version of the Entity and the force of the entity
-        /// </summary>
-        /// <param name="g"></param>
-        /// <param name="c"></param>
-        public void RenderSimplified(Graphics g, Color c)
-        {
-            Rectangle r = new((int)(Position.x - 15), (int)(Position.y - 15), 30, 30);
-            g.DrawRectangle(new Pen(c, 1), r);
-
         }
 
         /// <summary>
@@ -143,7 +134,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
                 font: SystemFonts.DefaultFont,
                 brush: Brushes.White,
                 x: (int)Position.x + 30,
-                y: (int)Position.y - 50
+                y: (int)Position.y - 20
                 );
         }
 
