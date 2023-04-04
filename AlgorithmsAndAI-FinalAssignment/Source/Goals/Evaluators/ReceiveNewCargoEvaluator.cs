@@ -24,11 +24,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
 
         public override double CalculateDesirability(MovingEntity ME)
         {
-            /* Desirability is 0 if there is already cargo or if all the warehouses are occupied */
-            if (ME.cargo != null) return 0.0;
-            if (ME.world.GetStaticEntityListOf<CargoWarehouse>().All(s => s.IsOccupied() == true)) return 0.0;
+            /* Desirability is 0 if there is already cargo or if all the warehouses are occupied or when the FuzzyLogic is not loaded in correctly */
+            if (ME.cargo != null || Form1.ConfigurationFileLoadedIn == false) return 0.0;
 
-            /* If both the check are not true, desirability is 0.5 */
+            if (ME.world.GetStaticEntityListOf<CargoWarehouse>().All(s => s.IsOccupied() == true) ||
+                ME.world.GetStaticEntityListOf<CargoWarehouse>().All(s => s.CargoForDelivery.Count == 0)) return 0.0;
+
+            /* If both the checks are false, desirability is 0.5 */
             return 0.5;
         }
     }

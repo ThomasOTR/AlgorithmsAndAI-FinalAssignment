@@ -57,6 +57,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         /// <returns></returns>
         public Cargo? GetCargoSuitedBestForShuttle(MovingEntity ME)
         {
+            if (ME.world.BestCargoModule == null) return null;
             Cargo? MostDesirableCargo = null;
             double HighestDesirabililtyValue = 0.0;
 

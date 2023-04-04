@@ -235,8 +235,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                     }
                 }
             }
-            System.Diagnostics.Debug.WriteLine("done ");
-
             NodesVisited = pq.GetNodes();
         }
 

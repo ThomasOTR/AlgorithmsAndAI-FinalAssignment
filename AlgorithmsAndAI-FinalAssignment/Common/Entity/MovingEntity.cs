@@ -147,8 +147,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         private string GetBehaviourOuput(Goal g, int amountOfTabs = 0)
         {
             string output = "";
-            CompositeGoal? CG = g as CompositeGoal;
-            if (CG != null)
+            if (g is CompositeGoal CG)
             {
                 output += CG.GetName() + "\n";
                 foreach (Goal goal in CG.Subgoals)

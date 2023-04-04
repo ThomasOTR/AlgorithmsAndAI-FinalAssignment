@@ -23,6 +23,9 @@ namespace AlgorithmsAndAI_FinalAssignment
         /* A bool to show details of each Location */
         public static bool LocationDetails = false;
 
+        /* A bool to know if the configuration file is loaded in. This is needed for the fuzzy logic. */
+        public static bool ConfigurationFileLoadedIn;
+
         public Form1()
         {
             InitializeComponent();
@@ -50,6 +53,34 @@ namespace AlgorithmsAndAI_FinalAssignment
         {
             world.Update(timeDelta);
             WorldCanvas.Invalidate();
+            HandleErrorMessages();
+        }
+
+        /// <summary>
+        /// A method that can handle the error messages and will display those messages on the screen.
+        /// </summary>
+        private void HandleErrorMessages()
+        {
+            string message;
+            if (!ConfigurationFileLoadedIn) message = "Config File (used for the FuzzyLogic) is not added to the folder of this application. Until this is fixed, the entities will not get any cargo";
+            else message = "Everything is loaded as expected";
+
+            UpdateErrorMessages(message);
+        }
+
+        /// <summary>
+        /// This method updates the error messages.
+        /// </summary>
+        /// <param name="message"></param>
+        private void UpdateErrorMessages(string message)
+        {
+            if (simulationStatusText.InvokeRequired)
+            {
+                void safeWrite() { UpdateErrorMessages($"{message}"); }
+                simulationStatusText.Invoke(safeWrite);
+            }
+            else
+                simulationStatusText.Text = message;
         }
 
         /// <summary>

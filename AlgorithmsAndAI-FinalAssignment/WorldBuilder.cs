@@ -82,75 +82,80 @@ namespace AlgorithmsAndAI_FinalAssignment
         /// </summary>
         /// <param name="world"></param>
         /// <returns></returns>
-        public static FuzzyModule SetupBestCargoModule()
+        public static FuzzyModule? SetupBestCargoModule()
         {
-            FuzzyModule FM = new();
+            if (File.Exists("AlgorithmsAndAI_FinalAssignment.dll.config"))
+            {
+                Form1.ConfigurationFileLoadedIn = true;
+                FuzzyModule FM = new();
 
-            /* Create Variables with their FuzzyTerm_SET's which are based on App.config data */
-            FuzzyVariable Distance = FM.CreateFLV("DISTANCE");
-            int DistanceMin = GetVariableValue("DistanceMin");
-            int DistanceMid = GetVariableValue("DistanceMid");
-            int DistanceMax = GetVariableValue("DistanceMax");
-            FuzzyTerm_SET ShortDistance = Distance.AddLeftShoulderSet("SHORT", DistanceMin, DistanceMid / 2, DistanceMid);
-            FuzzyTerm_SET MediumDistance = Distance.AddTriangle("MEDIUM", DistanceMid / 2, DistanceMid, DistanceMid / 2 * 3);
-            FuzzyTerm_SET FarDistance = Distance.AddRightShoulderSet("FAR", DistanceMid, DistanceMid / 2 * 3, DistanceMax);
+                /* Create Variables with their FuzzyTerm_SET's which are based on App.config data */
+                FuzzyVariable Distance = FM.CreateFLV("DISTANCE");
+                int DistanceMin = GetVariableValue("DistanceMin");
+                int DistanceMid = GetVariableValue("DistanceMid");
+                int DistanceMax = GetVariableValue("DistanceMax");
+                FuzzyTerm_SET ShortDistance = Distance.AddLeftShoulderSet("SHORT", DistanceMin, DistanceMid / 2, DistanceMid);
+                FuzzyTerm_SET MediumDistance = Distance.AddTriangle("MEDIUM", DistanceMid / 2, DistanceMid, DistanceMid / 2 * 3);
+                FuzzyTerm_SET FarDistance = Distance.AddRightShoulderSet("FAR", DistanceMid, DistanceMid / 2 * 3, DistanceMax);
 
-            FuzzyVariable Wear = FM.CreateFLV("WEAR");
-            int WearMin = GetVariableValue("WearMin");
-            int WearMid = GetVariableValue("WearMid");
-            int WearMax = GetVariableValue("WearMax");
-            FuzzyTerm_SET LowWear = Wear.AddLeftShoulderSet("LOW", WearMin, WearMid / 2, WearMid);
-            FuzzyTerm_SET MediumWear = Wear.AddTriangle("MEDIUM", WearMid / 2, WearMid, WearMid / 2 * 3);
-            FuzzyTerm_SET HighWear = Wear.AddRightShoulderSet("HIGH", WearMid, WearMid / 2 * 3, WearMax);
+                FuzzyVariable Wear = FM.CreateFLV("WEAR");
+                int WearMin = GetVariableValue("WearMin");
+                int WearMid = GetVariableValue("WearMid");
+                int WearMax = GetVariableValue("WearMax");
+                FuzzyTerm_SET LowWear = Wear.AddLeftShoulderSet("LOW", WearMin, WearMid / 2, WearMid);
+                FuzzyTerm_SET MediumWear = Wear.AddTriangle("MEDIUM", WearMid / 2, WearMid, WearMid / 2 * 3);
+                FuzzyTerm_SET HighWear = Wear.AddRightShoulderSet("HIGH", WearMid, WearMid / 2 * 3, WearMax);
 
-            FuzzyVariable Fuel = FM.CreateFLV("FUEL");
-            int FuelMin = GetVariableValue("FuelMin");
-            int FuelMid = GetVariableValue("FuelMid");
-            int FuelMax = GetVariableValue("FuelMax");
-            FuzzyTerm_SET LowFuel = Fuel.AddLeftShoulderSet("LOW", FuelMin, FuelMid / 2, FuelMid);
-            FuzzyTerm_SET MediumFuel = Fuel.AddTriangle("MEDIUM", FuelMid / 2, FuelMid, FuelMid / 2 * 3);
-            FuzzyTerm_SET HighFuel = Fuel.AddRightShoulderSet("HIGH", FuelMid, FuelMid / 2 * 3, FuelMax);
+                FuzzyVariable Fuel = FM.CreateFLV("FUEL");
+                int FuelMin = GetVariableValue("FuelMin");
+                int FuelMid = GetVariableValue("FuelMid");
+                int FuelMax = GetVariableValue("FuelMax");
+                FuzzyTerm_SET LowFuel = Fuel.AddLeftShoulderSet("LOW", FuelMin, FuelMid / 2, FuelMid);
+                FuzzyTerm_SET MediumFuel = Fuel.AddTriangle("MEDIUM", FuelMid / 2, FuelMid, FuelMid / 2 * 3);
+                FuzzyTerm_SET HighFuel = Fuel.AddRightShoulderSet("HIGH", FuelMid, FuelMid / 2 * 3, FuelMax);
 
-            FuzzyVariable Desirability = FM.CreateFLV("DESIRABILITY");
-            int DesirabilityMin = GetVariableValue("DesirabilityMin");
-            int DesirabilityMid = GetVariableValue("DesirabilityMid");
-            int DesirabilityMax = GetVariableValue("DesirabilityMax");
-            FuzzyTerm_SET Undesirable = Desirability.AddLeftShoulderSet("LOW", DesirabilityMin, DesirabilityMid / 2, DesirabilityMid);
-            FuzzyTerm_SET Desirable = Desirability.AddTriangle("MEDIUM", DesirabilityMid / 2, DesirabilityMid, DesirabilityMid / 2 * 3);
-            FuzzyTerm_SET VeryDesirable = Desirability.AddRightShoulderSet("HIGH", DesirabilityMid, DesirabilityMid / 2 * 3, DesirabilityMax);
+                FuzzyVariable Desirability = FM.CreateFLV("DESIRABILITY");
+                int DesirabilityMin = GetVariableValue("DesirabilityMin");
+                int DesirabilityMid = GetVariableValue("DesirabilityMid");
+                int DesirabilityMax = GetVariableValue("DesirabilityMax");
+                FuzzyTerm_SET Undesirable = Desirability.AddLeftShoulderSet("LOW", DesirabilityMin, DesirabilityMid / 2, DesirabilityMid);
+                FuzzyTerm_SET Desirable = Desirability.AddTriangle("MEDIUM", DesirabilityMid / 2, DesirabilityMid, DesirabilityMid / 2 * 3);
+                FuzzyTerm_SET VeryDesirable = Desirability.AddRightShoulderSet("HIGH", DesirabilityMid, DesirabilityMid / 2 * 3, DesirabilityMax);
 
-            /* Undesirable Rules*/
-            FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, LowFuel), Undesirable);
-            FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, MediumFuel), Undesirable);
-            FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, HighFuel), Undesirable);
-            FM.AddRule(new FuzzyTerm_AND(FarDistance, MediumWear, LowFuel), Undesirable);
-            FM.AddRule(new FuzzyTerm_AND(FarDistance, MediumWear, MediumFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(FarDistance, MediumWear, HighFuel), VeryDesirable);
-            FM.AddRule(new FuzzyTerm_AND(FarDistance, HighWear, LowFuel), Undesirable);
-            FM.AddRule(new FuzzyTerm_AND(FarDistance, HighWear, MediumFuel), VeryDesirable);
-            FM.AddRule(new FuzzyTerm_AND(FarDistance, HighWear, HighFuel), VeryDesirable);
+                /* Undesirable Rules*/
+                FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, LowFuel), Undesirable);
+                FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, MediumFuel), Undesirable);
+                FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, HighFuel), Undesirable);
+                FM.AddRule(new FuzzyTerm_AND(FarDistance, MediumWear, LowFuel), Undesirable);
+                FM.AddRule(new FuzzyTerm_AND(FarDistance, MediumWear, MediumFuel), Desirable);
+                FM.AddRule(new FuzzyTerm_AND(FarDistance, MediumWear, HighFuel), VeryDesirable);
+                FM.AddRule(new FuzzyTerm_AND(FarDistance, HighWear, LowFuel), Undesirable);
+                FM.AddRule(new FuzzyTerm_AND(FarDistance, HighWear, MediumFuel), VeryDesirable);
+                FM.AddRule(new FuzzyTerm_AND(FarDistance, HighWear, HighFuel), VeryDesirable);
 
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, LowWear, LowFuel), Undesirable);
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, LowWear, MediumFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, LowWear, HighFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, MediumWear, LowFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, MediumWear, MediumFuel), VeryDesirable);
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, MediumWear, HighFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, HighWear, LowFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, HighWear, MediumFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(MediumDistance, HighWear, HighFuel), Undesirable);
+                FM.AddRule(new FuzzyTerm_AND(MediumDistance, LowWear, LowFuel), Undesirable);
+                FM.AddRule(new FuzzyTerm_AND(MediumDistance, LowWear, MediumFuel), Desirable);
+                FM.AddRule(new FuzzyTerm_AND(MediumDistance, LowWear, HighFuel), Desirable);
+                FM.AddRule(new FuzzyTerm_AND(MediumDistance, MediumWear, LowFuel), Desirable);
+                FM.AddRule(new FuzzyTerm_AND(MediumDistance, MediumWear, MediumFuel), VeryDesirable);
+                FM.AddRule(new FuzzyTerm_AND(MediumDistance, MediumWear, HighFuel), Desirable);
+                FM.AddRule(new FuzzyTerm_AND(MediumDistance, HighWear, LowFuel), Desirable);
+                FM.AddRule(new FuzzyTerm_AND(MediumDistance, HighWear, MediumFuel), Desirable);
+                FM.AddRule(new FuzzyTerm_AND(MediumDistance, HighWear, HighFuel), Undesirable);
 
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, LowWear, LowFuel), VeryDesirable);
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, LowWear, MediumFuel), VeryDesirable);
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, LowWear, HighFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, LowFuel), VeryDesirable);
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, MediumFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, HighFuel), Undesirable);
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, LowFuel), Desirable);
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, MediumFuel), Undesirable);
-            FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, HighFuel), Undesirable);
-            return FM;
+                FM.AddRule(new FuzzyTerm_AND(ShortDistance, LowWear, LowFuel), VeryDesirable);
+                FM.AddRule(new FuzzyTerm_AND(ShortDistance, LowWear, MediumFuel), VeryDesirable);
+                FM.AddRule(new FuzzyTerm_AND(ShortDistance, LowWear, HighFuel), Desirable);
+                FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, LowFuel), VeryDesirable);
+                FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, MediumFuel), Desirable);
+                FM.AddRule(new FuzzyTerm_AND(ShortDistance, MediumWear, HighFuel), Undesirable);
+                FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, LowFuel), Desirable);
+                FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, MediumFuel), Undesirable);
+                FM.AddRule(new FuzzyTerm_AND(ShortDistance, HighWear, HighFuel), Undesirable);
 
+                return FM;
+            }
+            else return null;
         }
         /// <summary>
         /// A method to get easily a value of a variable in the App.Config

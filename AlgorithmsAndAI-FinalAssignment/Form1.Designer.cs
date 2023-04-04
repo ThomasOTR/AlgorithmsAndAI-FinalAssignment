@@ -37,6 +37,8 @@
             output_titleLabel = new Label();
             titleLabel = new Label();
             SettingsPanel = new Panel();
+            simulationStatusText = new Label();
+            simulationStatusTitle = new Label();
             SettingsPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -134,6 +136,8 @@
             // 
             // SettingsPanel
             // 
+            SettingsPanel.Controls.Add(simulationStatusText);
+            SettingsPanel.Controls.Add(simulationStatusTitle);
             SettingsPanel.Controls.Add(checkBoxStats);
             SettingsPanel.Controls.Add(titleLabel);
             SettingsPanel.Controls.Add(output_titleLabel);
@@ -145,6 +149,23 @@
             SettingsPanel.Name = "SettingsPanel";
             SettingsPanel.Size = new Size(276, 1200);
             SettingsPanel.TabIndex = 8;
+            // 
+            // simulationStatusText
+            // 
+            simulationStatusText.Location = new Point(17, 687);
+            simulationStatusText.Name = "simulationStatusText";
+            simulationStatusText.Size = new Size(241, 127);
+            simulationStatusText.TabIndex = 9;
+            // 
+            // simulationStatusTitle
+            // 
+            simulationStatusTitle.AutoSize = true;
+            simulationStatusTitle.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            simulationStatusTitle.Location = new Point(79, 632);
+            simulationStatusTitle.Name = "simulationStatusTitle";
+            simulationStatusTitle.Size = new Size(105, 41);
+            simulationStatusTitle.TabIndex = 8;
+            simulationStatusTitle.Text = "Status:";
             // 
             // Form1
             // 
@@ -172,5 +193,7 @@
         private CheckBox checkBoxGraph;
         private CheckBox checkBoxStats;
         private Panel SettingsPanel;
+        private Label simulationStatusTitle;
+        private Label simulationStatusText;
     }
 }

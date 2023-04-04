@@ -26,7 +26,7 @@ namespace AlgorithmsAndAI_FinalAssignment
         public Graph graph;
 
         /* The fuzzy module that will be used for getting the best cargo for each shuttle */
-        public FuzzyModule BestCargoModule;
+        public FuzzyModule? BestCargoModule;
         public World(int width, int height)
         {
             Width = width;

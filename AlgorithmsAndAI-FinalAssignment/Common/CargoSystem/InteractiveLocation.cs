@@ -1,6 +1,5 @@
 ﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
-using System.Diagnostics;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 {
@@ -35,10 +34,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             {
                 OccupiedBy = ME;
                 occupationState = OccupationState.Claimed;
-            }
-            else
-            {
-                Debug.WriteLine("");
             }
         }
         public override void Render(Graphics g)
