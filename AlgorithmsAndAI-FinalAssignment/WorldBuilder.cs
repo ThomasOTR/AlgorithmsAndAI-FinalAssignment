@@ -35,8 +35,10 @@ namespace AlgorithmsAndAI_FinalAssignment
             DeliveryStation DS4 = new(world, new Vector2D(150, 800));
             DeliveryStation DS5 = new(world, new Vector2D(700, 600));
 
+            /* Adding the DeliveryStations first (This is needed because otherwise the warehouse cannot be filled with cargo with their destination */
             world.StaticEntities.AddRange(new List<StaticEntity> { DS1, DS2, DS3, DS4, DS5 });
 
+            /* Adding the rest of the locations */
             CargoWarehouse CW1 = new(world, new Vector2D(700, 1000));
             CargoWarehouse CW2 = new(world, new Vector2D(250, 300));
             CargoWarehouse CW3 = new(world, new Vector2D(950, 400));
@@ -51,7 +53,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             world.StaticEntities.AddRange(new List<StaticEntity> { CW1, CW2, CW3, PS1, PS2, RS1, RS2 });
 
 
-            List<Bitmap> Asteroids = new() { Resources.asteroid, Resources.asteroid2, Resources.asteroid3, Resources.asteroid4, Resources.asteroid5, Resources.asteroid6 };
+            List<Bitmap> Asteroids = new() { Resources.asteroid1, Resources.asteroid2, Resources.asteroid3, Resources.asteroid4, Resources.asteroid5, Resources.asteroid6 };
             List<Bitmap> Planets = new() { Resources.crystal, Resources.icy, Resources.terrestrial, Resources.hot, Resources.radiated, Resources.earth, Resources.neptune };
 
             /* Adding some Astroids */
@@ -89,7 +91,7 @@ namespace AlgorithmsAndAI_FinalAssignment
                 Form1.ConfigurationFileLoadedIn = true;
                 FuzzyModule FM = new();
 
-                /* Create Variables with their FuzzyTerm_SET's which are based on App.config data */
+                /* Create Variables with their FuzzyTerm_SET's which are based on the data from the config file */
                 FuzzyVariable Distance = FM.CreateFLV("DISTANCE");
                 int DistanceMin = GetVariableValue("DistanceMin");
                 int DistanceMid = GetVariableValue("DistanceMid");
@@ -122,7 +124,7 @@ namespace AlgorithmsAndAI_FinalAssignment
                 FuzzyTerm_SET Desirable = Desirability.AddTriangle("MEDIUM", DesirabilityMid / 2, DesirabilityMid, DesirabilityMid / 2 * 3);
                 FuzzyTerm_SET VeryDesirable = Desirability.AddRightShoulderSet("HIGH", DesirabilityMid, DesirabilityMid / 2 * 3, DesirabilityMax);
 
-                /* Undesirable Rules*/
+                /* Adding fuzzy rules*/
                 FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, LowFuel), Undesirable);
                 FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, MediumFuel), Undesirable);
                 FM.AddRule(new FuzzyTerm_AND(FarDistance, LowWear, HighFuel), Undesirable);

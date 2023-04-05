@@ -27,7 +27,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         {
             Rectangle r = new((int)(Position.x - radius), (int)(Position.y - (radius * 0.5)), radius * 2, radius);
 
+            /* Draw the Repairstation image */
             g.DrawImage(Resources.RepairStation, r);
+
+            /* Draw the name below the statin for some clarification.*/
             g.DrawString("RepairStation", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
 
             base.Render(g);

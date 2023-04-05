@@ -34,8 +34,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         {
             Rectangle r = new((int)(Position.x - radius), (int)(Position.y - (radius * 0.5)), radius * 2, radius);
 
+            /* Draw the DeliveryStation Image*/
             g.DrawImage(Resources.DeliveryStation, r);
 
+            /* Draw the name below the station for some clarification.*/
             g.DrawString("DeliveryStation", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
 
             base.Render(g);

@@ -33,11 +33,13 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         }
         public override void Update(float delta)
         {
-            base.Update(delta);
-
+            /* Check if the amount of cargo available is lower than 5. If so create some new cargo */
             if (CargoForDelivery.Count < 5) CreateNewCargo();
 
         }
+        /// <summary>
+        /// A method to create new cargo for delivery.
+        /// </summary>
         private void CreateNewCargo()
         {
             List<DeliveryStation> stations = world.GetStaticEntityListOf<DeliveryStation>();
@@ -79,15 +81,14 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
                 fm.Fuzzify("WEAR", wear);
                 fm.Fuzzify("FUEL", fuel);
                 fm.Fuzzify("DISTANCE", distance);
+
                 /* Defuzzify and check if it is a higher Desirability.*/
                 double DefuzzifiedValue = fm.Defuzzify("DESIRABILITY");
-
                 if (DefuzzifiedValue > HighestDesirabililtyValue)
                 {
                     MostDesirableCargo = cargo;
                     HighestDesirabililtyValue = DefuzzifiedValue;
                 }
-
             }
             return MostDesirableCargo;
         }
@@ -96,7 +97,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         {
             Rectangle r = new((int)(Position.x - radius), (int)(Position.y - (radius * 0.5)), radius * 2, radius);
 
+            /* Draw the CargoWarehouse image */
             g.DrawImage(Resources.CargoWarehouse, r);
+
+            /* Draw the name below the warehouse for some clarification.*/
             g.DrawString("Warehouse", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
 
             base.Render(g);

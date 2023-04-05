@@ -33,10 +33,6 @@
 
         public override void SetDom(double val)
         {
-            //foreach (FuzzyTerm ft in terms)
-            //{
-            //    ft.SetDom(val);
-            //}
         }
     }
 }

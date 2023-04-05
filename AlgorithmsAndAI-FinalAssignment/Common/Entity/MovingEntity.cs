@@ -147,18 +147,27 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
         private string GetBehaviourOuput(Goal g, int amountOfTabs = 0)
         {
             string output = "";
+            /* If the Goal is Composite Goal, go through all the subgoals*/
             if (g is CompositeGoal CG)
             {
+                /* Add the name of the CompositeGoal to the output*/
                 output += CG.GetName() + "\n";
+
+                /* Loop through all subgoals*/
                 foreach (Goal goal in CG.Subgoals)
                 {
+                    /* Adds tabs in the output so the subgoals will be tabbed*/
                     for (int i = 0; i < amountOfTabs; i++) output += "\t";
+
+                    /* Call the method so we will get the name of a goal tabbed in */
                     output += GetBehaviourOuput(goal, amountOfTabs + 1);
 
+                    /* For each of the goals except the last, add a new line so each goal output will be on a new line.*/
                     if (!CG.Subgoals.Last().Equals(goal)) output += "\n";
                 }
                 return output;
             }
+            /* Return the name if it is a normal goal*/
             else return g.GetName();
         }
 

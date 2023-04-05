@@ -40,16 +40,15 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         {
             if (Form1.LocationDetails) { g.DrawString("Occupied:" + GetOccupationState(), new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 30); }
         }
-        public MovingEntity? GetOccupiedBy()
-        {
-            return OccupiedBy;
-        }
+
         public virtual void Interact(MovingEntity ME)
         {
             occupationState = OccupationState.Occupied;
         }
 
-        /* Method to reset the location when a Moving Entity leaves the location  */
+        /// <summary>
+        /// Method to reset the location when a MovingEntity leaves the location.
+        /// </summary>
         public void Leave()
         {
             OccupiedBy = null;

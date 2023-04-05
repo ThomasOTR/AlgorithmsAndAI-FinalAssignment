@@ -29,24 +29,26 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
             if (Status == GoalStatus.Inactive) Activate();
             GoalStatus status;
 
+            /* A composite goal is Completed when all the subgoals are completed. Until all the goals are done, it will process all of them.*/
             if (Subgoals.Count != 0)
             {
+                /* If the next subgoal is not null. Process it.*/
                 if (Subgoals.First() != null)
                 {
                     Subgoals.Peek().Process();
-
+                    /* if the goal is failed or completed, terminate the goal and pop it. */
                     if (Subgoals.Peek().Is(GoalStatus.Completed) || Subgoals.Peek().Is(GoalStatus.Failed))
                     {
                         Subgoals.Peek().Terminate();
                         Subgoals.Pop();
                     }
                 }
+                /* Until all the goals are done, the composite goal is active */
                 status = GoalStatus.Active;
             }
-            else
-            {
-                status = GoalStatus.Completed;
-            }
+            /* Else it will be completed*/
+            else status = GoalStatus.Completed;
+
             Status = status;
             return Status;
         }

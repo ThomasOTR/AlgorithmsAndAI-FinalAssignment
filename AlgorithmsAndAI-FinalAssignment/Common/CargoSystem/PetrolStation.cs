@@ -26,10 +26,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 
         public override void Render(Graphics g)
         {
-            Rectangle r = new Rectangle((int)(Position.x - radius), (int)(Position.y - (radius * 0.5)), radius * 2, radius);
+            Rectangle r = new((int)(Position.x - radius), (int)(Position.y - (radius * 0.5)), radius * 2, radius);
 
+            /* Draw the Petrolstation Image*/
             g.DrawImage(Resources.PetrolStation, r);
 
+            /* Draw the name below the statin for some clarification.*/
             g.DrawString("FuelStation", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
 
             base.Render(g);

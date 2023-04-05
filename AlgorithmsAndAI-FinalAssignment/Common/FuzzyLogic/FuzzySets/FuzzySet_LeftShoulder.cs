@@ -13,10 +13,13 @@
         }
         public override double CalculateDOM(double val)
         {
+            /* The straight part of the shoulder */
             if (val >= left && val <= peak) return 1.0;
 
+            /* The diagonal part of the shoulder */
             else if (val > peak && val < right) return (right - val) / (right - peak);
 
+            /* Outside of the shoulder */
             else return 0.0;
         }
 

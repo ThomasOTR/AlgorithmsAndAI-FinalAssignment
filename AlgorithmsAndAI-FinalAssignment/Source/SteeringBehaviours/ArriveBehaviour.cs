@@ -14,29 +14,32 @@ namespace AlgorithmsAndAI_FinalAssignment.Steering
 
         public override Vector2D Calculate()
         {
+            /* A target is needed for the Arrive Behavior. */
             if (ME.Target != null)
             {
+                /* Determine the Vector to the target by subtracting the Position of the entity from the Target position */
                 Vector2D toTarget = ME.Target.Clone().Subtract(ME.Position);
                 if (toTarget == null) return new Vector2D();
 
+                /* Calculate the distance to the target.*/
                 double distance = toTarget.Length();
-
                 if (distance <= 0)
                 {
                     return new Vector2D(0, 0);
                 }
 
+                /* Speed is default on max speed*/
                 double speed = ME.MaxSpeed;
-                if (ME.Position.WithinRange(ME.Target, 100)) speed = (distance / 100) * ME.MaxSpeed;
-                Vector2D desiredVelocity = toTarget.Multiply(speed).Divide(distance);
 
+                /* If the position is within the range, decrease the speed */
+                if (ME.Position.WithinRange(ME.Target, 100)) speed = (distance / 100) * ME.MaxSpeed;
+
+                /* Calculate the velocity as normal */
+                Vector2D desiredVelocity = toTarget.Multiply(speed).Divide(distance);
                 return desiredVelocity.Subtract(ME.Velocity);
             }
+            /* If there is no target, return a default Vector2D. */
             else return new Vector2D();
-        }
-        private static double Map(double value, double stop1, double stop2)
-        {
-            return (value / stop1) * stop2;
         }
     }
 }

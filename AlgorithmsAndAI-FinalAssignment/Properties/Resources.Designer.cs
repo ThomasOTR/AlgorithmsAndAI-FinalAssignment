@@ -63,9 +63,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap asteroid {
+        internal static System.Drawing.Bitmap asteroid1 {
             get {
-                object obj = ResourceManager.GetObject("asteroid", resourceCulture);
+                object obj = ResourceManager.GetObject("asteroid1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,46 +126,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Properties {
         internal static System.Drawing.Bitmap bg1 {
             get {
                 object obj = ResourceManager.GetObject("bg1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap bg46 {
-            get {
-                object obj = ResourceManager.GetObject("bg46", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap bg48 {
-            get {
-                object obj = ResourceManager.GetObject("bg48", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap bg50 {
-            get {
-                object obj = ResourceManager.GetObject("bg50", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap bg59 {
-            get {
-                object obj = ResourceManager.GetObject("bg59", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

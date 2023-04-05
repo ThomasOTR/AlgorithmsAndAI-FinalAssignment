@@ -151,7 +151,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                 {
                     if (NodeList[x, y] != null)
                     {
+                        /* Render the Node*/
                         NodeList[x, y].Render(g, new Pen(Color.White));
+
+                        /* Render the Edges of the node*/
                         foreach (Edge e in NodeList[x, y].GetAdjecents())
                         {
                             e.Render(g, NodeList[x, y].Position, new Pen(Color.White));
@@ -190,32 +193,44 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         {
             PriorityQueue pq = new();
 
+            /* Add the Start Node to the Priority Queue to start the process*/
             start.Known = true;
             pq.Insert(start);
 
+            /* Loop through each item in the Queue until the end is found.*/
             while (!pq.Empty())
             {
+                /* Get the node with the lowest F cost. */
                 Node n = pq.Pop();
 
+                /* Break the while loop when the node is null. */
                 if (n == null) break;
 
+                /* Add the node to the shortest path list*/
                 ShortestPath.Add(n);
+
+                /* If the end node is found, break the while loop.*/
                 if (n.Equals(end))
                 {
                     break;
                 }
 
+                /* Add 1 to the current cost of the node. Needed for the Manhattan Heuristic  */
                 double Cost = n.G + 1;
 
+                /* Loop through each of the edges of the Node. */
                 foreach (Edge e in n.GetAdjecents())
                 {
+                    /* If the Destination is already known, skip to next edge*/
                     Node Dest = e.Destination;
                     if (Dest.Known) continue;
 
                     Dest.Known = true;
+
+                    /* Calculate the heuristic*/
                     double Heuristic = Math.Abs(Dest.Position.x - end.Position.x) + Math.Abs(Dest.Position.y - end.Position.y);
 
-
+                    /* If the Destination is not added to the Priority Queue. Add it with the updated costs */
                     if (!pq.IsAlreadyAdded(Dest))
                     {
                         Dest.G = Cost;
@@ -223,9 +238,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                         Dest.Prev = n;
                         pq.Insert(Dest);
                     }
+                    /* If it's already added, check if the current cost + heuristic is lower than the F cost. This means this route is shorter. */
                     else
                     {
-
                         if (Cost + Dest.H < Dest.F)
                         {
                             Dest.G = Cost;
@@ -235,6 +250,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                     }
                 }
             }
+            /* Set the visited nodes, by getting all the nodes in the priority queue. */
             NodesVisited = pq.GetNodes();
         }
 

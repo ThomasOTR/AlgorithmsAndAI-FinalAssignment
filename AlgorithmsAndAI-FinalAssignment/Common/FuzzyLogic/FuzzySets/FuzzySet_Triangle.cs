@@ -13,11 +13,16 @@
         }
         public override double CalculateDOM(double val)
         {
-
+            /* Value is on the peak*/
             if (val == peak) return 1;
 
+            /* Value is left of the peak */
             if (val < peak && val > left) return (val - left) / (peak - left);
+
+            /* Value is right of the peak*/
             if (val > peak && val < right) return (right - val) / (right - peak);
+
+            /* The value is outside of the Triangle */
             else return 0;
 
         }
