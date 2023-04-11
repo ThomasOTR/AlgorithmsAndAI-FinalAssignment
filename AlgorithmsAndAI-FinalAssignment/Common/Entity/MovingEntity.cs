@@ -94,6 +94,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             if (Form1.ForceVisible) RenderForce(g);
         }
 
+        /// <summary>
+        /// Method to render the Force.
+        /// </summary>
+        /// <param name="g"></param>
         private void RenderForce(Graphics g)
         {
             Rectangle r = new((int)(Position.x - 15), (int)(Position.y - 15), 30, 30);

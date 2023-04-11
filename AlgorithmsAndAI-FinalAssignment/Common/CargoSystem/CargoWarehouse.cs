@@ -31,6 +31,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             Cargo? cargo = GetCargoSuitedBestForShuttle(shuttle);
             if (cargo != null) shuttle.cargo = cargo;
         }
+
         public override void Update(float delta)
         {
             /* Check if the amount of cargo available is lower than 5. If so create some new cargo */
@@ -49,6 +50,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             Cargo c = new(
                            Name: Cargo.CargoNames[r.Next(Cargo.CargoNames.Length - 1)],
                            targetLocation: stations[r.Next(stations.Count)]);
+
             CargoForDelivery.Add(c);
         }
 

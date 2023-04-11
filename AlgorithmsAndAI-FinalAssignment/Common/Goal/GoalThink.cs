@@ -72,6 +72,5 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
             }
             else return false;
         }
-
     }
 }

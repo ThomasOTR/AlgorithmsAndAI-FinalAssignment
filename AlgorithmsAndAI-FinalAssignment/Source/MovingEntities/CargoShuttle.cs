@@ -59,7 +59,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
 
             if (!Form1.ForceVisible && o != null) g.DrawImage((Image)o, r);
 
-
             /* Trigger the method in the base class. The base class method handles the rendering of the boolean-depending stuff like behaviour */
             base.Render(g);
 

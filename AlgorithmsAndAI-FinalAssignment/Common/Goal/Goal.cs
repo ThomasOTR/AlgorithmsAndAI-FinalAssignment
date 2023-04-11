@@ -16,6 +16,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
             Performer = movingEntity;
             Status = GoalStatus.Inactive;
         }
+
         /// <summary>
         /// A simple method to activate the Goal
         /// </summary>
@@ -43,6 +44,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
         {
             return (Status == type);
         }
+
         /// <summary>
         /// A method to receive the Name of a goal. This is needed for Behaviour Rendering
         /// </summary>

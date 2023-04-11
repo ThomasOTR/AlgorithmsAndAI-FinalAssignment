@@ -22,6 +22,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Entities
             this.world = world;
             this.Position = Position;
         }
+
         /// <summary>
         /// Method to update the Entity. This will be triggered by the World update method.
         /// </summary>

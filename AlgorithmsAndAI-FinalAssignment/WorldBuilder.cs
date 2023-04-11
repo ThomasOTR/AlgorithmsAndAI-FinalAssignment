@@ -29,10 +29,10 @@ namespace AlgorithmsAndAI_FinalAssignment
         {
             /* Adding Locations */
             DeliveryStation DS1 = new(world, new Vector2D(450, 150));
-            DeliveryStation DS2 = new(world, new Vector2D(1100, 1000));
+            DeliveryStation DS2 = new(world, new Vector2D(1100, 1100));
 
             DeliveryStation DS3 = new(world, new Vector2D(1200, 300));
-            DeliveryStation DS4 = new(world, new Vector2D(150, 800));
+            DeliveryStation DS4 = new(world, new Vector2D(150, 900));
             DeliveryStation DS5 = new(world, new Vector2D(700, 600));
 
             /* Adding the DeliveryStations first (This is needed because otherwise the warehouse cannot be filled with cargo with their destination */
@@ -47,7 +47,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             PetrolStation PS2 = new(world, new Vector2D(1100, 700));
 
             RepairStation RS1 = new(world, new Vector2D(700, 200));
-            RepairStation RS2 = new(world, new Vector2D(600, 900));
+            RepairStation RS2 = new(world, new Vector2D(600, 800));
 
 
             world.StaticEntities.AddRange(new List<StaticEntity> { CW1, CW2, CW3, PS1, PS2, RS1, RS2 });
@@ -59,8 +59,8 @@ namespace AlgorithmsAndAI_FinalAssignment
             /* Adding some Astroids */
             world.StaticEntities.AddRange(new List<StaticEntity>
             {
-                    new SpaceObstacle(world, new Vector2D(800, 950), Asteroids[new Random().Next(Asteroids.Count)]),
-                    new SpaceObstacle(world, new Vector2D(700, 300), Asteroids[new Random().Next(Asteroids.Count)]),
+                    new SpaceObstacle(world, new Vector2D(850, 950), Asteroids[new Random().Next(Asteroids.Count)]),
+                    new SpaceObstacle(world, new Vector2D(700, 400), Asteroids[new Random().Next(Asteroids.Count)]),
                     new SpaceObstacle(world, new Vector2D(900, 600), Asteroids[new Random().Next(Asteroids.Count)]),
                     new SpaceObstacle(world, new Vector2D(200, 700), Asteroids[new Random().Next(Asteroids.Count)]),
             });

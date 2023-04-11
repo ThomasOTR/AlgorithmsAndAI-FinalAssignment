@@ -53,6 +53,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                 }
             }
         }
+
+        /// <summary>
+        /// A method to check if a position of a node is within the range of a obstacle
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
         public bool InRadiusOfStaticEntity(Vector2D v)
         {
             bool InRadius = false;
@@ -75,19 +81,17 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                 {
                     if (NodeList[x, y] != null)
                     {
-
+                        /* Horizontal and Vertical lines*/
                         if (!IsOutOfRange(x - 1, y)) NodeList[x, y].AddAdjecent(new Edge(NodeList[x - 1, y]));
                         if (!IsOutOfRange(x + 1, y)) NodeList[x, y].AddAdjecent(new Edge(NodeList[x + 1, y]));
                         if (!IsOutOfRange(x, y + 1)) NodeList[x, y].AddAdjecent(new Edge(NodeList[x, y + 1]));
                         if (!IsOutOfRange(x, y - 1)) NodeList[x, y].AddAdjecent(new Edge(NodeList[x, y - 1]));
 
-
+                        /* Diagonal lines */
                         if (!IsOutOfRange(x - 1, y - 1)) NodeList[x, y].AddAdjecent(new Edge(NodeList[x - 1, y - 1]));
                         if (!IsOutOfRange(x + 1, y - 1)) NodeList[x, y].AddAdjecent(new Edge(NodeList[x + 1, y - 1]));
                         if (!IsOutOfRange(x - 1, y + 1)) NodeList[x, y].AddAdjecent(new Edge(NodeList[x - 1, y + 1]));
                         if (!IsOutOfRange(x + 1, y + 1)) NodeList[x, y].AddAdjecent(new Edge(NodeList[x + 1, y + 1]));
-
-
                     }
                 }
             }
@@ -157,7 +161,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                         /* Render the Edges of the node*/
                         foreach (Edge e in NodeList[x, y].GetAdjecents())
                         {
-                            e.Render(g, NodeList[x, y].Position, new Pen(Color.White));
+                            e.Render(g, NodeList[x, y].Position, new Pen(Color.DarkGray));
                         }
                     }
 
@@ -189,7 +193,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         /// </summary>
         /// <param name="start">Node of the start location</param>
         /// <param name="end">Node of the destination location</param>
-        public void AstarPath(Node start, Node end)
+        public void CalculatePathWithAstar(Node start, Node end)
         {
             PriorityQueue pq = new();
 

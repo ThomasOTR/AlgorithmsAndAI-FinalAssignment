@@ -3,6 +3,7 @@ using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 
 namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 {
+    /* OccupationState of a Location. This really helps the simulation by knowing when a location is open or not. */
     public enum OccupationState
     {
         Open,
@@ -15,6 +16,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         /* The Entity that has occupied this location */
         private MovingEntity? OccupiedBy;
 
+        /* The state of a location: Open, Claimed or Occupied */
         private OccupationState occupationState;
         public InteractiveLocation(World world, Vector2D position) : base(world, position)
         {
@@ -23,6 +25,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             radius = 45;
         }
 
+        /// <summary>
+        /// A method to get the private OccupationState of the Location
+        /// </summary>
+        /// <returns></returns>
         public OccupationState GetOccupationState() { return occupationState; }
 
         /// <summary>

@@ -19,6 +19,5 @@
             this.Name = Name;
             TargetLocation = targetLocation;
         }
-
     }
 }

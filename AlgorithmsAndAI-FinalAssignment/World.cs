@@ -64,15 +64,6 @@ namespace AlgorithmsAndAI_FinalAssignment
         }
 
         /// <summary>
-        /// A method to get specific MovingEntities
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public List<T> GetMovingEntityListOf<T>() where T : MovingEntity
-        {
-            return MovingEntities.Where(e => e is T).Select(e => (T)e).ToList();
-        }
-        /// <summary>
         /// A method to get specific StaticEntities */
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -81,7 +72,6 @@ namespace AlgorithmsAndAI_FinalAssignment
         {
             return StaticEntities.Where(e => e is T).Select(e => (T)e).ToList();
         }
-
 
         /// <summary>
         /// Method to start Path finding Process
@@ -100,7 +90,7 @@ namespace AlgorithmsAndAI_FinalAssignment
             if (end != null && MainAgent != null)
             {
                 Node start = graph.NodeList[Convert.ToInt32(MainAgent.Position.x / size), Convert.ToInt32((MainAgent.Position.y / size))];
-                graph.AstarPath(start, end);
+                graph.CalculatePathWithAstar(start, end);
             }
         }
 
