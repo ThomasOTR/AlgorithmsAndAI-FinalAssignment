@@ -31,8 +31,6 @@ namespace FinalAssignmentAAI.Goals
         {
             if (path.Count == 0) Status = GoalStatus.Failed;
 
-            /* Reverse the path so i can add it in the right order for the stack */
-            path.Reverse();
             foreach (Node node in path)
             {
                 /* If the current node position is the same as the Performer. Skip adding a goal, so it will not do goals for nothing */

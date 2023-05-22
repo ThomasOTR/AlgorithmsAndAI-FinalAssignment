@@ -210,9 +210,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                 /* Break the while loop when the node is null. */
                 if (n == null) break;
 
-                /* Add the node to the shortest path list*/
-                ShortestPath.Add(n);
-
                 /* If the end node is found, break the while loop.*/
                 if (n.Equals(end))
                 {
@@ -256,8 +253,21 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             }
             /* Set the visited nodes, by getting all the nodes in the priority queue. */
             NodesVisited = pq.GetNodes();
+            CalculateShortestPath(end);
         }
 
+        private void CalculateShortestPath(Node end)
+        {
+            /* Start with the destination node */
+            Node node = end;
+
+            /* Navigate back to the start by .Prev */
+            while (node != null)
+            {
+                ShortestPath.Add(node);
+                node = node.Prev;
+            }
+        }
         /// <summary>
         /// A method to reset the ShortestPath and VisitedNodes.
         /// </summary>
