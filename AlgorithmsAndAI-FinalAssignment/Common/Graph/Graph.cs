@@ -26,14 +26,20 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         /* Nodes visited during Astar PathPlanning */
         private List<Node> NodesVisited;
 
+        public bool PathCalculated;
+
         public Graph(World world)
         {
             ShortestPath = new List<Node>();
             NodesVisited = new List<Node>();
+
             this.world = world;
             MaxX = world.Width / BetweenNodes;
             MaxY = world.Height / BetweenNodes;
             NodeList = new Node[(int)(MaxX + 1), (int)(MaxY + 1)];
+
+            PathCalculated = false;
+
             CreateNodes();
             CreateEdges();
         }
@@ -136,7 +142,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         public void Render(Graphics g)
         {
             RenderGraph(g);
-            if (ShortestPath.Count > 0 && NodesVisited.Count > 0) RenderAstar(g);
+
+            if (PathCalculated)
+            {
+                if (ShortestPath.Count > 0 && NodesVisited.Count > 0) RenderAstar(g);
+            }
 
         }
 
@@ -254,6 +264,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             /* Set the visited nodes, by getting all the nodes in the priority queue. */
             NodesVisited = pq.GetNodes();
             CalculateShortestPath(end);
+
         }
 
         private void CalculateShortestPath(Node end)
@@ -267,17 +278,23 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                 ShortestPath.Add(node);
                 node = node.Prev;
             }
+            PathCalculated = true;
+
         }
         /// <summary>
         /// A method to reset the ShortestPath and VisitedNodes.
         /// </summary>
         public void Reset()
         {
+
+            PathCalculated = false;
+
             ShortestPath.ForEach(n => n.Reset());
             ShortestPath.Clear();
 
             NodesVisited.ForEach(n => n.Reset());
             NodesVisited.Clear();
+
 
         }
     }

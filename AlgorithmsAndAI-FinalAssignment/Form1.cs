@@ -40,8 +40,14 @@ namespace AlgorithmsAndAI_FinalAssignment
                 Enabled = true,
             };
             timer.Elapsed += Timer_Elapsed;
-
             WorldCanvas.BackgroundImage = Resources.bg1;
+
+            MaximizeBox = false;
+            MinimizeBox = false;
+            //FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+
+
         }
 
         /// <summary>
@@ -116,5 +122,9 @@ namespace AlgorithmsAndAI_FinalAssignment
             StatsVisibile = checkBoxStats.Checked;
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

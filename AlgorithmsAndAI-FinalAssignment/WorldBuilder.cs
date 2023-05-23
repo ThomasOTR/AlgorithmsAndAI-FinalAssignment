@@ -29,9 +29,9 @@ namespace AlgorithmsAndAI_FinalAssignment
         {
             /* Adding Locations */
             DeliveryStation DS1 = new(world, new Vector2D(450, 150));
-            DeliveryStation DS2 = new(world, new Vector2D(1100, 1100));
+            DeliveryStation DS2 = new(world, new Vector2D(1500, 950));
 
-            DeliveryStation DS3 = new(world, new Vector2D(1200, 300));
+            DeliveryStation DS3 = new(world, new Vector2D(1300, 200));
             DeliveryStation DS4 = new(world, new Vector2D(150, 900));
             DeliveryStation DS5 = new(world, new Vector2D(700, 600));
 
@@ -39,15 +39,15 @@ namespace AlgorithmsAndAI_FinalAssignment
             world.StaticEntities.AddRange(new List<StaticEntity> { DS1, DS2, DS3, DS4, DS5 });
 
             /* Adding the rest of the locations */
-            CargoWarehouse CW1 = new(world, new Vector2D(700, 1000));
+            CargoWarehouse CW1 = new(world, new Vector2D(700, 850));
             CargoWarehouse CW2 = new(world, new Vector2D(250, 300));
-            CargoWarehouse CW3 = new(world, new Vector2D(950, 400));
+            CargoWarehouse CW3 = new(world, new Vector2D(1100, 500));
 
             PetrolStation PS1 = new(world, new Vector2D(300, 550));
-            PetrolStation PS2 = new(world, new Vector2D(1100, 700));
+            PetrolStation PS2 = new(world, new Vector2D(1350, 600));
 
-            RepairStation RS1 = new(world, new Vector2D(700, 200));
-            RepairStation RS2 = new(world, new Vector2D(600, 800));
+            RepairStation RS1 = new(world, new Vector2D(850, 200));
+            RepairStation RS2 = new(world, new Vector2D(900, 800));
 
 
             world.StaticEntities.AddRange(new List<StaticEntity> { CW1, CW2, CW3, PS1, PS2, RS1, RS2 });
@@ -70,9 +70,9 @@ namespace AlgorithmsAndAI_FinalAssignment
             {
                     new SpaceObstacle(world, new Vector2D(1000, 150), Planets[new Random().Next(Planets.Count)]),
                     new SpaceObstacle(world, new Vector2D(500, 300), Planets[new Random().Next(Planets.Count)]),
-                    new SpaceObstacle(world, new Vector2D(420, 640), Planets[new Random().Next(Planets.Count)]),
+                    new SpaceObstacle(world, new Vector2D(400, 650), Planets[new Random().Next(Planets.Count)]),
                     new SpaceObstacle(world, new Vector2D(1050, 900), Planets[new Random().Next(Planets.Count)]),
-                    new SpaceObstacle(world, new Vector2D(1100, 500), Planets[new Random().Next(Planets.Count)]),
+                    new SpaceObstacle(world, new Vector2D(1550, 450), Planets[new Random().Next(Planets.Count)]),
                     new SpaceObstacle(world, new Vector2D(400, 900), Planets[new Random().Next(Planets.Count)]),
 
             });

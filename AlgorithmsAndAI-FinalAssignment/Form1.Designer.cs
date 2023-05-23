@@ -45,9 +45,10 @@
             // WorldCanvas
             // 
             WorldCanvas.BackColor = SystemColors.Control;
-            WorldCanvas.Location = new Point(1, 3);
+            WorldCanvas.Location = new Point(1, 2);
+            WorldCanvas.Margin = new Padding(2);
             WorldCanvas.Name = "WorldCanvas";
-            WorldCanvas.Size = new Size(1400, 1200);
+            WorldCanvas.Size = new Size(1700, 1050);
             WorldCanvas.TabIndex = 0;
             WorldCanvas.MouseClick += OnClick;
             // 
@@ -55,9 +56,10 @@
             // 
             checkBoxStats.AutoSize = true;
             checkBoxStats.BackColor = Color.Transparent;
-            checkBoxStats.Location = new Point(10, 259);
+            checkBoxStats.Location = new Point(7, 155);
+            checkBoxStats.Margin = new Padding(2);
             checkBoxStats.Name = "checkBoxStats";
-            checkBoxStats.Size = new Size(76, 29);
+            checkBoxStats.Size = new Size(51, 19);
             checkBoxStats.TabIndex = 7;
             checkBoxStats.Text = "Stats";
             checkBoxStats.UseVisualStyleBackColor = false;
@@ -67,9 +69,10 @@
             // 
             checkBoxGraph.AutoSize = true;
             checkBoxGraph.BackColor = Color.Transparent;
-            checkBoxGraph.Location = new Point(10, 224);
+            checkBoxGraph.Location = new Point(7, 134);
+            checkBoxGraph.Margin = new Padding(2);
             checkBoxGraph.Name = "checkBoxGraph";
-            checkBoxGraph.Size = new Size(86, 29);
+            checkBoxGraph.Size = new Size(58, 19);
             checkBoxGraph.TabIndex = 5;
             checkBoxGraph.Text = "Graph";
             checkBoxGraph.UseVisualStyleBackColor = false;
@@ -79,9 +82,10 @@
             // 
             checkBoxForce.AutoSize = true;
             checkBoxForce.BackColor = Color.Transparent;
-            checkBoxForce.Location = new Point(10, 189);
+            checkBoxForce.Location = new Point(7, 113);
+            checkBoxForce.Margin = new Padding(2);
             checkBoxForce.Name = "checkBoxForce";
-            checkBoxForce.Size = new Size(81, 29);
+            checkBoxForce.Size = new Size(55, 19);
             checkBoxForce.TabIndex = 4;
             checkBoxForce.Text = "Force";
             checkBoxForce.UseVisualStyleBackColor = false;
@@ -91,9 +95,10 @@
             // 
             checkBoxLocationDetails.AutoSize = true;
             checkBoxLocationDetails.BackColor = Color.Transparent;
-            checkBoxLocationDetails.Location = new Point(10, 154);
+            checkBoxLocationDetails.Location = new Point(7, 92);
+            checkBoxLocationDetails.Margin = new Padding(2);
             checkBoxLocationDetails.Name = "checkBoxLocationDetails";
-            checkBoxLocationDetails.Size = new Size(163, 29);
+            checkBoxLocationDetails.Size = new Size(110, 19);
             checkBoxLocationDetails.TabIndex = 3;
             checkBoxLocationDetails.Text = "Location Details";
             checkBoxLocationDetails.UseVisualStyleBackColor = false;
@@ -104,9 +109,10 @@
             checkBoxBehaviour.AutoSize = true;
             checkBoxBehaviour.BackColor = SystemColors.Control;
             checkBoxBehaviour.ForeColor = SystemColors.ControlText;
-            checkBoxBehaviour.Location = new Point(10, 119);
+            checkBoxBehaviour.Location = new Point(7, 71);
+            checkBoxBehaviour.Margin = new Padding(2);
             checkBoxBehaviour.Name = "checkBoxBehaviour";
-            checkBoxBehaviour.Size = new Size(116, 29);
+            checkBoxBehaviour.Size = new Size(79, 19);
             checkBoxBehaviour.TabIndex = 2;
             checkBoxBehaviour.Text = "Behaviour";
             checkBoxBehaviour.UseVisualStyleBackColor = false;
@@ -117,9 +123,10 @@
             output_titleLabel.AutoSize = true;
             output_titleLabel.BackColor = Color.Transparent;
             output_titleLabel.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            output_titleLabel.Location = new Point(89, 71);
+            output_titleLabel.Location = new Point(62, 43);
+            output_titleLabel.Margin = new Padding(2, 0, 2, 0);
             output_titleLabel.Name = "output_titleLabel";
-            output_titleLabel.Size = new Size(85, 29);
+            output_titleLabel.Size = new Size(59, 19);
             output_titleLabel.TabIndex = 1;
             output_titleLabel.Text = "Toggles";
             // 
@@ -128,9 +135,10 @@
             titleLabel.AutoSize = true;
             titleLabel.BackColor = Color.Transparent;
             titleLabel.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            titleLabel.Location = new Point(10, 21);
+            titleLabel.Location = new Point(7, 13);
+            titleLabel.Margin = new Padding(2, 0, 2, 0);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(266, 39);
+            titleLabel.Size = new Size(186, 27);
             titleLabel.TabIndex = 0;
             titleLabel.Text = "Simulation Options";
             // 
@@ -145,38 +153,43 @@
             SettingsPanel.Controls.Add(checkBoxGraph);
             SettingsPanel.Controls.Add(checkBoxLocationDetails);
             SettingsPanel.Controls.Add(checkBoxForce);
-            SettingsPanel.Location = new Point(1407, 3);
+            SettingsPanel.Location = new Point(1705, 2);
+            SettingsPanel.Margin = new Padding(2);
             SettingsPanel.Name = "SettingsPanel";
-            SettingsPanel.Size = new Size(276, 1200);
+            SettingsPanel.Size = new Size(200, 1038);
             SettingsPanel.TabIndex = 8;
             // 
             // simulationStatusText
             // 
-            simulationStatusText.Location = new Point(17, 687);
+            simulationStatusText.Location = new Point(7, 213);
+            simulationStatusText.Margin = new Padding(2, 0, 2, 0);
             simulationStatusText.Name = "simulationStatusText";
-            simulationStatusText.Size = new Size(241, 127);
+            simulationStatusText.Size = new Size(169, 76);
             simulationStatusText.TabIndex = 9;
             // 
             // simulationStatusTitle
             // 
             simulationStatusTitle.AutoSize = true;
             simulationStatusTitle.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            simulationStatusTitle.Location = new Point(79, 632);
+            simulationStatusTitle.Location = new Point(7, 185);
+            simulationStatusTitle.Margin = new Padding(2, 0, 2, 0);
             simulationStatusTitle.Name = "simulationStatusTitle";
-            simulationStatusTitle.Size = new Size(105, 41);
+            simulationStatusTitle.Size = new Size(69, 28);
             simulationStatusTitle.TabIndex = 8;
             simulationStatusTitle.Text = "Status:";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1695, 1204);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(SettingsPanel);
             Controls.Add(WorldCanvas);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(2);
             Name = "Form1";
             Text = "SpaceSimulation";
+            Load += Form1_Load;
             SettingsPanel.ResumeLayout(false);
             SettingsPanel.PerformLayout();
             ResumeLayout(false);

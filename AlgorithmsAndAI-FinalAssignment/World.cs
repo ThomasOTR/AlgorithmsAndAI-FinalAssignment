@@ -80,20 +80,24 @@ namespace AlgorithmsAndAI_FinalAssignment
         /// <param name="vectorY"></param>
         public void StartPathPlanning(int vectorX, int vectorY)
         {
-            if (MainAgent == null) return;
+            if (graph.PathCalculated) return;
             else
             {
-                /* Get the size between the nodes. This is needed to calculate the Node index */
-                double size = Graph.BetweenNodes;
+                if (MainAgent == null) return;
+                else
+                {
+                    /* Get the size between the nodes. This is needed to calculate the Node index */
+                    double size = Graph.BetweenNodes;
 
-                /* The start node, the node of the position of the Moving Entity */
-                Node start = graph.NodeList[Convert.ToInt32(MainAgent.Position.x / size), Convert.ToInt32((MainAgent.Position.y / size))];
+                    /* The start node, the node of the position of the Moving Entity */
+                    Node start = graph.NodeList[Convert.ToInt32(MainAgent.Position.x / size), Convert.ToInt32((MainAgent.Position.y / size))];
 
-                /* The end node, the node of the clicked position */
-                Node end = graph.NodeList[Convert.ToInt32(vectorX / size), Convert.ToInt32(vectorY / size)];
+                    /* The end node, the node of the clicked position */
+                    Node end = graph.NodeList[Convert.ToInt32(vectorX / size), Convert.ToInt32(vectorY / size)];
 
-                /* if the start or end node is null, do not calculate the path */
-                if (start != null && end != null) graph.CalculatePathWithAstar(start, end);
+                    /* if the start or end node is not null, calculate the path */
+                    if (start != null && end != null) graph.CalculatePathWithAstar(start, end);
+                }
             }
         }
 

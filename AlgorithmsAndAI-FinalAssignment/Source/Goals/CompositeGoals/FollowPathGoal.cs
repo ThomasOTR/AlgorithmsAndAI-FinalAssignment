@@ -2,6 +2,7 @@
 using AlgorithmsAndAI_FinalAssignment.Common.Goals;
 using AlgorithmsAndAI_FinalAssignment.Common.Graph;
 using AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals;
+using AlgorithmsAndAI_FinalAssignment.Steering;
 
 namespace FinalAssignmentAAI.Goals
 {
@@ -21,6 +22,8 @@ namespace FinalAssignmentAAI.Goals
 
             /* Create goals based on the planned path */
             CreateGoalsOfPath(Performer.world.graph.GetShortestPath());
+
+            Performer.SteeringBehaviours.RemoveAll(x => x is ObstacleAvoidanceBehaviour);
         }
 
         /// <summary>
@@ -47,6 +50,9 @@ namespace FinalAssignmentAAI.Goals
         {
             /* This is needed to reuse the graph */
             Performer.world.graph.Reset();
+
+            Performer.SteeringBehaviours.Add(new ObstacleAvoidanceBehaviour(Performer));
+
 
             /* Terminate a goal as usual */
             base.Terminate();
