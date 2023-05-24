@@ -27,10 +27,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
         {
             double desirability = 0.0;
 
-            /* If the wear is higher than 20 or all the repairstation are occupied desirability will be 0. Otherwise it will be calculated. The lower the wear the higher the desirability will be */
-            if (ME.Wear.currentValue <= 20 && !ME.world.GetStaticEntityListOf<RepairStation>().All(s => s.IsOccupied() == true))
+            /* If the wear is higher than 25 or all the repairstation are occupied desirability will be 0. Otherwise it will be calculated. The lower the wear the higher the desirability will be */
+            if (ME.Wear.currentValue <= 25 && !ME.world.GetStaticEntityListOf<RepairStation>().All(s => s.IsOccupied() == true))
             {
-                desirability = 1 - ME.Wear.currentValue / 40;
+                desirability = 1 - ME.Wear.currentValue / 50;
             }
             return desirability;
         }

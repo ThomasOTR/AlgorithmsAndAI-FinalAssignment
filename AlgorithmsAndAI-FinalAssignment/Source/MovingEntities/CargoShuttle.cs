@@ -40,8 +40,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
             /* This will prevent fuel and wear decrease while standing still. */
             if (Velocity.Length() > 0)
             {
-                Fuel.Decrease(0.05);
-                Wear.Decrease(0.1);
+                Fuel.Decrease(0.03);
+                Wear.Decrease(0.06);
             }
 
             /* Run the base Update method which will calculate steering and updates the brain */

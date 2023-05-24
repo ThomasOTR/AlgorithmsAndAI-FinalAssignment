@@ -4,7 +4,6 @@ using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic;
 using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Properties;
-using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 using AlgorithmsAndAI_FinalAssignment.Source.StaticEntities;
 using System.Configuration;
 
@@ -14,43 +13,61 @@ namespace AlgorithmsAndAI_FinalAssignment
     {
         public static void GenerateMovingEntities(World world)
         {
-            /* Adding shuttles which will bring cargo to locations */
-            CargoShuttle CS1 = new(world, new Vector2D(1300, 600));
-            CargoShuttle CS2 = new(world, new Vector2D(600, 1100));
-            CargoShuttle CS3 = new(world, new Vector2D(100, 600));
-            world.MovingEntities.AddRange(new List<MovingEntity> { CS1, CS2, CS3 });
+            ///* Adding shuttles which will bring cargo to locations */
+            //CargoShuttle CS1 = new(world, new Vector2D(1300, 600));
+            //CargoShuttle CS2 = new(world, new Vector2D(800, 300));
+            //CargoShuttle CS3 = new(world, new Vector2D(500, 1000));
+            //world.MovingEntities.AddRange(new List<MovingEntity> { CS1, CS2, CS3 });
 
-            /* Adding a Normal shuttle which will wander around or will follow path */
-            NormalShuttle NS1 = new(world, new Vector2D(125, 125));
-            world.MainAgent = NS1;
+            ///* Adding a Normal shuttle which will wander around or will follow path */
+            //NormalShuttle NS1 = new(world, new Vector2D(125, 125));
+            //world.MainAgent = NS1;
 
         }
         public static void GenerateStaticEntities(World world)
         {
             /* Adding Locations */
-            DeliveryStation DS1 = new(world, new Vector2D(450, 150));
-            DeliveryStation DS2 = new(world, new Vector2D(1500, 950));
+            DeliveryStation DS1 = new(world, new Vector2D(250, 250));
+            DeliveryStation DS2 = new(world, new Vector2D(1500, 750));
 
             DeliveryStation DS3 = new(world, new Vector2D(1300, 200));
-            DeliveryStation DS4 = new(world, new Vector2D(150, 900));
-            DeliveryStation DS5 = new(world, new Vector2D(700, 600));
+            DeliveryStation DS4 = new(world, new Vector2D(300, 800));
+            DeliveryStation DS5 = new(world, new Vector2D(850, 500));
 
             /* Adding the DeliveryStations first (This is needed because otherwise the warehouse cannot be filled with cargo with their destination */
             world.StaticEntities.AddRange(new List<StaticEntity> { DS1, DS2, DS3, DS4, DS5 });
 
-            /* Adding the rest of the locations */
-            CargoWarehouse CW1 = new(world, new Vector2D(700, 850));
-            CargoWarehouse CW2 = new(world, new Vector2D(250, 300));
-            CargoWarehouse CW3 = new(world, new Vector2D(1100, 500));
 
-            PetrolStation PS1 = new(world, new Vector2D(300, 550));
-            PetrolStation PS2 = new(world, new Vector2D(1350, 600));
+            ///* Adding the rest of the locations */
+            CargoWarehouse CW1 = new(world, new Vector2D(550, 850));
+            CargoWarehouse CW2 = new(world, new Vector2D(550, 350));
+            CargoWarehouse CW3 = new(world, new Vector2D(1200, 450));
+            CargoWarehouse CW4 = new(world, new Vector2D(1200, 1000));
 
-            RepairStation RS1 = new(world, new Vector2D(850, 200));
-            RepairStation RS2 = new(world, new Vector2D(900, 800));
+            FuelStation FS1 = new(world, new Vector2D(550, 600));
+            FuelStation FS2 = new(world, new Vector2D(1200, 800));
+            FuelStation FS3 = new(world, new Vector2D(850, 250));
+
+            RepairStation RS1 = new(world, new Vector2D(150, 500));
+            RepairStation RS2 = new(world, new Vector2D(900, 650));
+            RepairStation RS3 = new(world, new Vector2D(1550, 400));
 
 
-            world.StaticEntities.AddRange(new List<StaticEntity> { CW1, CW2, CW3, PS1, PS2, RS1, RS2 });
+            int i = 0;
+            foreach (StaticEntity bla in world.StaticEntities)
+            {
+                System.Diagnostics.Debug.WriteLine("Station" + i);
+                System.Diagnostics.Debug.WriteLine(bla.Position.DistanceSquared(CW1.Position).ToString());
+                System.Diagnostics.Debug.WriteLine(bla.Position.DistanceSquared(CW2.Position).ToString());
+                System.Diagnostics.Debug.WriteLine(bla.Position.DistanceSquared(CW3.Position).ToString());
+                System.Diagnostics.Debug.WriteLine(bla.Position.DistanceSquared(CW4.Position).ToString());
+
+                System.Diagnostics.Debug.WriteLine("--------");
+
+                i++;
+            }
+
+            world.StaticEntities.AddRange(new List<StaticEntity> { CW1, CW2, CW3, CW4, FS1, FS2, FS3, RS1, RS2, RS3 });
 
 
             List<Bitmap> Asteroids = new() { Resources.asteroid1, Resources.asteroid2, Resources.asteroid3, Resources.asteroid4, Resources.asteroid5, Resources.asteroid6 };
@@ -59,23 +76,25 @@ namespace AlgorithmsAndAI_FinalAssignment
             /* Adding some Astroids */
             world.StaticEntities.AddRange(new List<StaticEntity>
             {
-                    new SpaceObstacle(world, new Vector2D(850, 950), Asteroids[new Random().Next(Asteroids.Count)]),
-                    new SpaceObstacle(world, new Vector2D(700, 400), Asteroids[new Random().Next(Asteroids.Count)]),
-                    new SpaceObstacle(world, new Vector2D(900, 600), Asteroids[new Random().Next(Asteroids.Count)]),
+                    new SpaceObstacle(world, new Vector2D(850, 800), Asteroids[new Random().Next(Asteroids.Count)]),
+                    new SpaceObstacle(world, new Vector2D(750, 400), Asteroids[new Random().Next(Asteroids.Count)]),
+                    new SpaceObstacle(world, new Vector2D(1050, 600), Asteroids[new Random().Next(Asteroids.Count)]),
                     new SpaceObstacle(world, new Vector2D(200, 700), Asteroids[new Random().Next(Asteroids.Count)]),
             });
 
             /* Adding some Planets */
             world.StaticEntities.AddRange(new List<StaticEntity>
             {
-                    new SpaceObstacle(world, new Vector2D(1000, 150), Planets[new Random().Next(Planets.Count)]),
-                    new SpaceObstacle(world, new Vector2D(500, 300), Planets[new Random().Next(Planets.Count)]),
-                    new SpaceObstacle(world, new Vector2D(400, 650), Planets[new Random().Next(Planets.Count)]),
-                    new SpaceObstacle(world, new Vector2D(1050, 900), Planets[new Random().Next(Planets.Count)]),
-                    new SpaceObstacle(world, new Vector2D(1550, 450), Planets[new Random().Next(Planets.Count)]),
-                    new SpaceObstacle(world, new Vector2D(400, 900), Planets[new Random().Next(Planets.Count)]),
+                new SpaceObstacle(world, new Vector2D(500, 150), Planets[new Random().Next(Planets.Count)]),
+                new SpaceObstacle(world, new Vector2D(350,400), Planets[new Random().Next(Planets.Count)]),
+                new SpaceObstacle(world, new Vector2D(1350, 700), Planets[new Random().Next(Planets.Count)]),
+                new SpaceObstacle(world, new Vector2D(1350, 400), Planets[new Random().Next(Planets.Count)]),
+                new SpaceObstacle(world, new Vector2D(500, 1000), Planets[new Random().Next(Planets.Count)]),
+                //new SpaceObstacle(world, new Vector2D(400, 900), Planets[new Random().Next(Planets.Count)]),
 
             });
+
+
 
 
         }
@@ -97,8 +116,8 @@ namespace AlgorithmsAndAI_FinalAssignment
                 int DistanceMid = GetVariableValue("DistanceMid");
                 int DistanceMax = GetVariableValue("DistanceMax");
                 FuzzyTerm_SET ShortDistance = Distance.AddLeftShoulderSet("SHORT", DistanceMin, DistanceMid / 2, DistanceMid);
-                FuzzyTerm_SET MediumDistance = Distance.AddTriangle("MEDIUM", DistanceMid / 2, DistanceMid, DistanceMid / 2 * 3);
-                FuzzyTerm_SET FarDistance = Distance.AddRightShoulderSet("FAR", DistanceMid, DistanceMid / 2 * 3, DistanceMax);
+                FuzzyTerm_SET MediumDistance = Distance.AddTriangle("MEDIUM", DistanceMid / 2, DistanceMid, DistanceMid * 3 / 2);
+                FuzzyTerm_SET FarDistance = Distance.AddRightShoulderSet("FAR", DistanceMid, DistanceMid * 2, DistanceMax);
 
                 FuzzyVariable Wear = FM.CreateFLV("WEAR");
                 int WearMin = GetVariableValue("WearMin");

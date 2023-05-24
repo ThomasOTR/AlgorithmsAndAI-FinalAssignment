@@ -10,7 +10,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
     /// </summary>
     public class GoRefuelGoal : CompositeGoal
     {
-        private PetrolStation? PS;
+        private FuelStation? PS;
         public GoRefuelGoal(MovingEntity ME) : base(ME)
         {
             PS = null;
@@ -54,18 +54,18 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         /// This method will find the NearestRefuelStation
         /// </summary>
         /// <returns></returns>
-        private PetrolStation? GetNearestRefuelStation()
+        private FuelStation? GetNearestRefuelStation()
         {
             /* Get all the stations that are rendered */
-            List<PetrolStation> stations = Performer.world.GetStaticEntityListOf<PetrolStation>();
+            List<FuelStation> stations = Performer.world.GetStaticEntityListOf<FuelStation>();
 
             if (stations.Count != 0)
             {
-                PetrolStation? NearestPS = null;
+                FuelStation? NearestPS = null;
                 double distanceToNearest = float.PositiveInfinity;
 
                 /* Loop through all the stations */
-                foreach (PetrolStation station in stations)
+                foreach (FuelStation station in stations)
                 {
                     /* if a station is occupied, skip it. */
                     if (station.IsOccupied()) continue;

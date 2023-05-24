@@ -7,11 +7,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
     /// <summary>
     /// Class of the station where a CargoShuttle can be refueled.
     /// </summary>
-    public class PetrolStation : InteractiveLocation
+    public class FuelStation : InteractiveLocation
     {
         public double FuelingSpeed = 2;
 
-        public PetrolStation(World world, Vector2D position) : base(world, position)
+        public FuelStation(World world, Vector2D position) : base(world, position)
         {
         }
 

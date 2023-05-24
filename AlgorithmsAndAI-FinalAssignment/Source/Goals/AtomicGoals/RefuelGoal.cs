@@ -9,8 +9,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
     /// </summary>
     public class RefuelGoal : Goal
     {
-        public PetrolStation PS;
-        public RefuelGoal(MovingEntity ME, PetrolStation PS) : base(ME)
+        public FuelStation PS;
+        public RefuelGoal(MovingEntity ME, FuelStation PS) : base(ME)
         {
             this.PS = PS;
         }
