@@ -29,7 +29,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
 
             /* The shuttle will get the cargo that suits the best by it's situation. */
             Cargo? cargo = GetCargoSuitedBestForShuttle(shuttle);
-            if (cargo != null) shuttle.cargo = cargo;
+            if (cargo != null)
+            {
+                shuttle.cargo = cargo;
+                Claim(shuttle);
+            }
         }
 
         public override void Update(float delta)

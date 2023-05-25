@@ -4,6 +4,7 @@ using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic;
 using AlgorithmsAndAI_FinalAssignment.Common.FuzzyLogic.FuzzyTerms;
 using AlgorithmsAndAI_FinalAssignment.Common.Utilities;
 using AlgorithmsAndAI_FinalAssignment.Properties;
+using AlgorithmsAndAI_FinalAssignment.Source.MovingEntities;
 using AlgorithmsAndAI_FinalAssignment.Source.StaticEntities;
 using System.Configuration;
 
@@ -13,15 +14,15 @@ namespace AlgorithmsAndAI_FinalAssignment
     {
         public static void GenerateMovingEntities(World world)
         {
-            ///* Adding shuttles which will bring cargo to locations */
-            //CargoShuttle CS1 = new(world, new Vector2D(1300, 600));
-            //CargoShuttle CS2 = new(world, new Vector2D(800, 300));
-            //CargoShuttle CS3 = new(world, new Vector2D(500, 1000));
-            //world.MovingEntities.AddRange(new List<MovingEntity> { CS1, CS2, CS3 });
+            /* Adding shuttles which will bring cargo to locations */
+            CargoShuttle CS1 = new(world, new Vector2D(1300, 600));
+            CargoShuttle CS2 = new(world, new Vector2D(800, 300));
+            CargoShuttle CS3 = new(world, new Vector2D(500, 1000));
+            world.MovingEntities.AddRange(new List<MovingEntity> { CS1, CS2, CS3 });
 
-            ///* Adding a Normal shuttle which will wander around or will follow path */
-            //NormalShuttle NS1 = new(world, new Vector2D(125, 125));
-            //world.MainAgent = NS1;
+            /* Adding a Normal shuttle which will wander around or will follow path */
+            NormalShuttle NS1 = new(world, new Vector2D(125, 125));
+            world.MainAgent = NS1;
 
         }
         public static void GenerateStaticEntities(World world)
@@ -52,21 +53,6 @@ namespace AlgorithmsAndAI_FinalAssignment
             RepairStation RS2 = new(world, new Vector2D(900, 650));
             RepairStation RS3 = new(world, new Vector2D(1550, 400));
 
-
-            int i = 0;
-            foreach (StaticEntity bla in world.StaticEntities)
-            {
-                System.Diagnostics.Debug.WriteLine("Station" + i);
-                System.Diagnostics.Debug.WriteLine(bla.Position.DistanceSquared(CW1.Position).ToString());
-                System.Diagnostics.Debug.WriteLine(bla.Position.DistanceSquared(CW2.Position).ToString());
-                System.Diagnostics.Debug.WriteLine(bla.Position.DistanceSquared(CW3.Position).ToString());
-                System.Diagnostics.Debug.WriteLine(bla.Position.DistanceSquared(CW4.Position).ToString());
-
-                System.Diagnostics.Debug.WriteLine("--------");
-
-                i++;
-            }
-
             world.StaticEntities.AddRange(new List<StaticEntity> { CW1, CW2, CW3, CW4, FS1, FS2, FS3, RS1, RS2, RS3 });
 
 
@@ -80,6 +66,8 @@ namespace AlgorithmsAndAI_FinalAssignment
                     new SpaceObstacle(world, new Vector2D(750, 400), Asteroids[new Random().Next(Asteroids.Count)]),
                     new SpaceObstacle(world, new Vector2D(1050, 600), Asteroids[new Random().Next(Asteroids.Count)]),
                     new SpaceObstacle(world, new Vector2D(200, 700), Asteroids[new Random().Next(Asteroids.Count)]),
+                    new SpaceObstacle(world, new Vector2D(1450, 250), Asteroids[new Random().Next(Asteroids.Count)]),
+
             });
 
             /* Adding some Planets */
@@ -88,9 +76,9 @@ namespace AlgorithmsAndAI_FinalAssignment
                 new SpaceObstacle(world, new Vector2D(500, 150), Planets[new Random().Next(Planets.Count)]),
                 new SpaceObstacle(world, new Vector2D(350,400), Planets[new Random().Next(Planets.Count)]),
                 new SpaceObstacle(world, new Vector2D(1350, 700), Planets[new Random().Next(Planets.Count)]),
-                new SpaceObstacle(world, new Vector2D(1350, 400), Planets[new Random().Next(Planets.Count)]),
-                new SpaceObstacle(world, new Vector2D(500, 1000), Planets[new Random().Next(Planets.Count)]),
-                //new SpaceObstacle(world, new Vector2D(400, 900), Planets[new Random().Next(Planets.Count)]),
+                new SpaceObstacle(world, new Vector2D(1150, 250), Planets[new Random().Next(Planets.Count)]),
+                new SpaceObstacle(world, new Vector2D(700, 1000), Planets[new Random().Next(Planets.Count)]),
+                new SpaceObstacle(world, new Vector2D(100, 900), Planets[new Random().Next(Planets.Count)]),
 
             });
 

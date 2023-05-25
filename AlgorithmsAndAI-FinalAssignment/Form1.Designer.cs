@@ -48,7 +48,7 @@
             WorldCanvas.Location = new Point(1, 2);
             WorldCanvas.Margin = new Padding(2);
             WorldCanvas.Name = "WorldCanvas";
-            WorldCanvas.Size = new Size(1700, 1050);
+            WorldCanvas.Size = new Size(1700, 1060);
             WorldCanvas.TabIndex = 0;
             WorldCanvas.MouseClick += OnClick;
             // 

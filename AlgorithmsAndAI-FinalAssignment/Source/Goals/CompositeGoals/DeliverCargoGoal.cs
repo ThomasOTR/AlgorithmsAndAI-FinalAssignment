@@ -28,7 +28,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
             {
                 /* Claim the DeliveryStation so nobody else will go there. */
                 DeliveryStation DS = cargo.TargetLocation;
-                DS.Claim(Performer);
+
+                if (DS.GetOccupationState() == OccupationState.Open) DS.Claim(Performer);
 
                 /* Add the goals in the opposite order that it needs to happen. Because of the stack implementation */
                 Subgoals.Push(new DropOffCargoGoal(Performer, DS));

@@ -159,9 +159,9 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             double maxX = world.Width / BetweenNodes;
             double maxY = world.Height / BetweenNodes;
 
-            for (int x = 0; x < maxX; x++)
+            for (int x = 0; x <= maxX; x++)
             {
-                for (int y = 0; y < maxY; y++)
+                for (int y = 0; y <= maxY; y++)
                 {
                     if (NodeList[x, y] != null)
                     {
@@ -195,7 +195,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                     Temp.Render(g, n.Position, new Pen(Color.Green, 3));
                 }
             }
-            foreach (Node visitedNode in NodesVisited) visitedNode.Render(g, new Pen(Color.Red, 3));
+            foreach (Node visitedNode in NodesVisited.ToList()) visitedNode.Render(g, new Pen(Color.Red, 3));
         }
 
         /// <summary>
