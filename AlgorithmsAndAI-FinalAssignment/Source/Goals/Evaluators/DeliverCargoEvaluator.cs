@@ -1,4 +1,5 @@
-﻿using AlgorithmsAndAI_FinalAssignment.Common.Entities;
+﻿using AlgorithmsAndAI_FinalAssignment.Common.CargoSystem;
+using AlgorithmsAndAI_FinalAssignment.Common.Entities;
 using AlgorithmsAndAI_FinalAssignment.Common.Goals;
 using AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals;
 
@@ -24,14 +25,19 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
 
         public override double CalculateDesirability(MovingEntity ME)
         {
+
             /* If there is no cargo, nothing can be delivered */
             if (ME.cargo == null) return 0;
 
-            /* If there is no location where the cargo needs to go to */
-            else if (ME.cargo.TargetLocation == null) return 0;
+            DeliveryStation? Target = ME.cargo.TargetLocation;
 
-            /* If the location is occopied, it is not desirable to deliver the cargo */
-            else if (ME.cargo.TargetLocation.IsOccupied()) return 0;
+            /* If there is no location where the cargo needs to go to */
+            if (Target == null) return 0;
+
+            else if (Target.OccupiedBy != null && Target.IsOccupied())
+            {
+                if (!Target.OccupiedBy.Equals(ME)) return 0;
+            }
 
             /* Otherwise it's fine and it is desirable */
             return 0.5;

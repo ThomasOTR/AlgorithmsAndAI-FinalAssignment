@@ -27,12 +27,12 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             /* If the shuttle has cargo, do nothing. */
             if (shuttle.cargo != null) return;
 
-            /* The shuttle will get the cargo that suits the best by it's situation. */
+            /* The shuttle will get the cargo that suits the best by it's situation. And it will claim the location. */
             Cargo? cargo = GetCargoSuitedBestForShuttle(shuttle);
             if (cargo != null)
             {
                 shuttle.cargo = cargo;
-                Claim(shuttle);
+                shuttle.cargo.TargetLocation.Claim(shuttle);
             }
         }
 

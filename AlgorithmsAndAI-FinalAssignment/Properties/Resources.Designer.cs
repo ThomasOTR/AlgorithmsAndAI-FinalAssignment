@@ -173,6 +173,16 @@ namespace AlgorithmsAndAI_FinalAssignment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FuelStation {
+            get {
+                object obj = ResourceManager.GetObject("FuelStation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hot {
             get {
                 object obj = ResourceManager.GetObject("hot", resourceCulture);
@@ -196,16 +206,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Properties {
         internal static System.Drawing.Bitmap neptune {
             get {
                 object obj = ResourceManager.GetObject("neptune", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap PetrolStation {
-            get {
-                object obj = ResourceManager.GetObject("PetrolStation", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

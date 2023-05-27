@@ -11,10 +11,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         /* The pixel size between each node */
         public static readonly int BetweenNodes = 25;
 
-        /* comtains the amount of Nodes on the X axis */
+        /* Contains the amount of Nodes on the X axis */
         private readonly double MaxX;
 
-        /* contains the amount of nodes on the Y axis */
+        /* Contains the amount of Nodes on the Y axis */
         private readonly double MaxY;
 
         /* The Nodes on their positions */
@@ -26,6 +26,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         /* Nodes visited during Astar PathPlanning */
         private List<Node> NodesVisited;
 
+        /* A boolean to check if the path is calculated. This helps for the drawing process */
         public bool PathCalculated;
 
         public Graph(World world)
@@ -159,6 +160,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             double maxX = world.Width / BetweenNodes;
             double maxY = world.Height / BetweenNodes;
 
+            /* Loop through the grid */
             for (int x = 0; x <= maxX; x++)
             {
                 for (int y = 0; y <= maxY; y++)
@@ -185,6 +187,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
         /// <param name="g"></param>
         private void RenderAstar(Graphics g)
         {
+            /* Render the path */
             for (int i = 0; i < ShortestPath.Count; i++)
             {
                 Node n = ShortestPath[i];
@@ -195,6 +198,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                     Temp.Render(g, n.Position, new Pen(Color.Green, 3));
                 }
             }
+
+            /* Render all the visited nodes */
             foreach (Node visitedNode in NodesVisited.ToList()) visitedNode.Render(g, new Pen(Color.Red, 3));
         }
 
@@ -263,6 +268,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
             }
             /* Set the visited nodes, by getting all the nodes in the priority queue. */
             NodesVisited = pq.GetNodes();
+
+            /* Calculate the shortest path */
             CalculateShortestPath(end);
 
         }
@@ -278,15 +285,16 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Graph
                 ShortestPath.Add(node);
                 node = node.Prev;
             }
+
+            /* Set this on true helps drawing the path on the right moment */
             PathCalculated = true;
 
         }
         /// <summary>
-        /// A method to reset the ShortestPath and VisitedNodes.
+        /// A method to reset the ShortestPath, VisitedNodes and the booleans.
         /// </summary>
         public void Reset()
         {
-
             PathCalculated = false;
 
             ShortestPath.ForEach(n => n.Reset());

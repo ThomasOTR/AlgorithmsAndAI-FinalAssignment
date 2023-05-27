@@ -6,14 +6,14 @@ using AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals;
 namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
 {
     /// <summary>
-    /// This goal will move the shuttle to a PetrolStation and refuel the shuttle
+    /// This goal will move the shuttle to a FuelStation and refuel the shuttle
     /// </summary>
     public class GoRefuelGoal : CompositeGoal
     {
-        private FuelStation? PS;
+        private FuelStation? FS;
         public GoRefuelGoal(MovingEntity ME) : base(ME)
         {
-            PS = null;
+            FS = null;
         }
         public override void Activate()
         {
@@ -21,18 +21,18 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
             base.Activate();
 
             /* Get the nearest available refuel station */
-            PS = GetNearestRefuelStation();
+            FS = GetNearestFuelStation();
 
             /* If there is no petrol station to go, this goal is failed*/
-            if (PS == null) Status = GoalStatus.Failed;
+            if (FS == null) Status = GoalStatus.Failed;
 
             /* if there is one available, claim it and add the goals in opposite order*/
             else
             {
-                PS.Claim(Performer);
+                FS.Claim(Performer);
 
-                Subgoals.Push(new RefuelGoal(Performer, PS));
-                Subgoals.Push(new ArriveGoal(Performer, PS.Position));
+                Subgoals.Push(new RefuelGoal(Performer, FS));
+                Subgoals.Push(new ArriveGoal(Performer, FS.Position));
             }
         }
         public override GoalStatus Process()
@@ -42,8 +42,8 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
 
         public override void Terminate()
         {
-            /* Leave the Petrolstation so other can go to it */
-            PS?.Leave();
+            /* Leave the FuelStation so other can go to it */
+            FS?.Leave();
 
             /* Terminate the goal as usual */
             base.Terminate();
@@ -54,14 +54,14 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
         /// This method will find the NearestRefuelStation
         /// </summary>
         /// <returns></returns>
-        private FuelStation? GetNearestRefuelStation()
+        private FuelStation? GetNearestFuelStation()
         {
             /* Get all the stations that are rendered */
             List<FuelStation> stations = Performer.world.GetStaticEntityListOf<FuelStation>();
 
             if (stations.Count != 0)
             {
-                FuelStation? NearestPS = null;
+                FuelStation? NearestFS = null;
                 double distanceToNearest = float.PositiveInfinity;
 
                 /* Loop through all the stations */
@@ -74,11 +74,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.CompositeGoals
                     double nearest = Performer.Position.Distance(station.Position);
                     if (nearest < distanceToNearest)
                     {
-                        NearestPS = station;
+                        NearestFS = station;
                         distanceToNearest = nearest;
                     }
                 }
-                return NearestPS;
+                return NearestFS;
             }
             return null;
         }

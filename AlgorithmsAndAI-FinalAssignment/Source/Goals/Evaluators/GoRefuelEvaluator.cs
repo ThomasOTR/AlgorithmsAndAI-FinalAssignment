@@ -27,10 +27,10 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.Evaluators
         {
             double desirability = 0.0;
 
-            /* If the fuel is higher than 20 or all the Petrolstation are occupied desirability will be 0. Otherwise it will be calculated. The lower the wear the higher the desirability will be */
+            /* If the fuel is higher than 20 or all the FuelStations are occupied desirability will be 0. Otherwise it will be calculated. The lower the wear the higher the desirability will be */
             if (ME.Fuel.currentValue <= 25 && !ME.world.GetStaticEntityListOf<FuelStation>().All(s => s.IsOccupied() == true))
             {
-                desirability = 1 - ME.Fuel.currentValue / 40;
+                desirability = 1 - ME.Fuel.currentValue / 50;
             }
             return desirability;
         }

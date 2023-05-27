@@ -29,7 +29,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             Rectangle r = new((int)(Position.x - radius), (int)(Position.y - (radius * 0.5)), radius * 2, radius);
 
             /* Draw the Petrolstation Image*/
-            g.DrawImage(Resources.PetrolStation, r);
+            g.DrawImage(Resources.FuelStation, r);
 
             /* Draw the name below the statin for some clarification.*/
             g.DrawString("FuelStation", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);

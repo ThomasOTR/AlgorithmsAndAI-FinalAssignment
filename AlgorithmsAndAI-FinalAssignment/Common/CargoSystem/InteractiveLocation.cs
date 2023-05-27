@@ -14,7 +14,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
     public abstract class InteractiveLocation : StaticEntity
     {
         /* The Entity that has occupied this location */
-        private MovingEntity? OccupiedBy;
+        public MovingEntity? OccupiedBy;
 
         /* The state of a location: Open, Claimed or Occupied */
         private OccupationState occupationState;

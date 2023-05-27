@@ -41,7 +41,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.MovingEntities
             if (Velocity.Length() > 0)
             {
                 Fuel.Decrease(0.03);
-                Wear.Decrease(0.06);
+                Wear.Decrease(0.05);
             }
 
             /* Run the base Update method which will calculate steering and updates the brain */

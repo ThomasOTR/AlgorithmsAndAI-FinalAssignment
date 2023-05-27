@@ -9,18 +9,18 @@ namespace AlgorithmsAndAI_FinalAssignment.Source.Goals.AtomicGoals
     /// </summary>
     public class RefuelGoal : Goal
     {
-        public FuelStation PS;
-        public RefuelGoal(MovingEntity ME, FuelStation PS) : base(ME)
+        public FuelStation FS;
+        public RefuelGoal(MovingEntity ME, FuelStation FS) : base(ME)
         {
-            this.PS = PS;
+            this.FS = FS;
         }
 
         public override GoalStatus Process()
         {
             if (Status == GoalStatus.Inactive) Activate();
 
-            /* Interaction between the PetrolStation and a shuttle. This time the shuttle will be refueled. */
-            PS.Interact(Performer);
+            /* Interaction between the FuelStation and a shuttle. This time the shuttle will be refueled. */
+            FS.Interact(Performer);
 
             /* This goal is complete when the fuel is at it's max */
             if (Performer.Fuel.currentValue == Performer.Fuel.max) Status = GoalStatus.Completed;
