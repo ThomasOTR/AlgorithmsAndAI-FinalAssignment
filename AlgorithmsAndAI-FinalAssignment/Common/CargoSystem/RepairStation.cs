@@ -14,6 +14,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         {
         }
 
+        public RepairStation(World world, Vector2D position, double repairSpeed) : base(world, position)
+        {
+            RepairSpeed = repairSpeed;
+        }
+
         public override void Interact(MovingEntity shuttle)
         {
             /* Triggers the default method which will update the Occuptation state */

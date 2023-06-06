@@ -66,7 +66,7 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.Goals
         /// <returns></returns>
         public bool Present(Type type)
         {
-            if (Subgoals.Count > 0)
+            if (Subgoals.Count > 0 && Subgoals.First() != null)
             {
                 return Subgoals.Peek().GetType() == type;
             }

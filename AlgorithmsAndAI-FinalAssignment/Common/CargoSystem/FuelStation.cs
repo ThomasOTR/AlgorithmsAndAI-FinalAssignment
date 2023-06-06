@@ -15,6 +15,11 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
         {
         }
 
+        public FuelStation(World world, Vector2D position, double fuelingSpeed) : base(world, position)
+        {
+            FuelingSpeed = fuelingSpeed;
+        }
+
         public override void Interact(MovingEntity shuttle)
         {
             /* Triggers the default method which will update the Occuptation state */

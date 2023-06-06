@@ -110,9 +110,6 @@ namespace AlgorithmsAndAI_FinalAssignment.Common.CargoSystem
             g.DrawString("Warehouse", new Font("Arial", 6), Brushes.White, (int)Position.x - radius + 10, (int)Position.y + 20);
 
             base.Render(g);
-
-
-
         }
     }
 }

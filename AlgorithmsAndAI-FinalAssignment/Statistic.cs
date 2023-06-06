@@ -23,6 +23,8 @@
         public void Increase(double value)
         {
             currentValue += value;
+
+            /* Stop increasing when value is bigger than the maximum value. */
             if (currentValue > max)
             {
                 currentValue = max;
@@ -34,6 +36,7 @@
         /// <param name="value"></param>
         public void Decrease(double value)
         {
+            /* Stop decreasing when value is below 1. */
             if (currentValue > 1) currentValue -= value;
             else currentValue = 1;
 
